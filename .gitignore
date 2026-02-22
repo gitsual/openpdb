@@ -39,3 +39,6 @@ test_crear_personaje.py
 test_cuatro_lados.py
 test_narrador.py
 test_output_validation.py
+
+# Personal org backup (DO NOT COMMIT)
+.lorty_org_backup.json
