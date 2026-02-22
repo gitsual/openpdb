@@ -36,6 +36,16 @@ Using three validated psychology frameworks (MBTI cognitive functions, Enneagram
 
 > *"It's like Disco Elysium's skill system, but for your AI workforce."*
 
+### 📊 See The Difference
+
+**[→ Full comparison: Generic vs Personality agents](docs/COMPARISON.md)**
+
+| Code Review | Generic Agent | Dr. House (INTP 5w4) |
+|-------------|--------------|----------------------|
+| **Content** | "SQL injection vulnerability..." | "Oh look, a SQL injection waiting to happen. Did you copy this from a 2003 tutorial?" |
+| **Impact** | Forgettable | **Memorable** |
+| **Behavior change** | Unlikely | **Shame is a powerful teacher** |
+
 ### ⚡ For OpenClaw Users
 
 | Feature | What You Get |

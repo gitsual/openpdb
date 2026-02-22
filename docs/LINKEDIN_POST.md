@@ -99,19 +99,45 @@ Build a team of geniuses. One command each.
 
 ---
 
+---
+
+## The Comparison Hook (most viral potential)
+
+---
+
+I made Dr. House review my code.
+
+Here's the difference:
+
+**Generic AI:**
+> "This function has a SQL injection vulnerability. Consider using parameterized queries."
+
+**Dr. House (INTP 5w4):**
+> "Oh look, a SQL injection waiting to happen. Did you copy this from a 2003 tutorial? Congratulations, you've just given every script kiddie the keys to your database."
+
+Same technical content.
+One is forgettable.
+One changes your behavior forever.
+
+That's what personality does.
+
+🔗 github.com/gitsual/creador-de-personajes
+
+---
+
 ## Hook Variations
 
-**Hook A (celebrity bait):**
+**Hook A (comparison):**
+"Generic AI: 'SQL injection vulnerability.' Dr. House: 'Did you copy this from 2003?'"
+
+**Hook B (celebrity bait):**
 "What if you could make Tony Stark code for you?"
 
-**Hook B (controversial):**
-"I made Donald Trump review my PRs. Here's how."
+**Hook C (controversial):**
+"I made Gordon Ramsay review my project timeline. I'm still recovering."
 
-**Hook C (anime):**
-"L from Death Note is now my debugging assistant."
-
-**Hook D (claim):**
-"Your favorite character can work for you now."
+**Hook D (anime):**
+"L from Death Note is my debugging assistant now."
 
 ---
 
