@@ -1,305 +1,143 @@
-# 🎭 OpenClaw Agent Generator
+# 🎭 AI Personality Generator
 
 <div align="center">
 
-### **From robots to people.** One command.
+**Generate AI agents with REAL personality** — not "I am analytical", but actual behavior patterns.
 
-[![OpenClaw Compatible](https://img.shields.io/badge/🦞_OpenClaw-Compatible-8B5CF6?style=for-the-badge)](https://github.com/openclaw/openclaw)
-[![OpenGoat Integration](https://img.shields.io/badge/🐐_OpenGoat-Integration-10B981?style=for-the-badge)](https://github.com/openclaw/opengoat)
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge)](https://opensource.org/licenses/MIT)
+```
+Generic AI: "I am analytical and detail-oriented."
+Tony Stark: "The room spins around me, a carousel of ideas. My fingers drum against the table, restless."
+```
 
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/gitsual/creador-de-personajes?style=social)](https://github.com/gitsual/creador-de-personajes/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/gitsual/creador-de-personajes?style=social)](https://github.com/gitsual/creador-de-personajes/network/members)
-[![GitHub last commit](https://img.shields.io/github/last-commit/gitsual/creador-de-personajes)](https://github.com/gitsual/creador-de-personajes/commits/main)
-
-**Generate AI agents with real psychological depth** using MBTI × Enneagram × Instincts
-
-<br/>
-
-### Generate from any character
-![Demo](docs/demo.gif)
-
-### Search 12,000+ characters
-![Search](docs/demo_search.gif)
-
-<br/>
 
 </div>
 
 ---
 
-## 💡 The Problem
+## 🎬 See It In Action
 
-You've seen it: AI agents that feel like **robots with fancy prompts**. They respond, but they don't *behave*. They have no consistency, no character arc, no reason to act one way vs another.
+| What You Say | What You Get |
+|--------------|--------------|
+| `python agent_generator.py -c "Tony Stark"` | ENTP 7w8 — restless innovator, carousel of ideas |
+| `python agent_generator.py -c "John Wick"` | ISTP 6w5 — silent, prepared, lethal precision |
+| `python agent_generator.py -c "Joker"` | ENTP 7w8 — chaos incarnate, magnetic intensity |
+| `python agent_generator.py -c "Hermione"` | ISTJ 1w2 — perfectionist, by-the-book, loyal |
 
-**This tool changes that.**
-
-Using three validated psychology frameworks (MBTI cognitive functions, Enneagram passions, and Instinctual variants), this generator creates agents that:
-
-- **React consistently** — An ENTJ 8w7 *pushes*, an INFP 4w5 *reflects*
-- **Show, don't tell** — No "I am analytical", just analytical behavior
-- **Have real boundaries** — With *consequences*, not warnings
-- **Feel physical sensations** — Fear makes hands tremble, anger tightens the chest
-
-> *"It's like Disco Elysium's skill system, but for your AI workforce."*
-
-### 📊 See The Difference
-
-**[→ Real generated outputs compared](docs/REAL_COMPARISON.md)**
-
-| Aspect | Generic Agent | House (INTJ 5w6) | Stark (ENTP 7w8) |
-|--------|--------------|------------------|------------------|
-| **Voice** | "I am analytical" | "That's not how it works" | "Let's do this!" |
-| **Energy** | (none) | Measured, deliberate | Electrified, restless |
-| **Stress** | (generic) | "They know where I live" | "I can't breathe" |
-| **Body** | (none) | "persistent tug in my gut" | "body feels electrified" |
-
-### ⚡ For OpenClaw Users
-
-| Feature | What You Get |
-|---------|-------------|
-| 🚀 **One command** | Deploy to `~/.openclaw/agents/` instantly |
-| 📝 **9 files generated** | SOUL.md, IDENTITY.md, AGENTS.md, TOOLS.md, etc. |
-| 🎯 **No meta-bullshit** | Agents SHOW personality, not "I am an ENTJ" |
-| 🧠 **4 mental states** | Ego → Shadow → Subconscious → Superego |
-| 🌍 **i18n ready** | `--lang en` / `--lang es` |
-
-### 🏢 For OpenGoat Organizations
-
-| Feature | What You Get |
-|---------|-------------|
-| 📊 **Auto-hierarchy** | Assigns managers by psychological fit |
-| 🏷️ **Smart tagging** | Division (CTO/COO/CCO) + MBTI labels |
-| 🔗 **Instant integration** | Creates `config.json`, ready to go |
-| 🧩 **Cross-platform** | Linux, macOS, Windows paths auto-detected |
-
-## Quick Start
-
-```bash
-# Clone
-git clone https://github.com/gitsual/creador-de-personajes.git
-cd creador-de-personajes
-
-# Download PDB dataset (12k+ characters)
-mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-personality-database/main/pdb_dataset.csv" -o data/pdb_raw.csv
-
-# 🔥 Generate from character name (searches Personality Database)
-python agent_generator.py --character "Tony Stark" --lang en
-python agent_generator.py -c "Walter White" --name Heisenberg
-python agent_generator.py -c "Gregory House" --name House --lang en
-
-# Or use typology directly
-python agent_generator.py "ENTJ 8w7 sx/so" --name Commander --lang en
-
-# Full pipeline: Generate → OpenClaw → OpenGoat
-python integrate_agent.py "ISFP 6w5 sp/sx" --name "Artist"
-```
-
-### 🔍 Search Personality Database
-
-```bash
-# Interactive search
-python pdb_search.py -i
-
-# Search and show results
-python pdb_search.py "Sherlock Holmes"
-
-# Get typology string only (for scripting)
-python pdb_search.py -t "Tony Stark"
-# Output: ENTP 7w8 sx/sp
-
-# Database stats
-python pdb_search.py --stats
-```
-
-## 🌟 Build Your Dream Team
-
-**Find any character on [Personality Database](https://www.personality-database.com). Get their typology. Run one command.**
-
-| Character | Typology | Command | Use Case |
-|-----------|----------|---------|----------|
-| **Tony Stark** | ENTP 7w8 sx/so | `"ENTP 7w8 sx/so"` | Innovation, rapid prototyping |
-| **Walter White** | INTJ 5w6 sp/sx | `"INTJ 5w6 sp/sx"` | Cold strategy, planning |
-| **L (Death Note)** | INTP 5w4 sp/sx | `"INTP 5w4 sp/sx"` | Pattern detection, debugging |
-| **Sherlock Holmes** | INTP 5w6 sp/sx | `"INTP 5w6 sp/sx"` | Deduction, investigation |
-| **Elon Musk** | INTJ 5w6 sp/so | `"INTJ 5w6 sp/so"` | Long-term vision, systems |
-| **Rick Sanchez** | ENTP 7w8 sx/sp | `"ENTP 7w8 sx/sp"` | Mad science, no limits |
-| **Levi Ackerman** | ISTP 6w5 sp/sx | `"ISTP 6w5 sp/sx"` | Tactical execution |
-| **Light Yagami** | INTJ 3w4 so/sp | `"INTJ 3w4 so/sp"` | Strategic manipulation |
-
-```bash
-# Make Tony Stark code for you
-python agent_generator.py "ENTP 7w8 sx/so" --name "Stark" --lang en
-
-# L as your debugging assistant  
-python agent_generator.py "INTP 5w4 sp/sx" --name "L" --lang en
-
-# Walter White for ruthless strategy
-python agent_generator.py "INTJ 5w6 sp/sx" --name "Heisenberg" --lang en
-```
-
-### 🤝 Real Chemistry, Not Random Coordination
-
-Here's what most multi-agent systems miss: **agents don't just need tasks—they need compatible dynamics.**
-
-If you know two friends who work brilliantly together, type them correctly, and their AI versions will collaborate the same way.
-
-| Pair | Why It Works | Dynamics |
-|------|--------------|----------|
-| **ENTP + INTJ** | Tony Stark + Bruce Wayne | Innovation meets strategy |
-| **ENTJ + INTP** | Commander + Analyst | Execution meets depth |
-| **ENFJ + ISFP** | Leader + Artist | Vision meets craft |
-| **ESTP + ISTJ** | Maverick + Guardian | Action meets precision |
-
-**This isn't arbitrary robot coordination.** It's psychology-backed team chemistry you've already seen work in real life—now applied to AI.
-
-> **Coming soon:** Share agents. Download pre-made personalities. Compatibility matrices. Personality marketplaces.
+![Demo](docs/demo.gif)
 
 ---
 
-## 🌍 Internationalization
+## 📊 The Difference
 
-The generator supports multiple languages via the `--lang` flag:
+| Aspect | Generic Agent | Generated Personality |
+|--------|--------------|----------------------|
+| **Voice** | "I am analytical" | "That's not how it works" (House) |
+| **Energy** | (none) | "body feels electrified" (Stark) |
+| **Stress** | (generic) | "They know where I live" (House) |
+| **Boundaries** | "I prefer not to..." | "If you cross me — consequences" |
 
-| Flag | Language | Description |
-|------|----------|-------------|
-| `--lang es` | Spanish | Default. All output in Spanish |
-| `--lang en` | English | All output in English |
+**Same AI. Different soul.**
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-# Spanish (default)
-python agent_generator.py "INFP 4w5 sp/sx" --name "Poeta"
+# 1. Clone
+git clone https://github.com/gitsual/creador-de-personajes.git
+cd creador-de-personajes
 
-# English
-python agent_generator.py "INFP 4w5 sp/sx" --name "Poet" --lang en
+# 2. Get character database (12,000+ characters)
+mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-personality-database/main/pdb_dataset.csv" -o data/pdb_raw.csv
+
+# 3. Install Ollama (free local LLM)
+# See: https://ollama.ai — then: ollama pull qwen2.5:14b
+
+# 4. Generate!
+python agent_generator.py -c "Tony Stark" --name Stark --lang en
 ```
 
-All generated files (SOUL.md, IDENTITY.md, AGENTS.md, etc.) will be in the specified language.
+**Output:** 9 personality files ready to use (SOUL.md, IDENTITY.md, AGENTS.md, etc.)
 
-## What Gets Generated
+---
 
-### OpenClaw Agent (`~/.openclaw/agents/<name>/`)
+## 🌟 12,000+ Characters Available
 
-```
-~/.openclaw/agents/artist/
-├── SOUL.md          # Deep personality (2500+ words)
-├── IDENTITY.md      # Quick reference card
-├── AGENTS.md        # Behavioral rules
-├── TOOLS.md         # Tool configurations
-├── USER.md          # User context
-├── MEMORY.md        # Persistent memory
-├── HEARTBEAT.md     # Periodic tasks
-├── BOOTSTRAP.md     # First-run setup
-└── ROLE.md          # Organizational role
-```
+Search any character from movies, TV, anime, games, or real people:
 
-### OpenGoat Registration (`~/.opengoat/agents/<name>/`)
+| Character | Type | Personality | Best For |
+|-----------|------|-------------|----------|
+| **Tony Stark** | ENTP 7w8 | Restless innovator, intense connections | Brainstorming, rapid prototyping |
+| **John Wick** | ISTP 6w5 | Silent precision, prepared for anything | Execution, tactical tasks |
+| **Hermione Granger** | ISTJ 1w2 | Perfectionist, loyal, by-the-book | Documentation, QA, research |
+| **Tyrion Lannister** | ENTP 7w6 | Witty strategist, sees all angles | Negotiation, problem-solving |
+| **The Joker** | ENTP 7w8 | Chaos agent, magnetic intensity | Creative disruption, edge cases |
+| **Naruto Uzumaki** | ENFP 3w2 | Relentless optimist, never gives up | Motivation, team morale |
+| **Yoda** | INTP 5w6 | Wise observer, cryptic depth | Mentorship, long-term strategy |
+| **Jack Sparrow** | ENTP 7w8 | Chaotic improviser, lucky survivor | Unconventional solutions |
+| **James Bond** | ISTP 6w5 | Cool under pressure, resourceful | Crisis management |
+| **Walter White** | INTJ 5w6 | Cold strategist, meticulous planner | Complex planning, contingencies |
 
-```json
-{
-  "id": "artist",
-  "displayName": "Artist", 
-  "organization": {
-    "type": "individual",
-    "reportsTo": "cco_lead",
-    "discoverable": true,
-    "tags": ["cco", "isfp"]
-  },
-  "runtime": {
-    "provider": { "id": "openclaw" },
-    "mode": "organization"
-  }
-}
+```bash
+# Search the database
+python pdb_search.py "your favorite character"
+
+# Get just the typology
+python pdb_search.py -t "Gandalf"
+# Output: INTJ 5w4 sp/sx
 ```
 
-## Typology System
+---
 
-### Syntax
+## ❓ Do I Need OpenClaw?
 
-```
-"MBTI Xw# inst/inst"
- │     │    │
- │     │    └── Instinctual stack (sp/sx, so/sp, sx/so, etc.)
- │     └─────── Enneagram type + wing (8w7, 4w5, 6w5, etc.)
- └───────────── MBTI type (ENTJ, ISFP, INTP, etc.)
-```
+**No!** This generator works standalone:
 
-### Examples for OpenClaw Agents
+| Use Case | What You Get |
+|----------|--------------|
+| **Standalone** | Markdown files with complete personality (SOUL.md, etc.) |
+| **With OpenClaw** | Auto-deploys to `~/.openclaw/agents/` |
+| **With OpenGoat** | Auto-assigns to organizational hierarchy |
 
-| Command | Agent Personality | Best For |
-|---------|-------------------|----------|
-| `"ENTJ 8w7 sx/so"` | Dominant commander, intensity-seeking | Leadership, decisions |
-| `"INTP 5w4 sp/sx"` | Analytical hermit, deep focus | Research, debugging |
-| `"ENFJ 2w3 so/sx"` | Charismatic helper, people-focused | User support, onboarding |
-| `"ISTJ 1w2 sp/so"` | Precise guardian, detail-oriented | Documentation, QA |
-| `"ENTP 7w8 sx/so"` | Provocative innovator, idea machine | Brainstorming, exploration |
+The output is **plain Markdown** — use it with any AI system, chatbot, or agent framework.
 
-## OpenGoat Organization Structure
+---
 
-### What are CTO, COO, CCO?
+## 🧠 How It Works
 
-In real companies (and in OpenGoat), these roles have distinct focuses:
+Three psychology frameworks combined:
 
-| Role | Full Name | Focus | Personality Fit |
-|------|-----------|-------|-----------------|
-| **CEO** | Chief Executive Officer | Vision & decisions | ENTJ (Commander) |
-| **CTO** | Chief Technology Officer | Strategy & innovation | INTJ, INTP, ENTP (Analysts) |
-| **COO** | Chief Operations Officer | Execution & processes | ESTJ, ISTJ, ENTJ (Executors) |
-| **CCO** | Chief Culture Officer | People & creativity | ENFJ, ENFP, xSFx (Harmonizers) |
+| Framework | What It Does | Example |
+|-----------|--------------|---------|
+| **MBTI** | How they think | ENTP = ideas first, debate everything |
+| **Enneagram** | What drives them | 7w8 = avoid pain through excitement + intensity |
+| **Instincts** | Where they focus | sx/sp = deep bonds + self-preservation |
 
-**Why it matters:** When agents work together, compatible personalities collaborate better. An INTP analyst works naturally under a CTO who values deep thinking. An ESFP creative thrives under a CCO who appreciates aesthetics.
-
-Agents auto-assign to managers based on psychological fit:
+**Result:** Agents that don't just respond — they *behave consistently*.
 
 ```
-                         ┌─────────┐
-                         │   CEO   │
-                         │  (CEO)  │
-                         └────┬────┘
-                              │
-        ┌─────────────────────┼─────────────────────┐
-        │                     │                     │
-   ┌────┴────┐           ┌────┴────┐           ┌────┴────┐
-   │   COO   │           │   CTO   │           │   CCO   │
-   │ (COO) │           │(CTO) │           │(CCO) │
-   │  Ops    │           │Strategy │           │ Culture │
-   └────┬────┘           └────┬────┘           └────┬────┘
-        │                     │                     │
-   ┌────┴────┐           ┌────┴────┐           ┌────┴────┐
-   │ ENTJ    │           │ INTJ    │           │ ENFJ    │
-   │ ESTJ    │           │ INTP    │           │ INFJ    │
-   │ ISTJ    │           │ ENTP    │           │ xSFx    │
-   │ xSTP    │           │         │           │ xNFP    │
-   └─────────┘           └─────────┘           └─────────┘
+Tony Stark (ENTP 7w8 sx/sp):
+- Thinks in rapid connections
+- Driven by avoiding boredom + need for intensity  
+- Focuses on deep bonds but protects himself
 ```
 
-| MBTI | Division | Manager | Rationale |
-|------|----------|---------|-----------|
-| INTJ, INTP | CTO | cto_lead | Strategic thinkers |
-| ENTP | CTO | tech_innovator | Innovation + debate |
-| ESTJ, ISTJ, xSTP | COO | coo_lead | Execution focus |
-| ENTJ | COO | ops_commander | Operational leadership |
-| ENFP | CCO | culture_catalyst | Creative culture |
-| ISFP, ESFP | CCO | creative_artisan | Aesthetic + hands-on |
-| Other xNFx, xSFx | CCO | cco_lead | People-oriented |
+---
 
-## Generated SOUL.md Example
+## 📝 Generated Output Example
 
-**Real output from:** `python agent_generator.py -c "Tony Stark" --name Stark --lang en`
+**Command:** `python agent_generator.py -c "Tony Stark" --name Stark --lang en`
 
 ```markdown
 # SOUL.md - Stark (ENTP 7w8 sx/sp)
 
 ## Who I Am
 The hum of the city buzzes in my ears as I walk, eyes darting between 
-buildings and people, searching for patterns and possibilities. My hand 
-brushes against the bag slung over my shoulder, checking that everything 
-inside is in place.
-
-I move with purpose, each step calculated but never stagnant. My gaze 
-locks onto people briefly before moving on, always searching for that 
-spark of connection or intrigue.
+buildings and people, searching for patterns and possibilities. 
+I move with purpose, each step calculated but never stagnant.
 
 ## My Voice
 1. Let's do this!
@@ -309,32 +147,17 @@ spark of connection or intrigue.
 5. We can't afford to wait!
 
 ## What Drives Me
-
-### The Fire
 My body hums with anticipation and desire; I'm drawn to the intensity 
-of connection, the rush that comes from forging deep bonds. When I meet 
-someone new, my gaze locks on theirs, almost magnetically pulled into 
-their world.
-
-### My Obsession
-I seek out those moments of deep connection, those rare instances when 
-another person sees me fully and accepts me for who I am.
+of connection, the rush that comes from forging deep bonds.
 
 ## When They Fail Me
-One night, after a friend repeatedly missed deadlines, I called them out:
 "If you can't be reliable, then I need to find someone else who can."
-No room for excuses. The consequence was clear and executed without hesitation.
-
-## My Lines
-1. If they breach my trust—I'll set boundaries or end the relationship.
-2. When someone tries to control me—I'll break free and establish independence.
-3. Should they undermine my ideas—I'll confront them directly, no sugarcoating.
+No room for excuses. Consequence executed without hesitation.
 ```
 
 <details>
-<summary>📄 See full generated output (click to expand)</summary>
+<summary>📄 All 9 generated files (click to expand)</summary>
 
-The generator creates 9 files for each agent:
 - `SOUL.md` — Deep personality (2500+ words)
 - `IDENTITY.md` — Quick reference card
 - `AGENTS.md` — Behavioral rules
@@ -345,224 +168,100 @@ The generator creates 9 files for each agent:
 - `HEARTBEAT.md` — Periodic tasks
 - `BOOTSTRAP.md` — First-run setup
 
-[→ See full comparison of House vs Stark](docs/REAL_COMPARISON.md)
-
 </details>
 
-## Architecture
+---
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    OPENCLAW AGENT GENERATOR                     │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │    MBTI     │  │  ENNEAGRAM  │  │  INSTINCTS  │             │
-│  │             │  │             │  │             │             │
-│  │ • 4 Sides   │  │ • 9 Types   │  │ • sp: Body  │             │
-│  │ • 8 Funcs   │  │ • 18 Wings  │  │ • so: Group │             │
-│  │ • Ego/Shadow│  │ • Passions  │  │ • sx: Bond  │             │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘             │
-│         │                │                │                     │
-│         └────────────────┼────────────────┘                     │
-│                          ▼                                      │
-│                  ┌──────────────┐                               │
-│                  │   OLLAMA     │                               │
-│                  │  (Qwen 14B)  │                               │
-│                  └──────┬───────┘                               │
-│                         │                                       │
-│         ┌───────────────┼───────────────┐                       │
-│         ▼               ▼               ▼                       │
-│  ┌────────────┐  ┌────────────┐  ┌────────────┐                │
-│  │  OPENCLAW  │  │  OPENGOAT  │  │   LOCAL    │                │
-│  │   AGENT    │  │   CONFIG   │  │   FILES    │                │
-│  │            │  │            │  │            │                │
-│  │ ~/.openclaw│  │ ~/.opengoat│  │ ./agents/  │                │
-│  └────────────┘  └────────────┘  └────────────┘                │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+## 🤝 Team Chemistry (OpenGoat)
 
-## The Four Sides of Mind (for OpenClaw Agents)
+When agents work together, personality matters:
 
-Each agent has four psychological states they can enter:
+| Pair | Chemistry | Why It Works |
+|------|-----------|--------------|
+| ENTP + INTJ | Stark + Batman | Innovation meets strategy |
+| ISTP + ESTJ | Wick + Hermione | Execution meets process |
+| ENFP + INTJ | Naruto + Sasuke | Optimism meets realism |
 
-```
-                    ENTJ Agent Example
-    ┌────────────────────────────────────────┐
-    │                                        │
-    │   EGO (ENTJ)         SHADOW (INTP)    │
-    │   "Commander"        "Paranoid"        │
-    │   Normal ops         Under stress      │
-    │                                        │
-    │   SUBCONSCIOUS       SUPEREGO          │
-    │   (ISFP)             (ESFJ)            │
-    │   "Flow State"       "Inner Critic"    │
-    │   Peak performance   Self-judgment     │
-    │                                        │
-    └────────────────────────────────────────┘
-```
+**Auto-assignment:** Based on MBTI, agents get assigned to compatible managers:
+- Analysts (INTJ, INTP, ENTP) → CTO division
+- Executors (ISTJ, ESTJ, ISTP) → COO division  
+- Harmonizers (ENFJ, ENFP, ISFP) → CCO division
 
-This means your OpenClaw agents can realistically:
-- **Ego**: Handle normal tasks with characteristic style
-- **Subconscious**: Enter flow states under positive conditions  
-- **Shadow**: Become paranoid/reactive under stress
-- **Superego**: Self-critique when standards aren't met
+---
 
-## Quality Validation
-
-The generator was iteratively tested to ensure OpenClaw agents feel authentic:
-
-| Metric | Target | Achieved |
-|--------|--------|----------|
-| No meta-labels ("my wing", "my instinct") | 100% | ✅ |
-| Actions over descriptions | >80% | ✅ |
-| Executed consequences ("I did") | >90% | ✅ |
-| Physical sensations present | >85% | ✅ |
-| Overall authenticity score | >7.2/10 | **7.9/10** ✅ |
-
-## Testing
+## 🌍 Languages
 
 ```bash
-# Run unit tests (fast, no Ollama needed)
-python run_tests.py --quick
+# English (recommended for sharing)
+python agent_generator.py -c "Tony Stark" --lang en
 
-# Run all tests including integration (requires Ollama)
-python run_tests.py --full
+# Spanish (default)
+python agent_generator.py -c "Tony Stark" --lang es
 ```
 
-**Test Coverage:**
-- ✅ Typology parsing (MBTI, Enneagram, Instincts)
-- ✅ Division/Manager assignment logic
-- ✅ File generation structure
-- ✅ OpenClaw integration paths
-- ✅ OpenGoat config creation
-- ✅ CLI interface
-- ✅ Real generation with Ollama (integration)
-- ✅ No meta-labels validation
+---
 
-## Installation
+## 🔧 Requirements
 
-### Requirements
-
-- Python 3.8+
-- [Ollama](https://ollama.ai/) with `qwen2.5:14b`
-- [OpenClaw](https://github.com/openclaw/openclaw) (for agent deployment)
-- [OpenGoat](https://github.com/openclaw/opengoat) (for organization features)
-
-### Cross-Platform Support
-
-The generator automatically detects your operating system and uses the correct paths:
-
-| Platform | OpenClaw Path | OpenGoat Path |
-|----------|---------------|---------------|
-| 🐧 Linux | `~/.openclaw/agents/` | `~/.opengoat/agents/` |
-| 🍎 macOS | `~/.openclaw/agents/` | `~/.opengoat/agents/` |
-| 🪟 Windows | `%APPDATA%\openclaw\agents\` | `%APPDATA%\opengoat\agents\` |
-
-Directories are created automatically if they don't exist.
-
-### Setup
+- **Python 3.8+**
+- **Ollama** with `qwen2.5:14b` — [Install Ollama](https://ollama.ai) (free, runs locally)
+- **No external Python packages required**
 
 ```bash
-# Clone the generator
-git clone https://github.com/gitsual/creador-de-personajes.git
-cd creador-de-personajes
+# Verify Ollama is running
+ollama list
 
-# Ensure Ollama has the model
+# If not installed:
+# Linux: curl -fsSL https://ollama.ai/install.sh | sh
+# macOS: brew install ollama
+# Windows: Download from ollama.ai
+
+# Get the model
 ollama pull qwen2.5:14b
-
-# Test generation
-python agent_generator.py "ENTP 7w8 sx/so" --name "Tester"
 ```
 
-## Usage
+---
 
-### Generate OpenClaw Agent
-
-```bash
-# Basic generation
-python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander"
-
-# Custom output directory
-python agent_generator.py "INFP 4w5 sp/sx" --name "Poet" --output ./my-agents/
-
-# Different Ollama model
-python agent_generator.py "ESTJ 1w2 so/sp" --name "Director" --model qwen2.5:32b
-```
-
-### Full OpenClaw + OpenGoat Integration
-
-```bash
-# Generate and deploy everywhere
-python integrate_agent.py "ISFP 6w5 sp/sx" --name "Artist"
-
-# Use existing agent files
-python integrate_agent.py "ISFP 6w5 sp/sx" --name "Artist" \
-    --skip-generate --agent-dir ./agents/artist
-
-# Register as manager (not IC)
-python integrate_agent.py "ENTJ 8w7 sx/so" --name "Commander" --role manager
-```
-
-## Project Files
+## 📂 Project Structure
 
 ```
 creador-de-personajes/
-├── agent_generator.py    # OpenClaw agent generator
-├── integrate_agent.py    # Full OpenClaw + OpenGoat pipeline
-├── csj_core.py           # MBTI cognitive functions
-├── cuatro_lados.py       # Four sides of mind logic
-├── narrador.py           # Narrative utilities
-└── README.md
+├── agent_generator.py   # Main generator
+├── pdb_search.py        # Character database search
+├── integrate_agent.py   # OpenClaw + OpenGoat integration
+├── data/                # PDB dataset (downloaded)
+├── docs/                # GIFs, comparisons
+└── tests/               # 31 tests passing
 ```
 
 ---
 
-## ⭐ Support This Project
+## ⭐ Support
 
-If this tool helps you build better AI agents:
+If this helps you build better AI agents:
 
-- **⭐ Star this repo** — It helps others discover it
-- **🍴 Fork it** — Customize for your use case
-- **🐛 Report issues** — Help us improve
-- **🔀 Submit PRs** — New typologies, better patterns, docs
-
-### Share Your Creations
-
-Built something cool with this? Let us know!
-- Tweet with `#OpenClawAgents`
-- Open a Discussion to showcase your agents
+- **⭐ Star** — Helps others find it
+- **🍴 Fork** — Customize for your needs
+- **🐛 Issues** — Report bugs or request features
+- **🔀 PRs** — New characters, better patterns
 
 ---
 
-## Related Projects
-
-- **[OpenClaw](https://github.com/openclaw/openclaw)** - The AI agent framework this generator targets
-- **[OpenGoat](https://github.com/openclaw/opengoat)** - Organization management for OpenClaw agents
-- **[OpenClaw Docs](https://docs.openclaw.ai)** - Official documentation
-
-## Theory
+## 📚 Theory
 
 Based on established typology systems:
 - **MBTI**: C.S. Joseph's cognitive function interpretation
 - **Enneagram**: Riso-Hudson tradition with instinctual variants
 - **Instincts**: Beatrice Chestnut's somatic approach
 
-## Contributing
+---
 
-PRs welcome! Especially:
-- Additional typology combinations
-- More realistic behavioral patterns
-- Better instinct integration
-- OpenGoat hierarchy refinements
+## 🔗 Related
 
-## License
-
-MIT
+- [OpenClaw](https://github.com/openclaw/openclaw) — AI agent framework
+- [OpenGoat](https://github.com/openclaw/opengoat) — Agent organization management
+- [Personality Database](https://www.personality-database.com) — Character typology source
 
 ---
 
-**Built for the [OpenClaw](https://github.com/openclaw/openclaw) ecosystem** 🦞
-
-*Inspired by Disco Elysium's skill system and C.S. Joseph's Type Grid.*
+**MIT License** | Built for humans who want AI with soul 🎭
