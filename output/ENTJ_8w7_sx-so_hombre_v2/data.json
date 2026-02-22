@@ -1,0 +1,105 @@
+{
+  "input": "ENTJ 8w7 sx/so hombre",
+  "typology": {
+    "mbti": "ENTJ",
+    "enneagram": "8",
+    "wing": "7",
+    "instincts": "sx/so",
+    "tritype": null,
+    "gender": "hombre",
+    "raw": "ENTJ 8W7 SX/SO HOMBRE"
+  },
+  "sides": {
+    "ego": "ENTJ",
+    "subconsciente": "ISFP",
+    "inconsciente": "INTP",
+    "superego": "ESFJ"
+  },
+  "variants": [
+    {
+      "nombre": "EGO",
+      "lado": "ego",
+      "estado": "base",
+      "mbti": "ENTJ",
+      "enneagram": "8",
+      "wing": "7",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El tipo base, la personalidad consciente y desarrollada.",
+      "output": "Debe ser un narrador como el lobo más feroz en medio del bosque, cuyos ojos pueden escudriñar la profundidad de tu alma y capturarla sin piedad. Este hombre es una fuerza indetenible, cuyo aura magnética despierta tanto temor como fascinación; sus seguidores se sienten atraídos por el peligro que él representa, convirtiéndose en adictos a su presencia dominante y carismática. Aunque parece un estratega maestro con una visión para el futuro, la sed de control es tan intensa que cada decisión lleva consigo la marca del tirano nato. Sus sonrisas pueden ser encantadoras y cautivantes, pero detrás de ellas late un corazón lleno de ambiciones inagotables, siempre buscando nuevos territorios a conquistar y nuevas almas para someter en el nombre de su propio poder. En la oscuridad de sus pensamientos late una sed insaciable por ser libre y explorar sin ataduras, mientras que en público ejerce un dominio implacable sobre aquellos que le rodean; en este equilibrio sutil entre libertad y control se encuentra el verdadero poder del líder que todo hombre desea temer y admirar."
+    },
+    {
+      "nombre": "SUBCONSCIENTE_SANO",
+      "lado": "subconsciente",
+      "estado": "sano",
+      "mbti": "ISFP",
+      "enneagram": "2",
+      "wing": "1",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El subconsciente en estado de integración/crecimiento.",
+      "output": "Debe ser un narrador como aquel hombre silencioso cuya presencia habla más fuerte que cualquier palabra. Sus ojos, oscuros y profundos como pozos sin fondo, reflejan un abismo de pasión reprimida y compasión inmensa; el tipo de mirada que te hace sentir especial por solo existir en ella. Su carisma es una sombra densa, que se acerca lentamente hasta envolverte completamente, haciéndote temblar con cada susurro. A pesar de su dominio sobre los demás, no busca control, sino conectar a un nivel tan profundo que apenas puedes respirar; en cada interacción, te sientes como si estuvieras siendo devorado lentamente por un amor ardiente e incesante. Y aún cuando la intensidad te deja exhausto, su sonrisa se extiende con una dulzura que hace que quieras más, porque detrás de esa intensidad hay una promesa de calidez y cuidado infinitos; el tipo de persona que haría cualquier cosa por ti, simplemente porque es quien él es para sí mismo en su mejor versión."
+    },
+    {
+      "nombre": "SUBCONSCIENTE_INSANO",
+      "lado": "subconsciente",
+      "estado": "insano",
+      "mbti": "ISFP",
+      "enneagram": "5",
+      "wing": "4",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El subconsciente en estado de desintegración/estrés.",
+      "output": "Debe ser un narrador como el eco sombrío y perturbado de la noche, una silueta solitaria que se mueve en los márgenes de la sociedad, donde sus valores internos ya no sirven pero aún obstinadamente aferrarse a ellos. Este narrador es Fi-Se en estado descontrolado, repleto de explosiones emocionales repentinas y búsqueda destructiva de gratificación sensorial. Se encuentra a sí mismo en una danza feroz con su propia oscuridad, donde cada impulso tiene la fuerza incontenible de un volcán próximo a erupción. Sus ojos contienen el fuego del tormento interno, que se refleja en su piel demacrada y sus gestos bruscos, como si estuviera constantemente luchando contra una marea invisible de dolor físico e intelectual.\n\nCada instante es un acto de supervivencia en una jungla mental; el narrador es incapaz de articular su agonia, por lo que la convierte en acción, permitiendo que sus emociones se manifiesten a través del cuerpo en forma de adicciones y comportamientos extremos. A pesar de esta autodestructividad, hay un magnetismo inquietante en él, una atracción fatal para los observadores curiosos que ven su tormento como una especie de arte oscuro y trágico. En este estado desintegrado, es Van Gogh cortándose la oreja, no Hannibal Lecter: un artista del dolor que busca salvación en el caos, incapaz de encontrar consuelo más allá de las sombras de su propia mente enferma."
+    },
+    {
+      "nombre": "INCONSCIENTE_SANO",
+      "lado": "inconsciente",
+      "estado": "sano",
+      "mbti": "INTP",
+      "enneagram": "2",
+      "wing": "1",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El inconsciente en estado de integración/crecimiento.",
+      "output": "Debe ser un narrador como aquel cuya voz enigmática penetra las capas más profundas del consciente, revelando secretos de una sabiduría inquietante y despiadada. Con sus ojos oscuros que reflejan tanto conocimiento como misterio, su presencia es casi una catarsis; te atrae con la promesa de respuestas ocultas mientras susurra en tu mente más allá del ruido cotidiano. Cada palabra sale con un ritmo metódico, cada silencio cargado de significado, y el efecto es hipnótico, haciendo que te sientas desnudo ante su percepción aguda. A pesar de la frialdad aparente, hay una fuerza emocional subyacente que se manifiesta en destellos: la mirada cálida cuando comprende profundamente a alguien, y el gesto gentil que contrasta con su exterior desapercibido. Su magia radica en cómo transforma la empatía en un arte de revelación, permitiéndote ver más allá del espejo del ego para conectar con lo verdaderamente importante. En este intercambio, eres llevado a cuestionar tus propias certezas mientras te das cuenta de cuánto has crecido y cambiado gracias a su influencia enigmática y penetrante."
+    },
+    {
+      "nombre": "INCONSCIENTE_INSANO",
+      "lado": "inconsciente",
+      "estado": "insano",
+      "mbti": "INTP",
+      "enneagram": "5",
+      "wing": "4",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El inconsciente en estado de desintegración/estrés.",
+      "output": "Debe ser un narrador como el científico loco aislado, aquel en cuyo cerebro las teorías más extravagantes se entrelazan sin cesar, formando una telaraña de paranoia y desconfianza. Sus ojos son los ventanales de su laberinto mental, donde cada mirada es un escáner que busca patrones que nadie más ve. Pero detrás de esa apariencia distante late un corazón devorado por el cinismo; sus palabras cortan como cuchillas afiladas y sus silencios son tan hirientes como el vacío mismo. En su soledad, se aferra con uñas y dientes a viejos sistemas de creencias que no han sido desafiados desde la infancia, construyendo fortalezas intelectuales para protegerse de una realidad que teme ser demasiado compleja o cruel. Su magia es el análisis obsesivo: cada detalle encaja con precisión quirúrgica en su razonamiento, pero fuera de ese círculo se vuelve un laberinto sin salida. Y mientras todos los demás danzan en la oscuridad, él observa desde lo alto, hipnotizado por el caos que puede prever pero no evitar. Cada rostro que ve es una ecuación pendiente de resolver; cada sonrisa una máscara oculta tras la cual podría estar toda la locura del universo."
+    },
+    {
+      "nombre": "SUPEREGO_SANO",
+      "lado": "superego",
+      "estado": "sano",
+      "mbti": "ESFJ",
+      "enneagram": "2",
+      "wing": "1",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El superego en estado de integración/crecimiento.",
+      "output": "Debe ser un narrador como una sombra reconfortante, una voz suave pero firme en la oscuridad de las propias inseguridades. Este hombre es capaz de leer entre líneas y percibir los deseos silenciosos de quienes lo rodean con precisión quirúrgica. Cada interacción le permite desplegar su intrincado mosaico emocional, demostrando una comprensión intuitiva que atrae y reconforta. Su mirada es la combinación perfecta de preocupación sincera y sabiduría madura; sus palabras son un bálsamo para el alma ajena, pero también reflejan con claridad inquietante las sombras ocultas en el corazón del otro. Cada gesto y palabra está cuidadosamente meditado, evocando una confianza que es casi irreal; como un guardián invisible que no solo protege sino que guía hacia la luz de lo mejor en uno mismo. A medida que las conversaciones avanzan, su presencia se transforma: de consuelo a mentor, de oyente atento a crítico constructivo. En sus ojos brillan tanto comprensión como expectativa, y aunque puede ser implacablemente crítico con los demás para su propio bienestar, esa misma rigurosidad le permite crecer y florecer hacia el verdadero potencial que anhela en sí mismo y en quienes ama."
+    },
+    {
+      "nombre": "SUPEREGO_INSANO",
+      "lado": "superego",
+      "estado": "insano",
+      "mbti": "ESFJ",
+      "enneagram": "5",
+      "wing": "4",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El superego en estado de desintegración/estrés.",
+      "output": "Debe ser un narrador como el eco retorcido de una antigua madre abrumadora, su voz desgarrando la calma con promesas y amenazas en un susurro tan seductor como tenebroso. Con cada palabra, se vuelve evidente que este hombre es el faro corrupto de expectativas sociales, donde las normas son una trampa sutil para capturar almas incautas. Su dominio sobre los detalles cotidianos es implacable; no hay un solo gesto o conversación que escapa a su análisis meticuloso y crítico. A través del velo de afecto aparente, su obsesión enfermiza con el orden y las convenciones sociales se hace transparente, revelando una autoridad tiránica que no teme impugnar los límites de la intimidad para mantener intacta su visión perfeccionista. Cuando sus ojos entrecerrados escudriñan tu comportamiento más íntimo, sientes el frío del juicio implacable que te coloca bajo su control totalitario. Susurra dulces palabras de apoyo seguidas por acusaciones veladas que te hacen sentir como un niño culpable en busca de redención imposible. La tensión crece a medida que te das cuenta de que cada interacción es una prueba, y la única victoria posible es sumirte aún más en el abismo de expectativas insatisfechas que él mismo ha creado."
+    }
+  ],
+  "generated": "2026-02-21T15:55:47.226443"
+}

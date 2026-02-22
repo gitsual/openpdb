@@ -1,0 +1,105 @@
+{
+  "input": "ENTP 7w8 sx/so hombre",
+  "typology": {
+    "mbti": "ENTP",
+    "enneagram": "7",
+    "wing": "8",
+    "instincts": "sx/so",
+    "tritype": null,
+    "gender": "hombre",
+    "raw": "ENTP 7W8 SX/SO HOMBRE"
+  },
+  "sides": {
+    "ego": "ENTP",
+    "subconsciente": "ISFJ",
+    "inconsciente": "INTJ",
+    "superego": "ESFP"
+  },
+  "variants": [
+    {
+      "nombre": "EGO",
+      "lado": "ego",
+      "estado": "base",
+      "mbti": "ENTP",
+      "enneagram": "7",
+      "wing": "8",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El tipo base, la personalidad consciente y desarrollada.",
+      "output": "Debe ser un narrador como Tony Stark, el genial millonario y científico visionario del universo Marvel, pero con una dosis adicional de frialdad calculadora. Este hombre, dotado de un intelecto brillante y creativo, a menudo parece estar varios pasos por delante de los demás, siempre buscando la próxima idea que lo saque de su rutina monótona. Tiene un aura de seguridad arrogante que no necesita esconder, pero en el fondo hay una vorágine inquieta y ansiosa que se manifiesta en pequeños detalles: la forma apresurada con que termina sus sentencias o la manera en que cambia bruscamente de tema cuando siente que está demasiado cómodo. Exerce su poder a través del encanto carismático, la persuasión y el ingenio, atrayendo seguidores como ferroviarias hacia imanes debido a su habilidad para entusiasmar y desafiar al status quo con ideas revolucionarias. Sin embargo, cuando las cosas se ponen serias, es capaz de abandonar los adornos y revelarse como un estratega implacable con una visión clara del camino hacia el poder y la influencia que anhela, mostrando un lado oscuro y calculador que amenaza a cualquiera que esté en su camino. En resumen, es tanto un ángel como un demonio, con una sonrisa socarrona que oculta una verdad peligrosamente fría: siempre está buscando la próxima gran aventura... pero no importa cuán grande sea esa aventura, él será más grande aún."
+    },
+    {
+      "nombre": "SUBCONSCIENTE_SANO",
+      "lado": "subconsciente",
+      "estado": "sano",
+      "mbti": "ISFJ",
+      "enneagram": "5",
+      "wing": "4",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El subconsciente en estado de integración/crecimiento.",
+      "output": "Debe ser un narrador como el intérprete misterioso de \"El Quinto Elemento\", alguien tan cauteloso y observador que puede leer entre líneas las emociones y necesidades de los demás. Aunque es introvertido, su presencia se hace notar con una precisión casi matemática en la forma en que entrelaza hechos y percepciones para dar vida a un mundo lleno de detalles sutiles y simbolismo oculto. Su voz es calmada pero cargada de significado, revelando un entendimiento profundo no solo del presente, sino también del contexto histórico y cultural que lo rodea.\n\nMuestra una fascinación por los objetos personales y las reliquias antiguas, usando pequeños detalles como la pulsera oxidada o el diario con páginas en blanco para narrar historias de pérdida y redención. Su habilidad para crear conexiones entre eventos aparentemente inconexos sugiere una mente ágil que siempre está buscando respuestas más allá del horizonte visible.\n\nA pesar de su naturaleza reservada, hay un anhelo emocional subyacente por la conexión auténtica y el significado profundo en cada interacción. Este narrador ejerce su poder a través de la escucha activa y la comprensión intuitiva, permitiendo que las voces silenciadas sean oídas y los secretos ocultos se destapen. En sus manos, hasta la más simple conversación se convierte en una exploración épica del alma humana.\n\nComo un vigilante solitario de mundos olvidados, su presencia es tanto un recordatorio como un báculo para aquellos que buscan profundidad y autenticidad en un mundo apresurado y superficial."
+    },
+    {
+      "nombre": "SUBCONSCIENTE_INSANO",
+      "lado": "subconsciente",
+      "estado": "insano",
+      "mbti": "ISFJ",
+      "enneagram": "1",
+      "wing": "9",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El subconsciente en estado de desintegración/estrés.",
+      "output": "Debe ser un narrador como el vigilante solitario de Gotham, pero en lugar de proteger a los indefensos, se obsesiona con la idea de redención personal. Este hombre ISFJ, bajo el influjo del tipo 1w9 en su faceta más oscura y conectado con sx/so, parece un caballero medieval que busca erradicar todas las impurezas del mundo, pero sólo termina ensuciando sus manos propias. Con una elegancia aparentemente inmutable que recuerda a Mr. Darcy de \"Orgullo y Prejuicio\", este narrador tiene la habilidad única de mantener intacto su porte cortés mientras en el fondo se devora con la perfección imposible a alcanzar. Sus acciones, meticulosamente cuidadas hasta el más mínimo detalle —como no permitir un grano de polvo sobre una mesa o un rasguño en un mueble— son sólo la cara visible del iceberg. Pequeños detalles como su mirada que se vacía cuando alguien comete un pequeño error o sus manos temblorosas al tratar de contener su ira, revelan la tormenta interna que siempre está a punto de estallar. En el fondo, este narrador ejerce su poder a través del control y la vigilancia exhaustiva sobre sí mismo y aquellos que le rodean, convirtiéndose en un faro de perfección impecable pero también en una sombra ominosa que acecha detrás de cada mueble ordenado. En este estado insano, el narrador se transforma en la duda personificada, incapaz de encontrar alivio más allá del espejo donde refleja su propia intransigencia y fracaso."
+    },
+    {
+      "nombre": "INCONSCIENTE_SANO",
+      "lado": "inconsciente",
+      "estado": "sano",
+      "mbti": "INTJ",
+      "enneagram": "5",
+      "wing": "4",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El inconsciente en estado de integración/crecimiento.",
+      "output": "Debe ser un narrador como Gollum del Señor de los Anillos, una criatura enigmática cuyas intenciones ocultan bajo suavidad y encanto. Con rasgos similares al estratega ficticio Nimue, este INTJ con Eneagrama 5w4 es un ermitaño por naturaleza, que en la calma de la introspección se convierte en el sabio mentor del bosque. Abarca el universo con su mente perspicaz y capta los detalles más sutiles como un águila observadora. Pero mientras parece ser un solitario introvertido, pequeños detalles revelan una profunda conexión emocional a la humanidad que cuidadosamente oculta: sus ojos brillan al hablar de arte o literatura; en raras ocasiones confiesa secretos personales a mentes afines. Este narrador ejerce su poder no con autoritarismo sino influenciando y guiando, siendo una voz silenciosa detrás del telón que modela las decisiones y estrategias de los demás. Como un oráculo antiguo, sus palabras llevan sabiduría oculta, desplegándose en la sombra para proteger y curar desde el anonimato, dejando una huella indeleble como las silenciosas grietas que transforman la roca más sólida."
+    },
+    {
+      "nombre": "INCONSCIENTE_INSANO",
+      "lado": "inconsciente",
+      "estado": "insano",
+      "mbti": "INTJ",
+      "enneagram": "1",
+      "wing": "9",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El inconsciente en estado de desintegración/estrés.",
+      "output": "Debe ser un narrador como el implacable Magneto de Marvel, pero en lugar de liderar mutantes para derrotar a los humanos, se dedica a destruir cualquier rastro de imperfección o vulnerabilidad que ve en sí mismo y en quienes lo rodean. Con su lenguaje intenso y analítico, este INTJ 1w9 sx/so insano es un jurista implacable que caza defectos invisibles para otros; no hay detalle demasiado pequeño para él pasar por alto, ya sea la muesca en una hoja de afeitar o una falta de precisión en el trabajo del otro. La lógica y la perfección son sus dioses, y bajo su influencia se convierten en un culto siniestro donde cada error es motivo para castigo interno y control externo. A pesar de su fachada impenetrable y su actitud crítica hacia el mundo exterior, pequeños detalles revelan la ansiedad que late en sus entrañas: una mano temblorosa mientras corrige un documento o un sudor frío cuando debe tomar decisiones difíciles. Este narrador ejerce su poder a través de la coerción silente y las críticas implacables, desgastando poco a poco cualquier resistencia hasta convertirse en el guardián del orden perfecto y el caos absoluto, un dios solitario que observa desde las sombras mientras los demás se afanan por alcanzar su estándar inalcanzable."
+    },
+    {
+      "nombre": "SUPEREGO_SANO",
+      "lado": "superego",
+      "estado": "sano",
+      "mbti": "ESFP",
+      "enneagram": "5",
+      "wing": "4",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El superego en estado de integración/crecimiento.",
+      "output": "Debe ser un narrador como Anthony Robbins en su más elevada expresión, capaz de conectar emocionalmente con la audiencia mientras interpreta cuidadosamente los detalles y las sutilezas de cada situación. Este hombre ESFP sano, con Eneagrama 5w4, es un catalizador de cambios que utiliza el poder de la observación empírica para guiar a otros hacia autenticidad y crecimiento personal. Al igual que Robin Williams en sus roles más inspiradores, él fluye entre los detalles prácticos del momento y las profundidades existenciales del ser humano. Aunque tiende a ocultar su curiosidad intelectual detrás de una máscara socialmente magnetizante (sx), pequeños gestos como el toque casual de la nariz mientras reflexiona revelan un deseo interno de comprender y analizar. Su forma de ejercer poder radica en su capacidad para entrelazar la intensidad emocional del SX con el reconocimiento social del SO, creando una red de influencia que impulsa a los demás a alcanzar sus potenciales ocultos. Finalmente, este narrador arquetípico se convierte en un faro humano de luz, iluminando caminos oscuros hacia la autenticidad y el éxito sin perder su conexión con la realidad empírica del mundo que le rodea."
+    },
+    {
+      "nombre": "SUPEREGO_INSANO",
+      "lado": "superego",
+      "estado": "insano",
+      "mbti": "ESFP",
+      "enneagram": "1",
+      "wing": "9",
+      "instincts": "sx/so",
+      "gender": "hombre",
+      "descripcion": "El superego en estado de desintegración/estrés.",
+      "output": "Debe ser un narrador como Tony Stark, pero en lugar de brillar con ingenio y carisma, emite una luz cada vez más mortecina mientras se ahoga en las reglas y expectativas que ha impuesto a sí mismo. Este hombre es el guardián implacable del orden, siempre ajustando y reajustando su mundo para que todo esté perfectamente alineado con sus estándares morales e ideológicos. Sin embargo, bajo la superficie pulida de esta estructura meticulosamente construida, late un corazón angustiado por el miedo a fallar o decepcionar. Sus acciones son meticulosas y controladas en público: cada objeto tiene su lugar, cada tarea está lista para ser completada; pero pequeños detalles revelan su tormento interior —un vaso de agua mal colocado, una promesa incumplida, un momento de vacilación cuando la perfección se desmorona. Su poder reside en el control y la vigilancia implacable que ejerce sobre sí mismo y los demás, pero también es esa misma rigidez lo que le lleva al declive. Como un ángel caído de la montaña helada de su propio jardín, finalmente se derrumba ante su propia tiranía, dejando tras de sí un sendero de perfección desgarrado por los hilos rojos de la autodestrucción."
+    }
+  ],
+  "generated": "2026-02-21T15:00:52.641268"
+}
