@@ -1,29 +1,59 @@
 # 🎭 OpenClaw Agent Generator
 
-> **Generate psychologically authentic AI agents for [OpenClaw](https://github.com/openclaw/openclaw) and [OpenGoat](https://github.com/openclaw/opengoat)** using MBTI × Enneagram × Instinctual Variants
+<div align="center">
 
-[![OpenClaw Compatible](https://img.shields.io/badge/OpenClaw-Compatible-purple.svg)](https://github.com/openclaw/openclaw)
-[![OpenGoat Integration](https://img.shields.io/badge/OpenGoat-Integration-green.svg)](https://github.com/openclaw/opengoat)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+### **From robots to people.** One command.
 
-## Why This Exists
+[![OpenClaw Compatible](https://img.shields.io/badge/🦞_OpenClaw-Compatible-8B5CF6?style=for-the-badge)](https://github.com/openclaw/openclaw)
+[![OpenGoat Integration](https://img.shields.io/badge/🐐_OpenGoat-Integration-10B981?style=for-the-badge)](https://github.com/openclaw/opengoat)
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-**OpenClaw** agents need personality. Not just system prompts—**real psychological depth** that makes them behave consistently across contexts. This generator creates complete agent configurations using three validated typology frameworks, ready to deploy into your OpenClaw workspace and OpenGoat organization.
+**Generate AI agents with real psychological depth** using MBTI × Enneagram × Instincts
 
-### For OpenClaw Users
+<br/>
 
-- 🚀 **One command deployment** to `~/.openclaw/agents/`
-- 📄 Generates all required files: `SOUL.md`, `IDENTITY.md`, `AGENTS.md`, etc.
-- 🎯 Agents that **show** personality through behavior, not meta-descriptions
-- 🔄 Compatible with OpenClaw's session management and memory systems
+![Demo](docs/demo.gif)
 
-### For OpenGoat Organizations
+<br/>
 
-- 🏢 **Auto-assigns managers** based on psychological fit
-- 📊 Creates `config.json` with proper hierarchy
-- 🏷️ Tags agents by division (CTO/COO/CCO) and MBTI
-- 🔗 Integrates with existing OpenGoat agent structure
+</div>
+
+---
+
+## 💡 The Problem
+
+You've seen it: AI agents that feel like **robots with fancy prompts**. They respond, but they don't *behave*. They have no consistency, no character arc, no reason to act one way vs another.
+
+**This tool changes that.**
+
+Using three validated psychology frameworks (MBTI cognitive functions, Enneagram passions, and Instinctual variants), this generator creates agents that:
+
+- **React consistently** — An ENTJ 8w7 *pushes*, an INFP 4w5 *reflects*
+- **Show, don't tell** — No "I am analytical", just analytical behavior
+- **Have real boundaries** — With *consequences*, not warnings
+- **Feel physical sensations** — Fear makes hands tremble, anger tightens the chest
+
+> *"It's like Disco Elysium's skill system, but for your AI workforce."*
+
+### ⚡ For OpenClaw Users
+
+| Feature | What You Get |
+|---------|-------------|
+| 🚀 **One command** | Deploy to `~/.openclaw/agents/` instantly |
+| 📝 **9 files generated** | SOUL.md, IDENTITY.md, AGENTS.md, TOOLS.md, etc. |
+| 🎯 **No meta-bullshit** | Agents SHOW personality, not "I am an ENTJ" |
+| 🧠 **4 mental states** | Ego → Shadow → Subconscious → Superego |
+| 🌍 **i18n ready** | `--lang en` / `--lang es` |
+
+### 🏢 For OpenGoat Organizations
+
+| Feature | What You Get |
+|---------|-------------|
+| 📊 **Auto-hierarchy** | Assigns managers by psychological fit |
+| 🏷️ **Smart tagging** | Division (CTO/COO/CCO) + MBTI labels |
+| 🔗 **Instant integration** | Creates `config.json`, ready to go |
+| 🧩 **Cross-platform** | Linux, macOS, Windows paths auto-detected |
 
 ## Quick Start
 
