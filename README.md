@@ -101,7 +101,22 @@ python agent_generator.py "INTP 5w4 sp/sx" --name "L" --lang en
 python agent_generator.py "INTJ 5w6 sp/sx" --name "Heisenberg" --lang en
 ```
 
-> **Coming soon:** Share agents. Download pre-made personalities. Personality marketplaces. Your favorite characters, working for you.
+### 🤝 Real Chemistry, Not Random Coordination
+
+Here's what most multi-agent systems miss: **agents don't just need tasks—they need compatible dynamics.**
+
+If you know two friends who work brilliantly together, type them correctly, and their AI versions will collaborate the same way.
+
+| Pair | Why It Works | Dynamics |
+|------|--------------|----------|
+| **ENTP + INTJ** | Tony Stark + Bruce Wayne | Innovation meets strategy |
+| **ENTJ + INTP** | Commander + Analyst | Execution meets depth |
+| **ENFJ + ISFP** | Leader + Artist | Vision meets craft |
+| **ESTP + ISTJ** | Maverick + Guardian | Action meets precision |
+
+**This isn't arbitrary robot coordination.** It's psychology-backed team chemistry you've already seen work in real life—now applied to AI.
+
+> **Coming soon:** Share agents. Download pre-made personalities. Compatibility matrices. Personality marketplaces.
 
 ---
 

@@ -64,14 +64,24 @@ Or go controversial:
 Imagine THAT team reviewing your code.
 
 **Tweet 6:**
+Here's what most multi-agent systems miss:
+
+Robots don't just need tasks—they need chemistry.
+
+If two friends work brilliantly together IRL, type them → their AI versions collaborate the same way.
+
+ENTP + INTJ = Tony + Bruce
+ENTJ + INTP = Commander + Analyst
+
+**Tweet 7:**
 What's coming:
 
 → Share agents with community
-→ Download pre-made personalities
+→ Download pre-made personalities  
+→ Compatibility matrices
 → Import directly from PDB
-→ Personality marketplaces
 
-This isn't just a tool. It's the start of something bigger.
+Your AI team can inherit real chemistry.
 
 **Tweet 7:**
 Open source. MIT license.

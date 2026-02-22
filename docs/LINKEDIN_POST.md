@@ -38,14 +38,26 @@ Go to Personality Database (personality-database.com). Find ANY character or cel
 
 Want a team of geniuses working for you? Build one.
 
-**But here's what's coming:**
+**But here's the real game-changer:**
 
-• Share your agents with the community
-• Download pre-made personalities others created
-• Import directly from PDB typings
-• Build repositories of your favorite characters
+Most multi-agent systems coordinate robots randomly. They don't know each other. They don't have chemistry.
 
-This isn't just a tool. It's the start of a personality marketplace.
+**This is different.**
+
+If you know two friends who work brilliantly together IRL—type them correctly, and their AI versions will collaborate the same way.
+
+• ENTP + INTJ = Tony Stark + Bruce Wayne (innovation meets strategy)
+• ENTJ + INTP = Commander + Analyst (execution meets depth)
+• ENFJ + ISFP = Leader + Artist (vision meets craft)
+
+You already know which personalities click. Now your AI team can inherit that chemistry.
+
+**What's coming:**
+
+• Share agents with the community
+• Download pre-made personalities
+• Compatibility matrices (who works well with whom)
+• Import directly from PDB
 
 Robots → People. One command.
 
