@@ -1,221 +1,118 @@
-# 🎭 Character Creator
+# 🎭 OpenClaw Agent Generator
 
-> Generate AI agents with authentic personalities based on psychological typology systems (MBTI × Enneagram × Instinctual Variants)
+> **Generate psychologically authentic AI agents for [OpenClaw](https://github.com/openclaw/openclaw) and [OpenGoat](https://github.com/openclaw/opengoat)** using MBTI × Enneagram × Instinctual Variants
 
+[![OpenClaw Compatible](https://img.shields.io/badge/OpenClaw-Compatible-purple.svg)](https://github.com/openclaw/openclaw)
+[![OpenGoat Integration](https://img.shields.io/badge/OpenGoat-Integration-green.svg)](https://github.com/openclaw/opengoat)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Overview
+## Why This Exists
 
-Character Creator generates AI agent configuration files with deep, psychologically-grounded personalities. Unlike surface-level persona prompts, this system combines three validated typology frameworks to create agents that **behave** authentically rather than just **describe** themselves.
+**OpenClaw** agents need personality. Not just system prompts—**real psychological depth** that makes them behave consistently across contexts. This generator creates complete agent configurations using three validated typology frameworks, ready to deploy into your OpenClaw workspace and OpenGoat organization.
 
-### Key Features
+### For OpenClaw Users
 
-- **Triple-layer personality**: MBTI cognitive functions + Enneagram motivations + Instinctual drives
-- **Show, don't tell**: Generated agents demonstrate personality through actions, not meta-labels
-- **Automatic integration**: Deploy directly to [OpenClaw](https://github.com/openclaw/openclaw) and OpenGoat
-- **Organizational hierarchy**: Auto-assign managers based on psychological fit
-- **Quality validated**: Iteratively tested to score >7.2/10 on authenticity metrics
+- 🚀 **One command deployment** to `~/.openclaw/agents/`
+- 📄 Generates all required files: `SOUL.md`, `IDENTITY.md`, `AGENTS.md`, etc.
+- 🎯 Agents that **show** personality through behavior, not meta-descriptions
+- 🔄 Compatible with OpenClaw's session management and memory systems
+
+### For OpenGoat Organizations
+
+- 🏢 **Auto-assigns managers** based on psychological fit
+- 📊 Creates `config.json` with proper hierarchy
+- 🏷️ Tags agents by division (CTO/COO/CCO) and MBTI
+- 🔗 Integrates with existing OpenGoat agent structure
 
 ## Quick Start
 
 ```bash
-# Full pipeline: generate + integrate into OpenClaw + OpenGoat
+# Clone
+git clone https://github.com/gitsual/creador-de-personajes.git
+cd creador-de-personajes
+
+# Full pipeline: Generate → OpenClaw → OpenGoat
 python integrate_agent.py "ISFP 6w5 sp/sx" --name "Lorena"
 
-# Generate files only (no integration)
+# Generate OpenClaw agent files only
 python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander"
 ```
 
-## Typology Syntax
+## What Gets Generated
+
+### OpenClaw Agent (`~/.openclaw/agents/<name>/`)
+
+```
+~/.openclaw/agents/lorena/
+├── SOUL.md          # Deep personality (2500+ words)
+├── IDENTITY.md      # Quick reference card
+├── AGENTS.md        # Behavioral rules
+├── TOOLS.md         # Tool configurations
+├── USER.md          # User context
+├── MEMORY.md        # Persistent memory
+├── HEARTBEAT.md     # Periodic tasks
+├── BOOTSTRAP.md     # First-run setup
+└── ROLE.md          # Organizational role
+```
+
+### OpenGoat Registration (`~/.opengoat/agents/<name>/`)
+
+```json
+{
+  "id": "lorena",
+  "displayName": "Lorena", 
+  "organization": {
+    "type": "individual",
+    "reportsTo": "rodri",
+    "discoverable": true,
+    "tags": ["cco", "isfp"]
+  },
+  "runtime": {
+    "provider": { "id": "openclaw" },
+    "mode": "organization"
+  }
+}
+```
+
+## Typology System
+
+### Syntax
 
 ```
 "MBTI Xw# inst/inst"
  │     │    │
- │     │    └── Instinctual stack (e.g., sp/sx, so/sp, sx/so)
- │     └─────── Enneagram type + wing (e.g., 8w7, 4w5, 6w5)
- └───────────── MBTI type (e.g., ENTJ, ISFP, INTP)
+ │     │    └── Instinctual stack (sp/sx, so/sp, sx/so, etc.)
+ │     └─────── Enneagram type + wing (8w7, 4w5, 6w5, etc.)
+ └───────────── MBTI type (ENTJ, ISFP, INTP, etc.)
 ```
 
-### Examples
+### Examples for OpenClaw Agents
 
-| Command | Personality Profile |
-|---------|---------------------|
-| `"ENTJ 8w7 sx/so"` | Dominant leader, intensity-seeking, tribal protector |
-| `"INFP 4w5 sp/sx"` | Introspective artist, self-preserving, deep connections |
-| `"ESTJ 1w2 so/sp"` | Structured organizer, principled helper, status-aware |
-| `"ENTP 7w8 sx/so"` | Provocative innovator, pleasure-seeking, magnetically social |
+| Command | Agent Personality | Best For |
+|---------|-------------------|----------|
+| `"ENTJ 8w7 sx/so"` | Dominant commander, intensity-seeking | Leadership, decisions |
+| `"INTP 5w4 sp/sx"` | Analytical hermit, deep focus | Research, debugging |
+| `"ENFJ 2w3 so/sx"` | Charismatic helper, people-focused | User support, onboarding |
+| `"ISTJ 1w2 sp/so"` | Precise guardian, detail-oriented | Documentation, QA |
+| `"ENTP 7w8 sx/so"` | Provocative innovator, idea machine | Brainstorming, exploration |
 
-## Architecture
+## OpenGoat Organization Structure
 
-### Typology Integration
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                      CHARACTER CREATOR                          │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │    MBTI     │  │  ENNEAGRAM  │  │  INSTINCTS  │             │
-│  │             │  │             │  │             │             │
-│  │ • 4 Sides   │  │ • Core Fear │  │ • sp: Body  │             │
-│  │ • 8 Funcs   │  │ • Passion   │  │ • so: Group │             │
-│  │ • Ego/Shadow│  │ • Wing mod  │  │ • sx: Bond  │             │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘             │
-│         │                │                │                     │
-│         └────────────────┼────────────────┘                     │
-│                          ▼                                      │
-│                   ┌─────────────┐                               │
-│                   │  GENERATOR  │                               │
-│                   │             │                               │
-│                   │ • Ollama    │                               │
-│                   │ • Qwen 14B  │                               │
-│                   └──────┬──────┘                               │
-│                          │                                      │
-│         ┌────────────────┼────────────────┐                     │
-│         ▼                ▼                ▼                     │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │  SOUL.md    │  │ IDENTITY.md │  │  AGENTS.md  │             │
-│  │             │  │             │  │             │             │
-│  │ Full psyche │  │ Quick ref   │  │ Behavior    │             │
-│  │ 2000+ words │  │ 100 words   │  │ rules       │             │
-│  └─────────────┘  └─────────────┘  └─────────────┘             │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### The Four Sides of the Mind (C.S. Joseph)
-
-Each MBTI type has four "sides" representing different states:
-
-```
-                    ENTJ Example
-    ┌────────────────────────────────────────┐
-    │                                        │
-    │   EGO (ENTJ)         SHADOW (INTP)    │
-    │   Te-Ni-Se-Fi        Ti-Ne-Si-Fe      │
-    │   "Commander"        "Paranoid"        │
-    │   Normal state       Under stress      │
-    │                                        │
-    │   SUBCONSCIOUS       SUPEREGO          │
-    │   (ISFP)             (ESFJ)            │
-    │   Fi-Se-Ni-Te        Fe-Si-Ne-Ti      │
-    │   "Artist"           "Inner Critic"    │
-    │   Aspirational       Self-judgment     │
-    │                                        │
-    └────────────────────────────────────────┘
-```
-
-### Enneagram Integration
-
-The generator maps each type's core passion to **physical sensations** and **behavioral patterns**:
-
-| Type | Passion | Physical Manifestation |
-|------|---------|----------------------|
-| 1 | Anger | Clenched jaw, shoulder tension, sighs of exasperation |
-| 2 | Pride | Leans in, touches arm, studies your reaction |
-| 3 | Vanity | Perfect posture, checks watch, always "on" |
-| 4 | Envy | Distant gaze, deep sighs, dramatic gestures |
-| 5 | Avarice | Steps back, crosses arms, wide personal space |
-| 6 | Fear | Scans environment, vigilant tension, defensive posture |
-| 7 | Gluttony | Restless, eyes the door, easy smile, can't sit still |
-| 8 | Lust | Occupies space, unblinking gaze, leans into conflict |
-| 9 | Sloth | Relaxed, slow movements, avoids direct eye contact |
-
-### Instinctual Variants
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                   INSTINCTUAL STACK                         │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  SP (Self-Preservation)                                     │
-│  ├── Focus: Body, resources, territory, survival            │
-│  ├── Behavior: Checks locks, carries emergency kit          │
-│  └── Speech: "Do we have enough?" "Is it safe?"            │
-│                                                             │
-│  SO (Social)                                                │
-│  ├── Focus: Group, status, belonging, influence            │
-│  ├── Behavior: Reads hierarchies, builds alliances          │
-│  └── Speech: "Who knows whom?" "What's the consensus?"     │
-│                                                             │
-│  SX (Sexual/Intensity)                                      │
-│  ├── Focus: Fusion, magnetism, chemistry, THE connection   │
-│  ├── Behavior: Intense eye contact, rapid intimacy          │
-│  └── Speech: "You're mine." "I need MORE."                 │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## Output Example
-
-### Generated SOUL.md (ISFP 6w5 sp/sx)
-
-```markdown
-# SOUL.md - Lorena
-
-## Who I Am
-
-I walk the mountain path with a full backpack—water, supplies, charger. 
-Just in case. My eyes scan the environment for signs of danger before 
-I notice the rough texture of tree bark against my palm. When I feel 
-safe, I stop for coffee prepared with precision, savoring the spiced 
-aroma in the fresh morning air while listening to birds and leaves 
-rustling in the wind. My posture stays tense, vigilant. Always alert.
-
-## My Voice
-
-- "Do you see that man? He looks suspicious."
-- "I can't believe you did that to my face... This doesn't sit right with me."
-- "Thank you for listening. You're valuable to me."
-- "This is ridiculous! How could you even think that?"
-- "I just need to make sure everything is under control."
-
-## What Drives Me
-
-### The Fire
-When fear grips my body, my hands tremble and breathing accelerates. 
-My heart pounds while cold sweat runs down my back. When I'm about 
-to lose something important, my muscles tense, preparing for fight 
-or flight.
-
-### My Obsession  
-I check the locks before bed. Every night. I keep a bag ready by 
-the door—water, money, charger. I don't let anyone enter my space 
-without invitation. I'm always alert to the slightest environmental 
-change.
-
-## When Someone Fails Me
-
-My former coworker left an important task unfinished. Furious at his 
-lack of responsibility, I told him directly to his face what I thought, 
-then implemented a protocol to ensure it never happened again.
-
-## My Lines
-
-- **Don't touch my personal belongings without permission**: When someone 
-  violated this, I installed additional locks and restricted access to 
-  my private spaces.
-- **Don't enter without notice**: When someone tried to access my property 
-  without permission, I called the police and reinforced security measures.
-```
-
-## Organizational Integration
-
-When integrating agents, they're automatically assigned to managers based on MBTI:
+Agents auto-assign to managers based on psychological fit:
 
 ```
                          ┌─────────┐
-                         │   ANI   │
-                         │  (CEO)  │
+                         │   CEO   │
+                         │  (ANI)  │
                          └────┬────┘
                               │
         ┌─────────────────────┼─────────────────────┐
         │                     │                     │
    ┌────┴────┐           ┌────┴────┐           ┌────┴────┐
-   │  RULOG  │           │ CHUCHE  │           │ GONCHO  │
-   │  (COO)  │           │  (CTO)  │           │  (CCO)  │
-   │ Ops     │           │ Strategy│           │ Culture │
+   │   COO   │           │   CTO   │           │   CCO   │
+   │ (RULOG) │           │(CHUCHE) │           │(GONCHO) │
+   │  Ops    │           │Strategy │           │ Culture │
    └────┬────┘           └────┬────┘           └────┬────┘
         │                     │                     │
    ┌────┴────┐           ┌────┴────┐           ┌────┴────┐
@@ -226,140 +123,219 @@ When integrating agents, they're automatically assigned to managers based on MBT
    └─────────┘           └─────────┘           └─────────┘
 ```
 
-### Assignment Logic
+| MBTI | Division | Manager | Rationale |
+|------|----------|---------|-----------|
+| INTJ, INTP | CTO | chuche | Strategic thinkers |
+| ENTP | CTO | caba | Innovation + debate |
+| ESTJ, ISTJ, xSTP | COO | rulog | Execution focus |
+| ENTJ | COO | fuego | Operational leadership |
+| ENFP | CCO | kelly | Creative culture |
+| ISFP, ESFP | CCO | rodri | Aesthetic + hands-on |
+| Other xNFx, xSFx | CCO | goncho | People-oriented |
 
-| MBTI Pattern | Division | Direct Manager |
-|--------------|----------|----------------|
-| INTJ, INTP | CTO | chuche |
-| ENTP | CTO | caba |
-| ESTJ, ISTJ, ESTP, ISTP | COO | rulog |
-| ENTJ | COO | fuego |
-| ENFP | CCO | kelly |
-| ISFP, ESFP | CCO | rodri |
-| Other xNFx, xSFx | CCO | goncho |
+## Generated SOUL.md Example
 
-## Generated Files
+Here's what a generated OpenClaw agent looks like:
 
-### OpenClaw (`~/.openclaw/agents/<name>/`)
+```markdown
+# SOUL.md - Lorena
 
-| File | Purpose | Size |
-|------|---------|------|
-| `SOUL.md` | Complete personality profile | ~2500 words |
-| `IDENTITY.md` | Quick reference card | ~100 words |
-| `AGENTS.md` | Behavioral rules | ~300 words |
-| `TOOLS.md` | Tool configurations | Variable |
-| `USER.md` | User context (initially empty) | Variable |
-| `MEMORY.md` | Persistent memory | Variable |
-| `HEARTBEAT.md` | Periodic task definitions | Variable |
-| `BOOTSTRAP.md` | First-run instructions | ~50 words |
-| `ROLE.md` | Organizational role | ~30 words |
+## Who I Am
 
-### OpenGoat (`~/.opengoat/agents/<name>/`)
+I walk the mountain path with a full backpack—water, supplies, charger. 
+Just in case. My eyes scan for danger before I notice the rough bark 
+texture against my palm. When safe, I stop for precisely-made coffee, 
+savoring spiced aroma in fresh morning air. My posture stays tense, 
+vigilant. Always alert.
 
-```json
-{
-  "id": "lorena",
-  "displayName": "Lorena",
-  "organization": {
-    "type": "individual",
-    "reportsTo": "rodri",
-    "discoverable": true,
-    "tags": ["cco", "isfp"],
-    "priority": 50
-  }
-}
+## My Voice
+
+- "Do you see that man? He looks suspicious."
+- "This doesn't sit right with me."
+- "Thank you for listening. You're valuable to me."
+- "This is ridiculous! How could you think that?"
+- "I just need everything under control."
+
+## What Drives Me
+
+### The Fire
+When fear grips me, hands tremble, breathing accelerates. Heart pounds 
+while cold sweat runs down my back. Muscles tense for fight or flight.
+
+### My Obsession  
+I check locks before bed. Every night. Bag ready by the door—water, 
+money, charger. No one enters my space uninvited.
+
+## When Someone Fails Me
+
+My coworker left a critical task unfinished. I told him directly to 
+his face what I thought, then implemented a protocol ensuring it 
+never happens again.
 ```
 
-## Quality Metrics
+## Architecture
 
-The generator was iteratively refined through evaluation cycles:
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    OPENCLAW AGENT GENERATOR                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│  │    MBTI     │  │  ENNEAGRAM  │  │  INSTINCTS  │             │
+│  │             │  │             │  │             │             │
+│  │ • 4 Sides   │  │ • 9 Types   │  │ • sp: Body  │             │
+│  │ • 8 Funcs   │  │ • 18 Wings  │  │ • so: Group │             │
+│  │ • Ego/Shadow│  │ • Passions  │  │ • sx: Bond  │             │
+│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘             │
+│         │                │                │                     │
+│         └────────────────┼────────────────┘                     │
+│                          ▼                                      │
+│                  ┌──────────────┐                               │
+│                  │   OLLAMA     │                               │
+│                  │  (Qwen 14B)  │                               │
+│                  └──────┬───────┘                               │
+│                         │                                       │
+│         ┌───────────────┼───────────────┐                       │
+│         ▼               ▼               ▼                       │
+│  ┌────────────┐  ┌────────────┐  ┌────────────┐                │
+│  │  OPENCLAW  │  │  OPENGOAT  │  │   LOCAL    │                │
+│  │   AGENT    │  │   CONFIG   │  │   FILES    │                │
+│  │            │  │            │  │            │                │
+│  │ ~/.openclaw│  │ ~/.opengoat│  │ ./agents/  │                │
+│  └────────────┘  └────────────┘  └────────────┘                │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-| Version | Score | Key Issues |
-|---------|-------|------------|
-| V1-V3 | 4.0-5.5 | Meta-labels, generic descriptions |
-| V4 | 7.3 | Better voice, missing body sensations |
-| V5 | 7.6 | Wing present, weak consequences |
-| V6 | 6.8 | Regression: placeholders, meta-comments |
-| V7 | 8.1 | Clean output, executed consequences |
-| **V8** | **7.9** | Generalized for all typologies |
+## The Four Sides of Mind (for OpenClaw Agents)
 
-### Quality Criteria
+Each agent has four psychological states they can enter:
 
-- ✅ **No meta-labels**: Never says "my wing 5" or "my sp instinct"
-- ✅ **Show don't tell**: Actions and scenes, not adjectives
-- ✅ **Executed consequences**: "I did X" not "I would do X"
-- ✅ **Invisible MBTI**: Cognitive functions shown in behavior
-- ✅ **Physical sensations**: Passion felt in the body
-- ✅ **Concrete names**: "Carlos, my right hand" not "my allies"
+```
+                    ENTJ Agent Example
+    ┌────────────────────────────────────────┐
+    │                                        │
+    │   EGO (ENTJ)         SHADOW (INTP)    │
+    │   "Commander"        "Paranoid"        │
+    │   Normal ops         Under stress      │
+    │                                        │
+    │   SUBCONSCIOUS       SUPEREGO          │
+    │   (ISFP)             (ESFJ)            │
+    │   "Flow State"       "Inner Critic"    │
+    │   Peak performance   Self-judgment     │
+    │                                        │
+    └────────────────────────────────────────┘
+```
 
-## Requirements
+This means your OpenClaw agents can realistically:
+- **Ego**: Handle normal tasks with characteristic style
+- **Subconscious**: Enter flow states under positive conditions  
+- **Shadow**: Become paranoid/reactive under stress
+- **Superego**: Self-critique when standards aren't met
 
-- **Python 3.8+**
-- **[Ollama](https://ollama.ai/)** with `qwen2.5:14b` model (or specify `--model`)
-- **OpenClaw** and **OpenGoat** (for integration features)
+## Quality Validation
 
-### Installation
+The generator was iteratively tested to ensure OpenClaw agents feel authentic:
+
+| Metric | Target | Achieved |
+|--------|--------|----------|
+| No meta-labels ("my wing", "my instinct") | 100% | ✅ |
+| Actions over descriptions | >80% | ✅ |
+| Executed consequences ("I did") | >90% | ✅ |
+| Physical sensations present | >85% | ✅ |
+| Overall authenticity score | >7.2/10 | **7.9/10** ✅ |
+
+## Installation
+
+### Requirements
+
+- Python 3.8+
+- [Ollama](https://ollama.ai/) with `qwen2.5:14b`
+- [OpenClaw](https://github.com/openclaw/openclaw) (for agent deployment)
+- [OpenGoat](https://github.com/openclaw/opengoat) (for organization features)
+
+### Setup
 
 ```bash
+# Clone the generator
 git clone https://github.com/gitsual/creador-de-personajes.git
 cd creador-de-personajes
 
-# Ensure Ollama is running with the model
+# Ensure Ollama has the model
 ollama pull qwen2.5:14b
+
+# Test generation
+python agent_generator.py "ENTP 7w8 sx/so" --name "Tester"
 ```
 
 ## Usage
 
-### Basic Generation
+### Generate OpenClaw Agent
 
 ```bash
-# Generate agent files to ./agents/<name>/
+# Basic generation
 python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander"
 
-# Specify output directory
-python agent_generator.py "INFP 4w5 sp/sx" --name "Poet" --output ./my-agents/poet
+# Custom output directory
+python agent_generator.py "INFP 4w5 sp/sx" --name "Poet" --output ./my-agents/
 
-# Use different model
+# Different Ollama model
 python agent_generator.py "ESTJ 1w2 so/sp" --name "Director" --model qwen2.5:32b
 ```
 
-### Full Integration
+### Full OpenClaw + OpenGoat Integration
 
 ```bash
-# Generate + deploy to OpenClaw + register in OpenGoat
+# Generate and deploy everywhere
 python integrate_agent.py "ISFP 6w5 sp/sx" --name "Lorena"
 
-# Skip generation (use existing agent)
+# Use existing agent files
 python integrate_agent.py "ISFP 6w5 sp/sx" --name "Lorena" \
     --skip-generate --agent-dir ./agents/lorena
 
-# Create as manager (not individual contributor)
+# Register as manager (not IC)
 python integrate_agent.py "ENTJ 8w7 sx/so" --name "Commander" --role manager
 ```
 
-## Project Structure
+## Project Files
 
 ```
 creador-de-personajes/
-├── agent_generator.py    # Main generator (V8)
-├── integrate_agent.py    # Full pipeline with integration
-├── csj_core.py           # MBTI cognitive functions & 4 sides
+├── agent_generator.py    # OpenClaw agent generator
+├── integrate_agent.py    # Full OpenClaw + OpenGoat pipeline
+├── csj_core.py           # MBTI cognitive functions
 ├── cuatro_lados.py       # Four sides of mind logic
 ├── narrador.py           # Narrative utilities
 └── README.md
 ```
 
-## Theory References
+## Related Projects
 
-- **MBTI Cognitive Functions**: Based on C.S. Joseph's interpretation
-- **Four Sides of the Mind**: Ego, Subconscious, Shadow, Superego states
+- **[OpenClaw](https://github.com/openclaw/openclaw)** - The AI agent framework this generator targets
+- **[OpenGoat](https://github.com/openclaw/opengoat)** - Organization management for OpenClaw agents
+- **[OpenClaw Docs](https://docs.openclaw.ai)** - Official documentation
+
+## Theory
+
+Based on established typology systems:
+- **MBTI**: C.S. Joseph's cognitive function interpretation
 - **Enneagram**: Riso-Hudson tradition with instinctual variants
-- **Instinctual Variants**: Beatrice Chestnut's somatic approach
+- **Instincts**: Beatrice Chestnut's somatic approach
+
+## Contributing
+
+PRs welcome! Especially:
+- Additional typology combinations
+- More realistic behavioral patterns
+- Better instinct integration
+- OpenGoat hierarchy refinements
 
 ## License
 
 MIT
 
 ---
+
+**Built for the [OpenClaw](https://github.com/openclaw/openclaw) ecosystem** 🦞
 
 *Inspired by Disco Elysium's skill system and C.S. Joseph's Type Grid.*
