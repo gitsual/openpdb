@@ -245,6 +245,26 @@ The generator was iteratively tested to ensure OpenClaw agents feel authentic:
 | Physical sensations present | >85% | ✅ |
 | Overall authenticity score | >7.2/10 | **7.9/10** ✅ |
 
+## Testing
+
+```bash
+# Run unit tests (fast, no Ollama needed)
+python run_tests.py --quick
+
+# Run all tests including integration (requires Ollama)
+python run_tests.py --full
+```
+
+**Test Coverage:**
+- ✅ Typology parsing (MBTI, Enneagram, Instincts)
+- ✅ Division/Manager assignment logic
+- ✅ File generation structure
+- ✅ OpenClaw integration paths
+- ✅ OpenGoat config creation
+- ✅ CLI interface
+- ✅ Real generation with Ollama (integration)
+- ✅ No meta-labels validation
+
 ## Installation
 
 ### Requirements
