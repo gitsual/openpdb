@@ -7,9 +7,12 @@ __pycache__/
 venv/
 .venv/
 *.egg-info/
+.pytest_cache/
 
-# Agentes generados (temporales)
+# Generated agents (local testing)
 agents/
+demo_output/
+test_*/
 
 # IDE
 .idea/
@@ -24,5 +27,15 @@ Thumbs.db
 # Logs
 *.log
 
-# Output de pruebas
+# Test outputs
 output/
+
+# Internal planning docs (not for public)
+PLAN_*.md
+analisis_*.md
+
+# Old test files (deprecated)
+test_crear_personaje.py
+test_cuatro_lados.py
+test_narrador.py
+test_output_validation.py

@@ -9,17 +9,16 @@ Integrate Agent - Full creation and integration pipeline
 
 Company structure:
 ```
-ANI (CEO - ENTJ 8w9)
-├── RULOG (COO - ESTJ 3w2) → Operations
-│   ├── FUEGO, ELVIRA, TIN
-│   └── Morga, Mosko, Marius, LuisGon
-├── CHUCHE (CTO - INTJ 1w2) → Strategy
-│   ├── SANZ, CÉSAR, MARTOR, SERGIO
-│   └── CABA → Presi
-└── GONCHO (CCO - ENFJ 7w6) → Culture
-    ├── ARANDA, KLAUDIA, AMIRA, CLAURS, WENGEL
-    ├── KELLY → Puma
-    └── RODRI → José, Majano, Lorena
+CEO (ENTJ)
+├── COO (ESTJ) → Operations
+│   ├── Operations Lead (ENTJ)
+│   └── Ops Team (xSTx types)
+├── CTO (INTJ) → Strategy  
+│   ├── Tech Lead (ENTP)
+│   └── Tech Team (xNTx types)
+└── CCO (ENFJ) → Culture
+    ├── Culture Lead (ENFP)
+    └── Culture Team (xNFx, xSFx types)
 ```
 """
 
@@ -76,20 +75,20 @@ def get_platform_info():
 # Initialize paths based on platform
 OPENCLAW_AGENTS, OPENGOAT_AGENTS = get_platform_paths()
 
-# Division managers
+# Division managers (generic role-based IDs)
 DIVISION_MANAGERS = {
-    'cto': 'chuche',
-    'coo': 'rulog',
-    'cco': 'goncho',
+    'cto': 'cto_lead',      # Chief Technology Officer
+    'coo': 'coo_lead',      # Chief Operations Officer
+    'cco': 'cco_lead',      # Chief Culture Officer
 }
 
-# Sub-managers by MBTI
+# Sub-managers by MBTI (role-based, not personal names)
 SUB_MANAGERS = {
-    'ENTP': 'caba',
-    'ENTJ': 'fuego',
-    'ISFP': 'rodri',
-    'ESFP': 'rodri',
-    'ENFP': 'kelly',
+    'ENTP': 'tech_innovator',    # Reports to CTO
+    'ENTJ': 'ops_commander',     # Reports to COO
+    'ISFP': 'creative_artisan',  # Reports to CCO
+    'ESFP': 'creative_artisan',  # Reports to CCO
+    'ENFP': 'culture_catalyst',  # Reports to CCO
 }
 
 
@@ -245,23 +244,21 @@ def print_org_structure(new_agent: str, mbti: str):
     # Build tree with new agent highlighted
     tree = f"""
     ┌─────────────────────────────────────────────────────┐
-    │                    ANI (CEO)                        │
+    │                      CEO                            │
+    │                    (ENTJ)                           │
     └─────────────────────────────────────────────────────┘
                             │
         ┌───────────────────┼───────────────────┐
         │                   │                   │
     ┌───┴───┐           ┌───┴───┐           ┌───┴───┐
-    │ RULOG │           │CHUCHE │           │GONCHO │
     │  COO  │           │  CTO  │           │  CCO  │
+    │(ESTJ) │           │(INTJ) │           │(ENFJ) │
+    │  Ops  │           │ Tech  │           │Culture│
     └───┬───┘           └───┬───┘           └───┬───┘
         │                   │                   │
-   ┌────┼────┐         ┌────┼────┐         ┌────┼────┐
-   │    │    │         │    │    │         │    │    │
- FUEGO ELVIRA TIN    SANZ CESAR CABA    KELLY RODRI ARANDA
-   │         │              │    │         │    │
- Morga     Marius         MARTOR Presi   Puma José
- Mosko     LuisGon        SERGIO              Majano
-                                              Lorena"""
+   xSTx types          xNTx types          xNFx/xSFx
+   ENTJ ops            ENTP innovator      ENFP catalyst
+                                           ISFP artisan"""
 
     # Add new agent indicator
     print(f"\n📊 Organizational Structure:")

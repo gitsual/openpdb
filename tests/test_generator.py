@@ -87,18 +87,18 @@ class TestManagerAssignment(unittest.TestCase):
     """Test MBTI to manager mapping."""
     
     def test_sub_managers(self):
-        self.assertEqual(get_manager('ENTP'), 'caba')
-        self.assertEqual(get_manager('ENTJ'), 'fuego')
-        self.assertEqual(get_manager('ISFP'), 'rodri')
-        self.assertEqual(get_manager('ESFP'), 'rodri')
-        self.assertEqual(get_manager('ENFP'), 'kelly')
+        self.assertEqual(get_manager('ENTP'), 'tech_innovator')
+        self.assertEqual(get_manager('ENTJ'), 'ops_commander')
+        self.assertEqual(get_manager('ISFP'), 'creative_artisan')
+        self.assertEqual(get_manager('ESFP'), 'creative_artisan')
+        self.assertEqual(get_manager('ENFP'), 'culture_catalyst')
     
     def test_division_managers(self):
-        self.assertEqual(get_manager('INTJ'), 'chuche')
-        self.assertEqual(get_manager('INTP'), 'chuche')
-        self.assertEqual(get_manager('ESTJ'), 'rulog')
-        self.assertEqual(get_manager('ENFJ'), 'goncho')
-        self.assertEqual(get_manager('INFJ'), 'goncho')
+        self.assertEqual(get_manager('INTJ'), 'cto_lead')
+        self.assertEqual(get_manager('INTP'), 'cto_lead')
+        self.assertEqual(get_manager('ESTJ'), 'coo_lead')
+        self.assertEqual(get_manager('ENFJ'), 'cco_lead')
+        self.assertEqual(get_manager('INFJ'), 'cco_lead')
 
 
 class TestDataCompleteness(unittest.TestCase):
@@ -234,7 +234,7 @@ class TestOpenGoatIntegration(unittest.TestCase):
             "displayName": "TestAgent",
             "organization": {
                 "type": "individual",
-                "reportsTo": "chuche",
+                "reportsTo": "cto_lead",
                 "discoverable": True,
                 "tags": ["cto", "intp"]
             }
@@ -248,7 +248,7 @@ class TestOpenGoatIntegration(unittest.TestCase):
             loaded = json.load(f)
         
         self.assertEqual(loaded['id'], 'testagent')
-        self.assertEqual(loaded['organization']['reportsTo'], 'chuche')
+        self.assertEqual(loaded['organization']['reportsTo'], 'cto_lead')
         self.assertIn('cto', loaded['organization']['tags'])
     
     def test_config_has_required_fields(self):
@@ -309,11 +309,11 @@ class TestEndToEnd(unittest.TestCase):
     def test_typology_to_manager_pipeline(self):
         """Test full flow from typology string to manager assignment."""
         test_cases = [
-            ('ENTJ 8w7 sx/so', 'fuego', 'coo'),
-            ('ISFP 6w5 sp/sx', 'rodri', 'cco'),
-            ('INTP 5w4 sp/so', 'chuche', 'cto'),
-            ('ENFP 7w6 so/sx', 'kelly', 'cco'),
-            ('ESTJ 1w2 so/sp', 'rulog', 'coo'),
+            ('ENTJ 8w7 sx/so', 'ops_commander', 'coo'),
+            ('ISFP 6w5 sp/sx', 'creative_artisan', 'cco'),
+            ('INTP 5w4 sp/so', 'cto_lead', 'cto'),
+            ('ENFP 7w6 so/sx', 'culture_catalyst', 'cco'),
+            ('ESTJ 1w2 so/sp', 'coo_lead', 'coo'),
         ]
         
         for typology, expected_manager, expected_division in test_cases:

@@ -73,7 +73,7 @@ git clone https://github.com/gitsual/creador-de-personajes.git
 cd creador-de-personajes
 
 # Full pipeline: Generate → OpenClaw → OpenGoat (Spanish, default)
-python integrate_agent.py "ISFP 6w5 sp/sx" --name "Lorena"
+python integrate_agent.py "ISFP 6w5 sp/sx" --name "Artist"
 
 # Generate in English
 python integrate_agent.py "ENTJ 8w7 sx/so" --name "Commander" --lang en
@@ -154,7 +154,7 @@ All generated files (SOUL.md, IDENTITY.md, AGENTS.md, etc.) will be in the speci
 ### OpenClaw Agent (`~/.openclaw/agents/<name>/`)
 
 ```
-~/.openclaw/agents/lorena/
+~/.openclaw/agents/artist/
 ├── SOUL.md          # Deep personality (2500+ words)
 ├── IDENTITY.md      # Quick reference card
 ├── AGENTS.md        # Behavioral rules
@@ -170,11 +170,11 @@ All generated files (SOUL.md, IDENTITY.md, AGENTS.md, etc.) will be in the speci
 
 ```json
 {
-  "id": "lorena",
-  "displayName": "Lorena", 
+  "id": "artist",
+  "displayName": "Artist", 
   "organization": {
     "type": "individual",
-    "reportsTo": "rodri",
+    "reportsTo": "cco_lead",
     "discoverable": true,
     "tags": ["cco", "isfp"]
   },
@@ -214,14 +214,14 @@ Agents auto-assign to managers based on psychological fit:
 ```
                          ┌─────────┐
                          │   CEO   │
-                         │  (ANI)  │
+                         │  (CEO)  │
                          └────┬────┘
                               │
         ┌─────────────────────┼─────────────────────┐
         │                     │                     │
    ┌────┴────┐           ┌────┴────┐           ┌────┴────┐
    │   COO   │           │   CTO   │           │   CCO   │
-   │ (RULOG) │           │(CHUCHE) │           │(GONCHO) │
+   │ (COO) │           │(CTO) │           │(CCO) │
    │  Ops    │           │Strategy │           │ Culture │
    └────┬────┘           └────┬────┘           └────┬────┘
         │                     │                     │
@@ -235,20 +235,20 @@ Agents auto-assign to managers based on psychological fit:
 
 | MBTI | Division | Manager | Rationale |
 |------|----------|---------|-----------|
-| INTJ, INTP | CTO | chuche | Strategic thinkers |
-| ENTP | CTO | caba | Innovation + debate |
-| ESTJ, ISTJ, xSTP | COO | rulog | Execution focus |
-| ENTJ | COO | fuego | Operational leadership |
-| ENFP | CCO | kelly | Creative culture |
-| ISFP, ESFP | CCO | rodri | Aesthetic + hands-on |
-| Other xNFx, xSFx | CCO | goncho | People-oriented |
+| INTJ, INTP | CTO | cto_lead | Strategic thinkers |
+| ENTP | CTO | tech_innovator | Innovation + debate |
+| ESTJ, ISTJ, xSTP | COO | coo_lead | Execution focus |
+| ENTJ | COO | ops_commander | Operational leadership |
+| ENFP | CCO | culture_catalyst | Creative culture |
+| ISFP, ESFP | CCO | creative_artisan | Aesthetic + hands-on |
+| Other xNFx, xSFx | CCO | cco_lead | People-oriented |
 
 ## Generated SOUL.md Example
 
 Here's what a generated OpenClaw agent looks like:
 
 ```markdown
-# SOUL.md - Lorena
+# SOUL.md - Artist
 
 ## Who I Am
 
@@ -429,11 +429,11 @@ python agent_generator.py "ESTJ 1w2 so/sp" --name "Director" --model qwen2.5:32b
 
 ```bash
 # Generate and deploy everywhere
-python integrate_agent.py "ISFP 6w5 sp/sx" --name "Lorena"
+python integrate_agent.py "ISFP 6w5 sp/sx" --name "Artist"
 
 # Use existing agent files
-python integrate_agent.py "ISFP 6w5 sp/sx" --name "Lorena" \
-    --skip-generate --agent-dir ./agents/lorena
+python integrate_agent.py "ISFP 6w5 sp/sx" --name "Artist" \
+    --skip-generate --agent-dir ./agents/artist
 
 # Register as manager (not IC)
 python integrate_agent.py "ENTJ 8w7 sx/so" --name "Commander" --role manager
