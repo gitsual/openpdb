@@ -13,7 +13,11 @@
 
 <br/>
 
+### Generate from any character
 ![Demo](docs/demo.gif)
+
+### Search 12,000+ characters
+![Search](docs/demo_search.gif)
 
 <br/>
 

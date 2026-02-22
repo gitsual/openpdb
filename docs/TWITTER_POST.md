@@ -1,168 +1,128 @@
-# Twitter/X Post — Agent Generator Launch (v2)
+# Twitter/X Post — Character Creator Launch
 
-## Main Tweet (viral hook)
-
----
-
-Tony Stark can code for you now.
-
-Not a chatbot that says "I'm like Tony."
-
-His actual cognitive patterns. ENTP 7w8. The rapid connections. The 3am obsession.
-
-One command:
-```
-python agent_generator.py "ENTP 7w8 sx/so" --name "Stark"
-```
-
-Open source 👇
-github.com/gitsual/creador-de-personajes
+## Main Tweet
 
 ---
 
-## Thread (maximum engagement)
+Generic AI: "I am analytical and detail-oriented."
 
-**Tweet 1:**
-Tony Stark can code for you now.
+Tony Stark AI: "The room spins around me, a carousel of ideas and possibilities. My fingers drum against the table, restless."
 
-Not a chatbot. His actual psychology.
+Same intelligence. Different souls.
 
-🧵 How to build a team of geniuses with one command each:
+One command: `python agent_generator.py -c "Tony Stark"`
 
-**Tweet 2:**
-Go to Personality Database (personality-database.com).
+🔗 github.com/gitsual/creador-de-personajes
 
-Find ANY character or celebrity.
-Get their MBTI + Enneagram + Instincts.
+---
 
-That's all you need.
+## Thread Version
 
-**Tweet 3:**
+**1/**
+Generic AI: "I am analytical."
+
+Tony Stark AI: "The room spins around me, a carousel of ideas. My fingers drum against the table, restless."
+
+Same intelligence. Different souls.
+
+Just open-sourced the generator 🧵
+
+**2/**
+How it works:
+
+1. Search Personality Database (12k+ characters)
+2. Get their MBTI + Enneagram + Instincts
+3. Generate complete personality files
+
 ```
-python agent_generator.py "ENTP 7w8 sx/so" --name "Stark"
+python agent_generator.py -c "Tony Stark"
 ```
 
-Output: 9 personality files. Ready to deploy.
+**3/**
+Real outputs (not written by me):
 
-An agent that BEHAVES like Tony—doesn't just describe itself as him.
+Dr. House (INTJ 5w6):
+> "I feel a persistent tug in my gut—a sense of unease that propels me forward."
 
-**Tweet 4:**
-Here's what you can build:
+Tony Stark (ENTP 7w8):
+> "My body feels electrified, a constant hum of anticipation and excitement."
 
-• Walter White → INTJ 5w6 sp/sx (cold strategist)
-• L from Death Note → INTP 5w4 sp/sx (detective)
-• Rick Sanchez → ENTP 7w8 sx/sp (mad scientist)
-• Sherlock → INTP 5w6 sp/sx (deduction)
+**4/**
+Characters available:
 
-**Tweet 5:**
-Or go controversial:
+• Walter White → INTJ 5w6 sp/so
+• Sherlock Holmes → INTP 5w6 sp/sx
+• Rick Sanchez → ENTP 7w8 sx/sp
+• Joker → ENTP 7w8 sx/so
+• Levi Ackerman → ISTP 6w5 sp/sx
 
-• Donald Trump → ESTP 8w7 so/sx
-• Elon Musk → INTJ 5w6 sp/so
-• Jordan Peterson → INFJ 5w4 so/sp
+12,000+ more in the database.
 
-Imagine THAT team reviewing your code.
+**5/**
+Why it matters:
 
-**Tweet 6:**
-Here's what most multi-agent systems miss:
+Generic agents respond.
+Personality agents BEHAVE.
 
-Robots don't just need tasks—they need chemistry.
+House is paranoid about preparation.
+Stark craves intensity and connection.
 
-If two friends work brilliantly together IRL, type them → their AI versions collaborate the same way.
+Consistent patterns across every interaction.
 
-ENTP + INTJ = Tony + Bruce
-ENTJ + INTP = Commander + Analyst
-
-**Tweet 7:**
+**6/**
 What's coming:
 
 → Share agents with community
-→ Download pre-made personalities  
 → Compatibility matrices
-→ Import directly from PDB
-
-Your AI team can inherit real chemistry.
-
-**Tweet 7:**
-Open source. MIT license.
+→ Pre-made packs (villains, strategists, creatives)
 
 Works with @OpenClawAI + OpenGoat.
-Auto-assigns org hierarchy.
-34 tests passing.
 
-Robots → People. One command.
+🔗 github.com/gitsual/creador-de-personajes
+
+MIT license. 31 tests. Ready to use.
+
+---
+
+## Single Tweet Variations
+
+**V1:**
+"I am analytical" vs "The room spins around me, a carousel of ideas"
+
+Same AI. Different personality.
+
+Just shipped a generator that creates agents from real psychology:
+
+`python agent_generator.py -c "Tony Stark"`
+
+12k characters. One command each.
+
+🔗 github.com/gitsual/creador-de-personajes
+
+**V2:**
+Dr. House as an AI agent.
+
+His voice: "That's not how it works."
+His stress: "They know where I live."
+His drive: "A persistent tug in my gut."
+
+Real output. Not manually written.
+
+`python agent_generator.py -c "Gregory House"`
+
+🔗 github.com/gitsual/creador-de-personajes
+
+**V3:**
+Turned 12,000 fictional characters into AI agents.
+
+Tony Stark. Walter White. Sherlock Holmes.
+
+One command each. Real psychology.
+
+`python agent_generator.py -c "Tony Stark"`
 
 🔗 github.com/gitsual/creador-de-personajes
 
 ---
 
-## Single Tweet Variations (A/B test)
-
-**V1 (Tony Stark):**
-Tony Stark can code for you now.
-
-Not a chatbot. His actual ENTP 7w8 cognitive patterns.
-
-Open sourced a generator that creates AI agents from psychology:
-
-```
-python agent_generator.py "ENTP 7w8 sx/so" --name "Stark"
-```
-
-🔗 github.com/gitsual/creador-de-personajes
-
-**V2 (L from Death Note):**
-L from Death Note is my debugging assistant now.
-
-INTP 5w4 sp/sx. The obsessive pattern-matching. The 4am focus.
-
-One command → real personality → works for you.
-
-```
-python agent_generator.py "INTP 5w4 sp/sx" --name "L"
-```
-
-🔗 github.com/gitsual/creador-de-personajes
-
-**V3 (Trump controversial):**
-I made Donald Trump review my PRs.
-
-ESTP 8w7 so/sx. The dominance. The bluntness. The chaos.
-
-```
-python agent_generator.py "ESTP 8w7 so/sx" --name "Trump"
-```
-
-(Open source. Not political. Just psychology.)
-
-🔗 github.com/gitsual/creador-de-personajes
-
-**V4 (Team):**
-My AI team:
-
-• Tony Stark (ENTP 7w8) - innovation
-• Walter White (INTJ 5w6) - strategy  
-• L (INTP 5w4) - analysis
-
-One command each.
-
-Open sourced the generator:
-🔗 github.com/gitsual/creador-de-personajes
-
-**V5 (Anime angle):**
-Your favorite anime character can work for you now.
-
-• Light Yagami → INTJ 3w4
-• L → INTP 5w4
-• Levi → ISTP 6w5
-• Eren → ISFP 8w7
-
-Find typology on PDB. Run generator. Deploy.
-
-🔗 github.com/gitsual/creador-de-personajes
-
----
-
-## Hashtags
-
-#AI #OpenSource #TonyStark #DeathNote #AIAgents #MBTI #Psychology #Coding
+#AI #OpenSource #MBTI #Psychology
