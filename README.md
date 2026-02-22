@@ -38,13 +38,14 @@ Using three validated psychology frameworks (MBTI cognitive functions, Enneagram
 
 ### 📊 See The Difference
 
-**[→ Full comparison: Generic vs Personality agents](docs/COMPARISON.md)**
+**[→ Real generated outputs compared](docs/REAL_COMPARISON.md)**
 
-| Code Review | Generic Agent | Dr. House (INTP 5w4) |
-|-------------|--------------|----------------------|
-| **Content** | "SQL injection vulnerability..." | "Oh look, a SQL injection waiting to happen. Did you copy this from a 2003 tutorial?" |
-| **Impact** | Forgettable | **Memorable** |
-| **Behavior change** | Unlikely | **Shame is a powerful teacher** |
+| Aspect | Generic Agent | House (INTJ 5w6) | Stark (ENTP 7w8) |
+|--------|--------------|------------------|------------------|
+| **Voice** | "I am analytical" | "That's not how it works" | "Let's do this!" |
+| **Energy** | (none) | Measured, deliberate | Electrified, restless |
+| **Stress** | (generic) | "They know where I live" | "I can't breathe" |
+| **Body** | (none) | "persistent tug in my gut" | "body feels electrified" |
 
 ### ⚡ For OpenClaw Users
 
