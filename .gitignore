@@ -42,3 +42,6 @@ test_output_validation.py
 
 # Personal org backup (DO NOT COMMIT)
 .lorty_org_backup.json
+
+# PDB data (downloaded separately)
+data/

@@ -72,17 +72,36 @@ Using three validated psychology frameworks (MBTI cognitive functions, Enneagram
 git clone https://github.com/gitsual/creador-de-personajes.git
 cd creador-de-personajes
 
-# Full pipeline: Generate → OpenClaw → OpenGoat (Spanish, default)
+# Download PDB dataset (12k+ characters)
+mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-personality-database/main/pdb_dataset.csv" -o data/pdb_raw.csv
+
+# 🔥 Generate from character name (searches Personality Database)
+python agent_generator.py --character "Tony Stark" --lang en
+python agent_generator.py -c "Walter White" --name Heisenberg
+python agent_generator.py -c "Gregory House" --name House --lang en
+
+# Or use typology directly
+python agent_generator.py "ENTJ 8w7 sx/so" --name Commander --lang en
+
+# Full pipeline: Generate → OpenClaw → OpenGoat
 python integrate_agent.py "ISFP 6w5 sp/sx" --name "Artist"
+```
 
-# Generate in English
-python integrate_agent.py "ENTJ 8w7 sx/so" --name "Commander" --lang en
+### 🔍 Search Personality Database
 
-# Generate OpenClaw agent files only
-python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander"
+```bash
+# Interactive search
+python pdb_search.py -i
 
-# Generate in English
-python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander" --lang en
+# Search and show results
+python pdb_search.py "Sherlock Holmes"
+
+# Get typology string only (for scripting)
+python pdb_search.py -t "Tony Stark"
+# Output: ENTP 7w8 sx/sp
+
+# Database stats
+python pdb_search.py --stats
 ```
 
 ## 🌟 Build Your Dream Team

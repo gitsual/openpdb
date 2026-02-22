@@ -500,20 +500,90 @@ def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Agent Generator V8')
-    parser.add_argument('typology', nargs='?')
-    parser.add_argument('--name', '-n', default='Agente')
+    parser = argparse.ArgumentParser(
+        description='Agent Generator V8 - Create AI agents with real psychology',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Direct typology
+  %(prog)s "ENTJ 8w7 sx/so" --name Commander --lang en
+  
+  # Search Personality Database
+  %(prog)s --character "Tony Stark" --lang en
+  %(prog)s -c "Walter White"
+  %(prog)s -c "Dr. House" --name House
+        """
+    )
+    parser.add_argument('typology', nargs='?', 
+                        help="Typology string: 'MBTI Xw# inst/inst'")
+    parser.add_argument('--character', '-c', 
+                        help='Search PDB for character/celebrity (auto-fills typology)')
+    parser.add_argument('--name', '-n', default=None,
+                        help='Agent name (defaults to character name if using -c)')
     parser.add_argument('--output', '-o', type=Path)
     parser.add_argument('--model', '-m', default=DEFAULT_MODEL)
     parser.add_argument('--role', '-r', default='Team Member')
     parser.add_argument('--lang', '-l', default=DEFAULT_LANG, choices=['es', 'en'],
                         help='Output language: es (Spanish, default) or en (English)')
+    parser.add_argument('--pdb-search', action='store_true',
+                        help='Search PDB interactively')
     
     args = parser.parse_args()
+    
+    # Interactive PDB search mode
+    if args.pdb_search:
+        try:
+            from pdb_search import interactive_search
+            interactive_search()
+        except ImportError:
+            print("❌ pdb_search module not found")
+        return
+    
+    # Character search mode
+    if args.character:
+        try:
+            from pdb_search import search, get_typology
+            
+            print(f"🔍 Searching PDB for '{args.character}'...")
+            results = search(args.character, limit=5)
+            
+            if not results:
+                print(f"❌ No results found for '{args.character}'")
+                sys.exit(1)
+            
+            # Show results and use first one
+            best = results[0]
+            typology = get_typology(best['name'])
+            
+            if not typology:
+                print(f"❌ Incomplete typology data for '{best['name']}'")
+                sys.exit(1)
+            
+            print(f"✅ Found: {best['name']} → {typology}")
+            
+            # Use character name as agent name if not specified
+            if not args.name:
+                # Extract first name or clean up name
+                args.name = best['name'].split()[0].strip('"').strip("'")
+            
+            args.typology = typology
+            
+        except ImportError:
+            print("❌ pdb_search module not found. Run with typology directly.")
+            sys.exit(1)
+    
     if not args.typology:
-        print("Usage: ./agent_generator.py 'MBTI Xw# inst/inst' --name Name [--lang en]")
-        print("Example: ./agent_generator.py 'ENTJ 8w7 sx/so' --name Commander --lang en")
+        print("Usage:")
+        print("  ./agent_generator.py 'MBTI Xw# inst/inst' --name Name")
+        print("  ./agent_generator.py --character 'Tony Stark'")
+        print("\nExamples:")
+        print("  ./agent_generator.py 'ENTJ 8w7 sx/so' --name Commander --lang en")
+        print("  ./agent_generator.py -c 'Dr. House' --lang en")
         sys.exit(1)
+    
+    # Set default name if still not set
+    if not args.name:
+        args.name = 'Agent'
     
     parts = args.typology.upper().split()
     mbti = parts[0]
