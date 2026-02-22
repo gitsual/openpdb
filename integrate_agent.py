@@ -71,14 +71,16 @@ def get_manager(mbti: str) -> str:
     return DIVISION_MANAGERS[get_division(mbti)]
 
 
-def generate_agent(typology: str, name: str, model: str = "qwen2.5:14b") -> Path:
+def generate_agent(typology: str, name: str, model: str = "qwen2.5:14b", 
+                   lang: str = "es") -> Path:
     """Genera el agente usando V8."""
     script_dir = Path(__file__).parent
     output_dir = script_dir / 'agents' / name.lower().replace(' ', '_')
     
     cmd = [
         'python', str(script_dir / 'agent_generator.py'),
-        typology, '--name', name, '--output', str(output_dir), '--model', model
+        typology, '--name', name, '--output', str(output_dir), 
+        '--model', model, '--lang', lang
     ]
     
     print(f"\n📝 Generando agente '{name}'...")
@@ -222,11 +224,13 @@ def print_org_structure(new_agent: str, mbti: str):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Integrar agente completo')
-    parser.add_argument('typology', help="Tipología: 'MBTI Xw# inst/inst'")
-    parser.add_argument('--name', '-n', required=True, help='Nombre del agente')
+    parser = argparse.ArgumentParser(description='Integrate complete OpenClaw agent')
+    parser.add_argument('typology', help="Typology: 'MBTI Xw# inst/inst'")
+    parser.add_argument('--name', '-n', required=True, help='Agent name')
     parser.add_argument('--model', '-m', default='qwen2.5:14b')
     parser.add_argument('--role', '-r', default='individual', choices=['manager', 'individual'])
+    parser.add_argument('--lang', '-l', default='es', choices=['es', 'en'],
+                        help='Output language: es (Spanish, default) or en (English)')
     parser.add_argument('--skip-generate', action='store_true')
     parser.add_argument('--agent-dir', type=Path)
     
@@ -245,9 +249,9 @@ def main():
     # 1. Generar agente
     if args.skip_generate and args.agent_dir:
         agent_dir = args.agent_dir
-        print(f"\n⏭️ Usando agente existente: {agent_dir}")
+        print(f"\n⏭️ Using existing agent: {agent_dir}")
     else:
-        agent_dir = generate_agent(args.typology, args.name, args.model)
+        agent_dir = generate_agent(args.typology, args.name, args.model, args.lang)
     
     # 2. Añadir a OpenClaw
     add_to_openclaw(agent_dir, args.name)

@@ -32,12 +32,37 @@
 git clone https://github.com/gitsual/creador-de-personajes.git
 cd creador-de-personajes
 
-# Full pipeline: Generate → OpenClaw → OpenGoat
+# Full pipeline: Generate → OpenClaw → OpenGoat (Spanish, default)
 python integrate_agent.py "ISFP 6w5 sp/sx" --name "Lorena"
+
+# Generate in English
+python integrate_agent.py "ENTJ 8w7 sx/so" --name "Commander" --lang en
 
 # Generate OpenClaw agent files only
 python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander"
+
+# Generate in English
+python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander" --lang en
 ```
+
+## 🌍 Internationalization
+
+The generator supports multiple languages via the `--lang` flag:
+
+| Flag | Language | Description |
+|------|----------|-------------|
+| `--lang es` | Spanish | Default. All output in Spanish |
+| `--lang en` | English | All output in English |
+
+```bash
+# Spanish (default)
+python agent_generator.py "INFP 4w5 sp/sx" --name "Poeta"
+
+# English
+python agent_generator.py "INFP 4w5 sp/sx" --name "Poet" --lang en
+```
+
+All generated files (SOUL.md, IDENTITY.md, AGENTS.md, etc.) will be in the specified language.
 
 ## What Gets Generated
 
