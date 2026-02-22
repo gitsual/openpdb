@@ -1,0 +1,12 @@
+# OpenClaw Agent Generator - Requirements
+# Install: pip install -r requirements.txt
+
+# No external dependencies required for core functionality!
+# The generator uses only Python standard library + Ollama API.
+
+# Optional: For running tests
+# pytest>=7.0.0
+
+# Required: Ollama must be installed separately
+# See: https://ollama.ai/download
+# Then: ollama pull qwen2.5:14b

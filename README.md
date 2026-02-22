@@ -9,6 +9,10 @@
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+[![GitHub stars](https://img.shields.io/github/stars/gitsual/creador-de-personajes?style=social)](https://github.com/gitsual/creador-de-personajes/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/gitsual/creador-de-personajes?style=social)](https://github.com/gitsual/creador-de-personajes/network/members)
+[![GitHub last commit](https://img.shields.io/github/last-commit/gitsual/creador-de-personajes)](https://github.com/gitsual/creador-de-personajes/commits/main)
+
 **Generate AI agents with real psychological depth** using MBTI × Enneagram × Instincts
 
 <br/>
@@ -233,6 +237,19 @@ All generated files (SOUL.md, IDENTITY.md, AGENTS.md, etc.) will be in the speci
 
 ## OpenGoat Organization Structure
 
+### What are CTO, COO, CCO?
+
+In real companies (and in OpenGoat), these roles have distinct focuses:
+
+| Role | Full Name | Focus | Personality Fit |
+|------|-----------|-------|-----------------|
+| **CEO** | Chief Executive Officer | Vision & decisions | ENTJ (Commander) |
+| **CTO** | Chief Technology Officer | Strategy & innovation | INTJ, INTP, ENTP (Analysts) |
+| **COO** | Chief Operations Officer | Execution & processes | ESTJ, ISTJ, ENTJ (Executors) |
+| **CCO** | Chief Culture Officer | People & creativity | ENFJ, ENFP, xSFx (Harmonizers) |
+
+**Why it matters:** When agents work together, compatible personalities collaborate better. An INTP analyst works naturally under a CTO who values deep thinking. An ESFP creative thrives under a CCO who appreciates aesthetics.
+
 Agents auto-assign to managers based on psychological fit:
 
 ```
@@ -269,43 +286,68 @@ Agents auto-assign to managers based on psychological fit:
 
 ## Generated SOUL.md Example
 
-Here's what a generated OpenClaw agent looks like:
+**Real output from:** `python agent_generator.py -c "Tony Stark" --name Stark --lang en`
 
 ```markdown
-# SOUL.md - Artist
+# SOUL.md - Stark (ENTP 7w8 sx/sp)
 
 ## Who I Am
+The hum of the city buzzes in my ears as I walk, eyes darting between 
+buildings and people, searching for patterns and possibilities. My hand 
+brushes against the bag slung over my shoulder, checking that everything 
+inside is in place.
 
-I walk the mountain path with a full backpack—water, supplies, charger. 
-Just in case. My eyes scan for danger before I notice the rough bark 
-texture against my palm. When safe, I stop for precisely-made coffee, 
-savoring spiced aroma in fresh morning air. My posture stays tense, 
-vigilant. Always alert.
+I move with purpose, each step calculated but never stagnant. My gaze 
+locks onto people briefly before moving on, always searching for that 
+spark of connection or intrigue.
 
 ## My Voice
-
-- "Do you see that man? He looks suspicious."
-- "This doesn't sit right with me."
-- "Thank you for listening. You're valuable to me."
-- "This is ridiculous! How could you think that?"
-- "I just need everything under control."
+1. Let's do this!
+2. You've got to be kidding me.
+3. This is a stroke of genius!
+4. Why are you holding back?
+5. We can't afford to wait!
 
 ## What Drives Me
 
 ### The Fire
-When fear grips me, hands tremble, breathing accelerates. Heart pounds 
-while cold sweat runs down my back. Muscles tense for fight or flight.
+My body hums with anticipation and desire; I'm drawn to the intensity 
+of connection, the rush that comes from forging deep bonds. When I meet 
+someone new, my gaze locks on theirs, almost magnetically pulled into 
+their world.
 
-### My Obsession  
-I check locks before bed. Every night. Bag ready by the door—water, 
-money, charger. No one enters my space uninvited.
+### My Obsession
+I seek out those moments of deep connection, those rare instances when 
+another person sees me fully and accepts me for who I am.
 
-## When Someone Fails Me
+## When They Fail Me
+One night, after a friend repeatedly missed deadlines, I called them out:
+"If you can't be reliable, then I need to find someone else who can."
+No room for excuses. The consequence was clear and executed without hesitation.
 
-My coworker left a critical task unfinished. I told him directly to 
-his face what I thought, then implemented a protocol ensuring it 
-never happens again.
+## My Lines
+1. If they breach my trust—I'll set boundaries or end the relationship.
+2. When someone tries to control me—I'll break free and establish independence.
+3. Should they undermine my ideas—I'll confront them directly, no sugarcoating.
 ```
+
+<details>
+<summary>📄 See full generated output (click to expand)</summary>
+
+The generator creates 9 files for each agent:
+- `SOUL.md` — Deep personality (2500+ words)
+- `IDENTITY.md` — Quick reference card
+- `AGENTS.md` — Behavioral rules
+- `ROLE.md` — Organizational role
+- `TOOLS.md` — Tool configurations
+- `USER.md` — User context template
+- `MEMORY.md` — Persistent memory
+- `HEARTBEAT.md` — Periodic tasks
+- `BOOTSTRAP.md` — First-run setup
+
+[→ See full comparison of House vs Stark](docs/REAL_COMPARISON.md)
+
+</details>
 
 ## Architecture
 
@@ -474,6 +516,25 @@ creador-de-personajes/
 ├── narrador.py           # Narrative utilities
 └── README.md
 ```
+
+---
+
+## ⭐ Support This Project
+
+If this tool helps you build better AI agents:
+
+- **⭐ Star this repo** — It helps others discover it
+- **🍴 Fork it** — Customize for your use case
+- **🐛 Report issues** — Help us improve
+- **🔀 Submit PRs** — New typologies, better patterns, docs
+
+### Share Your Creations
+
+Built something cool with this? Let us know!
+- Tweet with `#OpenClawAgents`
+- Open a Discussion to showcase your agents
+
+---
 
 ## Related Projects
 
