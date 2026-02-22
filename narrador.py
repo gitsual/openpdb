@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Generador de Narradores Arquetípicos
-Usa tipología (MBTI + Eneagrama + Instintos + Tritipo) para generar descripciones de voces narrativas.
+Archetypal Narrator Generator
+Uses typology (MBTI + Enneagram + Instincts + Tritype) to generate narrative voice descriptions.
 
-Uso:
-    ./narrador.py "ENTJ 6w7 sx/so 368 hombre"
-    ./narrador.py "INFP 4w5 sp/sx 459 mujer"
+Usage:
+    ./narrador.py "ENTJ 6w7 sx/so 368 male"
+    ./narrador.py "INFP 4w5 sp/sx 459 female"
     ./narrador.py --interactive
 """
 
@@ -15,10 +15,10 @@ import argparse
 import subprocess
 import re
 
-# Modelo por defecto
+# Default model
 DEFAULT_MODEL = "huihui_ai/gpt-oss-abliterated:20b"
 
-# Sistema de conocimiento sobre tipología (compacto para no saturar contexto)
+# Typology knowledge system (compact to avoid context saturation)
 SYSTEM_PROMPT = """Eres un escritor visceral que crea narradores arquetípicos basados en tipología de personalidad.
 
 ## Tipología
@@ -109,12 +109,12 @@ def parse_typology(input_str: str) -> dict:
     if inst_match:
         result['instincts'] = f"{inst_match.group(1).lower()}/{inst_match.group(2).lower()}"
     
-    # Tritipo (3 dígitos)
+    # Tritype (3 digits)
     tritype_match = re.search(r'\b([1-9]{3})\b', input_str)
     if tritype_match:
         result['tritype'] = tritype_match.group(1)
     
-    # Género (female antes de male para evitar que 'female' matchee 'male')
+    # Gender (female before male to avoid 'female' matching 'male')
     input_lower = input_str.lower()
     if 'mujer' in input_lower or 'femenino' in input_lower or 'female' in input_lower:
         result['gender'] = 'mujer'
@@ -193,10 +193,10 @@ def call_ollama(prompt: str, model: str = DEFAULT_MODEL) -> str:
             # Algunos modelos (gpt-oss) ponen contenido en 'thinking'
             thinking = message.get('thinking', '')
             if thinking:
-                # Extraer la parte útil del thinking (después del análisis)
+                # Extract the useful part of thinking (after analysis)
                 # Buscar patrones como "Debe ser" o el output final
                 if 'Debe ser' in thinking:
-                    # Extraer desde "Debe ser" hasta el final
+                    # Extract from "Debe ser" to the end
                     idx = thinking.find('Debe ser')
                     content = thinking[idx:]
                 else:

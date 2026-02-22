@@ -35,7 +35,7 @@ MBTI_FUNCTIONS = {
     'ESTP': ['Se', 'Ti', 'Fe', 'Ni', 'Si', 'Te', 'Fi', 'Ne'],
 }
 
-# Roles de las 8 funciones según C.S. Joseph
+# Roles of the 8 functions according to C.S. Joseph
 FUNCTION_ROLES = {
     0: {'name': 'Hero', 'fps': 100, 'description': 'Tu fortaleza principal, lo que haces naturalmente'},
     1: {'name': 'Parent', 'fps': 75, 'description': 'Tu responsabilidad, lo que proteges en otros'},
@@ -191,9 +191,9 @@ def get_four_sides(mbti: str) -> dict:
     quaternity = QUATERNITIES.get(mbti, [mbti, mbti, mbti, mbti])
     
     # Las cuaternidades ya tienen el orden correcto
-    # Pero el ego puede estar en cualquier posición, necesitamos rotar
+    # But the ego can be in any position, we need to rotate
     
-    # Encontrar el índice del ego en la cuaternidad
+    # Find the ego index in the quaternity
     try:
         ego_index = quaternity.index(mbti)
     except ValueError:
@@ -201,9 +201,9 @@ def get_four_sides(mbti: str) -> dict:
     
     # Rotar para que el ego sea el primero
     # El orden de los 4 lados de la mente es fijo dentro de cada cuaternidad:
-    # Posición 0 = un tipo de ego, Posición 1 = su subconsciente, etc.
+    # Position 0 = one ego type, Position 1 = its subconscious, etc.
     
-    # Según C.S. Joseph, las cuaternidades tienen este patrón:
+    # According to C.S. Joseph, quaternities have this pattern:
     # Para ENTJ: [ENTJ(ego), ISFP(sub), INTP(shadow), ESFJ(superego)]
     
     ego = mbti
@@ -286,7 +286,7 @@ def get_inferior_function(mbti: str) -> str:
     return ""
 
 # ==============================================================================
-# FUNCIÓN PRINCIPAL DE TRANSICIONES
+# MAIN TRANSITIONS FUNCTION
 # ==============================================================================
 
 def build_transitions_text(mbti: str) -> str:

@@ -107,7 +107,7 @@ PROMPT_TEMPLATES = {
 }
 
 # ==============================================================================
-# DATOS COMPLETOS
+# COMPLETE DATA
 # ==============================================================================
 
 ENEAGRAMA = {
@@ -161,7 +161,7 @@ ALAS = {
     (9,1): "Más principiado. Resentimiento pasivo-agresivo.",
 }
 
-# Funciones cognitivas MBTI - cómo se VEN en comportamiento
+# MBTI cognitive functions - how they SHOW in behavior
 FUNCIONES = {
     'Fi': 'Valores internos profundos. Autenticidad. "Esto no va conmigo." Silencio cuando algo viola sus principios.',
     'Fe': 'Lee el ambiente. Armoniza. "¿Cómo estás?" Ajusta su energía al grupo.',
@@ -495,7 +495,7 @@ def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
         json.dump(meta, f, indent=2, ensure_ascii=False)
     
     print("-" * 60)
-    print(f"✨ V8 '{name}' listo")
+    print(f"✨ V8 '{name}' ready")
     return files
 
 

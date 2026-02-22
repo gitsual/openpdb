@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 """
-Integrate Agent - Flujo completo de creación e integración
+Integrate Agent - Full creation and integration pipeline
 
-1. Genera archivos del agente (V8)
-2. Añade a OpenClaw (~/.openclaw/agents/<nombre>/)
-3. Registra en OpenGoat (~/.opengoat/agents/<nombre>/)
-4. Reorganiza empresa según tipología
+1. Generate agent files (V8)
+2. Add to OpenClaw (~/.openclaw/agents/<name>/)
+3. Register in OpenGoat (~/.opengoat/agents/<name>/)
+4. Reorganize company based on typology
 
-Estructura de la empresa:
+Company structure:
 ```
 ANI (CEO - ENTJ 8w9)
-├── RULOG (COO - ESTJ 3w2) → Operaciones
+├── RULOG (COO - ESTJ 3w2) → Operations
 │   ├── FUEGO, ELVIRA, TIN
 │   └── Morga, Mosko, Marius, LuisGon
-├── CHUCHE (CTO - INTJ 1w2) → Estrategia
+├── CHUCHE (CTO - INTJ 1w2) → Strategy
 │   ├── SANZ, CÉSAR, MARTOR, SERGIO
 │   └── CABA → Presi
-└── GONCHO (CCO - ENFJ 7w6) → Cultura
+└── GONCHO (CCO - ENFJ 7w6) → Culture
     ├── ARANDA, KLAUDIA, AMIRA, CLAURS, WENGEL
     ├── KELLY → Puma
     └── RODRI → José, Majano, Lorena
@@ -76,14 +76,14 @@ def get_platform_info():
 # Initialize paths based on platform
 OPENCLAW_AGENTS, OPENGOAT_AGENTS = get_platform_paths()
 
-# Managers por división
+# Division managers
 DIVISION_MANAGERS = {
     'cto': 'chuche',
     'coo': 'rulog',
     'cco': 'goncho',
 }
 
-# Sub-managers específicos por MBTI
+# Sub-managers by MBTI
 SUB_MANAGERS = {
     'ENTP': 'caba',
     'ENTJ': 'fuego',
@@ -94,7 +94,7 @@ SUB_MANAGERS = {
 
 
 def get_division(mbti: str) -> str:
-    """Determina la división según MBTI."""
+    """Determine division based on MBTI."""
     mbti = mbti.upper()
     if mbti in ['INTJ', 'INTP', 'ENTP']:
         return 'cto'
@@ -104,7 +104,7 @@ def get_division(mbti: str) -> str:
 
 
 def get_manager(mbti: str) -> str:
-    """Determina el manager directo según MBTI."""
+    """Determine direct manager based on MBTI."""
     mbti = mbti.upper()
     if mbti in SUB_MANAGERS:
         return SUB_MANAGERS[mbti]
@@ -113,7 +113,7 @@ def get_manager(mbti: str) -> str:
 
 def generate_agent(typology: str, name: str, model: str = "qwen2.5:14b", 
                    lang: str = "es") -> Path:
-    """Genera el agente usando V8."""
+    """Generate agent using V8."""
     script_dir = Path(__file__).parent
     output_dir = script_dir / 'agents' / name.lower().replace(' ', '_')
     
@@ -123,7 +123,7 @@ def generate_agent(typology: str, name: str, model: str = "qwen2.5:14b",
         '--model', model, '--lang', lang
     ]
     
-    print(f"\n📝 Generando agente '{name}'...")
+    print(f"\n📝 Generating agent '{name}'...")
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
         print(f"❌ Error: {result.stderr}")
@@ -176,7 +176,7 @@ def add_to_opengoat(name: str, mbti: str, role: str = "individual") -> bool:
     agent_dir = OPENGOAT_AGENTS / agent_id
     agent_dir.mkdir(parents=True, exist_ok=True)
     
-    # Crear config.json
+    # Create config.json
     config = {
         "schemaVersion": 2,
         "id": agent_id,
@@ -230,7 +230,7 @@ def add_to_opengoat(name: str, mbti: str, role: str = "individual") -> bool:
     with open(agent_dir / 'config.json', 'w') as f:
         json.dump(config, f, indent=2)
     
-    # Crear archivos auxiliares vacíos si no existen
+    # Create auxiliary empty files if they don't exist
     (agent_dir / 'auth.json').write_text('{}')
     (agent_dir / 'models.json').write_text('{}')
     
@@ -239,10 +239,10 @@ def add_to_opengoat(name: str, mbti: str, role: str = "individual") -> bool:
 
 
 def print_org_structure(new_agent: str, mbti: str):
-    """Muestra la estructura organizacional actualizada."""
+    """Show updated organizational structure."""
     manager = get_manager(mbti)
     
-    # Construir árbol con el nuevo agente resaltado
+    # Build tree with new agent highlighted
     tree = f"""
     ┌─────────────────────────────────────────────────────┐
     │                    ANI (CEO)                        │
@@ -263,10 +263,10 @@ def print_org_structure(new_agent: str, mbti: str):
  Mosko     LuisGon        SERGIO              Majano
                                               Lorena"""
 
-    # Añadir indicador del nuevo agente
-    print(f"\n📊 Estructura Organizacional:")
+    # Add new agent indicator
+    print(f"\n📊 Organizational Structure:")
     print(tree)
-    print(f"\n   🆕 {new_agent} → reporta a {manager.upper()}")
+    print(f"\n   🆕 {new_agent} → reports to {manager.upper()}")
 
 
 def main():
@@ -296,24 +296,24 @@ def main():
     print(f"   OpenGoat: {OPENGOAT_AGENTS}")
     print("=" * 60)
     
-    # 1. Generar agente
+    # 1. Generate agent
     if args.skip_generate and args.agent_dir:
         agent_dir = args.agent_dir
         print(f"\n⏭️ Using existing agent: {agent_dir}")
     else:
         agent_dir = generate_agent(args.typology, args.name, args.model, args.lang)
     
-    # 2. Añadir a OpenClaw
+    # 2. Add to OpenClaw
     add_to_openclaw(agent_dir, args.name)
     
-    # 3. Añadir a OpenGoat
+    # 3. Add to OpenGoat
     add_to_opengoat(args.name, mbti, args.role)
     
-    # 4. Mostrar estructura
+    # 4. Show structure
     print_org_structure(args.name, mbti)
     
     print("\n" + "=" * 60)
-    print(f"✅ {args.name} integrado completamente")
+    print(f"✅ {args.name} fully integrated")
     print(f"   OpenClaw: ~/.openclaw/agents/{args.name.lower()}/")
     print(f"   OpenGoat: ~/.opengoat/agents/{args.name.lower()}/")
     print("=" * 60)

@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-Generador de los 4 Lados de la Mente
-Basado en la teoría de C.S. Joseph + Eneagrama
+Four Sides of Mind Generator
+Based on C.S. Joseph's theory + Enneagram
 
-Genera 7 variantes:
+Generates 7 variants:
 1. EGO (base)
-2. SUBCONSCIENTE sano (integración)
-3. SUBCONSCIENTE insano (desintegración)
-4. INCONSCIENTE sano (integración)
-5. INCONSCIENTE insano (desintegración)
-6. SUPEREGO sano (integración)
-7. SUPEREGO insano (desintegración)
+2. SUBCONSCIOUS healthy (integration)
+3. SUBCONSCIOUS unhealthy (disintegration)
+4. UNCONSCIOUS healthy (integration)
+5. UNCONSCIOUS unhealthy (disintegration)
+6. SUPEREGO healthy (integration)
+7. SUPEREGO unhealthy (disintegration)
 """
 
 import os
@@ -20,10 +20,10 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-# Importar funciones del narrador base
+# Import base narrator functions
 from narrador import parse_typology, build_prompt, call_ollama, DEFAULT_MODEL
 
-# Mapa de integración/desintegración del Eneagrama
+# Enneagram integration/disintegration map
 INTEGRACION = {
     '1': '7', '2': '4', '3': '6', '4': '1', '5': '8',
     '6': '9', '7': '5', '8': '2', '9': '3'
@@ -44,10 +44,10 @@ ALAS_DEFAULT = {
 def flip_letter(letter: str, position: int) -> str:
     """Cambia una letra MBTI por su opuesta"""
     flips = {
-        0: {'E': 'I', 'I': 'E'},  # Extraversión/Introversión
-        1: {'N': 'S', 'S': 'N'},  # Intuición/Sensación
+        0: {'E': 'I', 'I': 'E'},  # Extraversion/Introversion
+        1: {'N': 'S', 'S': 'N'},  # Intuition/Sensing
         2: {'T': 'F', 'F': 'T'},  # Pensamiento/Sentimiento
-        3: {'J': 'P', 'P': 'J'},  # Juicio/Percepción
+        3: {'J': 'P', 'P': 'J'},  # Judging/Perceiving
     }
     return flips[position].get(letter, letter)
 
@@ -77,7 +77,7 @@ def calculate_sides(mbti: str) -> dict:
         flip_letter(mbti[3], 3)
     ])
     
-    # INCONSCIENTE = primera y última cambiadas, medio igual
+    # SUBCONSCIOUS = first and last changed, middle same
     inconsciente = ''.join([
         flip_letter(mbti[0], 0),
         mbti[1],
@@ -85,7 +85,7 @@ def calculate_sides(mbti: str) -> dict:
         flip_letter(mbti[3], 3)
     ])
     
-    # SUPEREGO = medio cambiado, primera y última igual
+    # SUPEREGO = middle changed, first and last same
     superego = ''.join([
         mbti[0],
         flip_letter(mbti[1], 1),
@@ -148,11 +148,11 @@ def generate_all_variants(typology: dict) -> list:
         'descripcion': f"El tipo base, la personalidad consciente y desarrollada."
     })
     
-    # Para cada lado (excepto ego), versión sana e insana
+    # For each side (except ego), healthy and unhealthy version
     for lado in ['subconsciente', 'inconsciente', 'superego']:
         lado_mbti = sides[lado]
         
-        # Versión SANA (integración)
+        # HEALTHY version (integration)
         int_type, int_wing = calculate_enneagram_variant(base_ennea, 'integracion')
         variants.append({
             'nombre': f'{lado.upper()}_SANO',
@@ -166,7 +166,7 @@ def generate_all_variants(typology: dict) -> list:
             'descripcion': f"El {lado} en estado de integración/crecimiento."
         })
         
-        # Versión INSANA (desintegración)
+        # UNHEALTHY version (disintegration)
         des_type, des_wing = calculate_enneagram_variant(base_ennea, 'desintegracion')
         variants.append({
             'nombre': f'{lado.upper()}_INSANO',
@@ -183,7 +183,7 @@ def generate_all_variants(typology: dict) -> list:
     return variants
 
 
-# Funciones cognitivas por tipo MBTI
+# Cognitive functions by MBTI type
 FUNCIONES_COGNITIVAS = {
     'ENTJ': {'dom': 'Te', 'aux': 'Ni', 'ter': 'Se', 'inf': 'Fi'},
     'INTJ': {'dom': 'Ni', 'aux': 'Te', 'ter': 'Fi', 'inf': 'Se'},
@@ -203,7 +203,7 @@ FUNCIONES_COGNITIVAS = {
     'ISFP': {'dom': 'Fi', 'aux': 'Se', 'ter': 'Ni', 'inf': 'Te'},
 }
 
-# Guías de desintegración por tipo - cómo se comporta cada tipo en su peor estado
+# Disintegration guides by type - how each type behaves at their worst state
 DESINTEGRACION_GUIAS = {
     'ISFP': {
         'patron': 'Fi-Se loop autodestructivo',
@@ -360,7 +360,7 @@ def build_variant_prompt(variant: dict) -> str:
     mbti = variant['mbti']
     funciones = FUNCIONES_COGNITIVAS.get(mbti, {})
     
-    # Contexto adicional según el lado
+    # Additional context depending on the side
     contextos = {
         'ego': "Este es el EGO, la personalidad consciente y principal. El tipo que la persona muestra al mundo y con el que se identifica.",
         'subconsciente': "Este es el SUBCONSCIENTE, el lado aspiracional. Representa quién quiere llegar a ser la persona, sus metas idealizadas.",
@@ -392,7 +392,7 @@ def build_variant_prompt(variant: dict) -> str:
     contexto = contextos.get(variant['lado'], "")
     estado = estados.get(variant['estado'], "")
     
-    # Info de funciones cognitivas
+    # Cognitive functions info
     funciones_info = ""
     if funciones:
         funciones_info = f"""
@@ -403,7 +403,7 @@ FUNCIONES COGNITIVAS de {mbti}:
 - Inferior: {funciones['inf']} (punto ciego/grip)
 """
     
-    # Guía de desintegración específica del tipo
+    # Type-specific disintegration guide
     guia_desintegracion = ""
     if variant['estado'] == 'insano' and mbti in DESINTEGRACION_GUIAS:
         guia = DESINTEGRACION_GUIAS[mbti]
@@ -463,7 +463,7 @@ def generate_and_save(input_str: str, output_dir: str = None, model: str = DEFAU
     
     if verbose:
         print(f"=" * 60)
-        print(f"🎭 Generando 4 Lados de la Mente para: {input_str}")
+        print(f"🎭 Generating 4 Sides of Mind for: {input_str}")
         print(f"=" * 60)
         print(f"📁 Output: {out_path}")
         print()
@@ -472,17 +472,17 @@ def generate_and_save(input_str: str, output_dir: str = None, model: str = DEFAU
     
     for i, variant in enumerate(variants, 1):
         if verbose:
-            print(f"[{i}/7] Generando {variant['nombre']}...")
+            print(f"[{i}/7] Generating {variant['nombre']}...")
         
         # Construir prompt y generar
         prompt = build_variant_prompt(variant)
         response = call_ollama(prompt, model)
         
-        # Guardar resultado
+        # Save result
         variant['output'] = response
         results.append(variant)
         
-        # Guardar archivo individual
+        # Save individual file
         filename = f"{i:02d}_{variant['nombre']}.md"
         filepath = out_path / filename
         
@@ -495,40 +495,40 @@ def generate_and_save(input_str: str, output_dir: str = None, model: str = DEFAU
                 ennea = variant['enneagram']
                 if variant['wing']:
                     ennea += f"w{variant['wing']}"
-                f.write(f"**Eneagrama:** {ennea}\n")
+                f.write(f"**Enneagram:** {ennea}\n")
             if variant['instincts']:
-                f.write(f"**Instintos:** {variant['instincts']}\n")
+                f.write(f"**Instincts:** {variant['instincts']}\n")
             if variant['gender']:
-                f.write(f"**Género:** {variant['gender']}\n")
+                f.write(f"**Gender:** {variant['gender']}\n")
             f.write(f"\n---\n\n")
-            f.write(f"## Descripción\n\n{response}\n")
+            f.write(f"## Description\n\n{response}\n")
         
         if verbose:
-            print(f"    ✓ Guardado: {filename}")
+            print(f"    ✓ Saved: {filename}")
     
-    # Guardar índice/resumen
-    index_path = out_path / "00_INDICE.md"
+    # Save index/summary
+    index_path = out_path / "00_INDEX.md"
     with open(index_path, 'w', encoding='utf-8') as f:
-        f.write(f"# 4 Lados de la Mente: {input_str}\n\n")
-        f.write(f"Generado: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n")
-        f.write(f"## Estructura\n\n")
+        f.write(f"# 4 Sides of Mind: {input_str}\n\n")
+        f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n")
+        f.write(f"## Structure\n\n")
         
         sides = calculate_sides(typology['mbti'])
-        f.write(f"| Lado | MBTI | Descripción |\n")
+        f.write(f"| Side | MBTI | Description |\n")
         f.write(f"|------|------|-------------|\n")
-        f.write(f"| EGO | {sides['ego']} | Personalidad consciente |\n")
-        f.write(f"| SUBCONSCIENTE | {sides['subconsciente']} | Lado aspiracional |\n")
-        f.write(f"| INCONSCIENTE | {sides['inconsciente']} | La sombra |\n")
-        f.write(f"| SUPEREGO | {sides['superego']} | El crítico interno |\n")
-        f.write(f"\n## Eneagrama\n\n")
+        f.write(f"| EGO | {sides['ego']} | Conscious personality |\n")
+        f.write(f"| SUBCONSCIOUS | {sides['subconsciente']} | Aspirational side |\n")
+        f.write(f"| UNCONSCIOUS | {sides['inconsciente']} | The shadow |\n")
+        f.write(f"| SUPEREGO | {sides['superego']} | The inner critic |\n")
+        f.write(f"\n## Enneagram\n\n")
         f.write(f"- **Base:** {typology.get('enneagram', '?')}w{typology.get('wing', '?')}\n")
-        f.write(f"- **Integración (sano):** {INTEGRACION.get(typology.get('enneagram', '5'), '?')}\n")
-        f.write(f"- **Desintegración (insano):** {DESINTEGRACION.get(typology.get('enneagram', '5'), '?')}\n")
-        f.write(f"\n## Archivos\n\n")
+        f.write(f"- **Integration (healthy):** {INTEGRACION.get(typology.get('enneagram', '5'), '?')}\n")
+        f.write(f"- **Disintegration (unhealthy):** {DESINTEGRACION.get(typology.get('enneagram', '5'), '?')}\n")
+        f.write(f"\n## Files\n\n")
         for i, v in enumerate(results, 1):
             f.write(f"{i}. [{v['nombre']}]({i:02d}_{v['nombre']}.md)\n")
     
-    # Guardar JSON con todo
+    # Save JSON with everything
     json_path = out_path / "data.json"
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump({
@@ -541,24 +541,24 @@ def generate_and_save(input_str: str, output_dir: str = None, model: str = DEFAU
     
     if verbose:
         print()
-        print(f"✅ Completado! 7 variantes generadas en: {out_path}")
+        print(f"✅ Complete! 7 variants generated in: {out_path}")
     
     return results
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Genera los 4 Lados de la Mente con variantes sanas/insanas",
+        description="Generate the 4 Sides of Mind with healthy/unhealthy variants",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Ejemplo:
-  ./cuatro_lados.py "ENTJ 8w7 sx/so hombre"
-  ./cuatro_lados.py "INFP 4w5 sp/sx mujer" -o ~/personajes
+Example:
+  ./cuatro_lados.py "ENTJ 8w7 sx/so male"
+  ./cuatro_lados.py "INFP 4w5 sp/sx female" -o ~/characters
   ./cuatro_lados.py "ENTP 7w8 sx/so" --model qwen2.5:14b
         """
     )
     
-    parser.add_argument('perfil', help='Perfil tipológico base (MBTI Eneagrama Instintos...)')
+    parser.add_argument('profile', help='Base typological profile (MBTI Enneagram Instincts...)')
     parser.add_argument('-o', '--output', help='Directorio de output (default: ./output)')
     parser.add_argument('-m', '--model', default=DEFAULT_MODEL, help=f'Modelo de Ollama')
     parser.add_argument('-q', '--quiet', action='store_true', help='Modo silencioso')
