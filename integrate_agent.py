@@ -29,12 +29,52 @@ import json
 import shutil
 import subprocess
 import argparse
+import platform
 from pathlib import Path
 from datetime import datetime
 
-# Rutas
-OPENCLAW_AGENTS = Path.home() / '.openclaw' / 'agents'
-OPENGOAT_AGENTS = Path.home() / '.opengoat' / 'agents'
+# ==============================================================================
+# PLATFORM DETECTION & PATHS
+# ==============================================================================
+
+def get_platform_paths():
+    """
+    Detect OS and return correct paths for OpenClaw and OpenGoat.
+    
+    Linux/macOS: ~/.openclaw/agents/, ~/.opengoat/agents/
+    Windows: %APPDATA%\\openclaw\\agents\\ or %USERPROFILE%\\.openclaw\\agents\\
+    """
+    system = platform.system().lower()
+    
+    if system == 'windows':
+        # Windows: prefer APPDATA, fallback to USERPROFILE
+        appdata = os.environ.get('APPDATA')
+        if appdata:
+            base = Path(appdata)
+        else:
+            base = Path.home()
+        
+        openclaw = base / 'openclaw' / 'agents'
+        opengoat = base / 'opengoat' / 'agents'
+    else:
+        # Linux, macOS, other Unix-like
+        openclaw = Path.home() / '.openclaw' / 'agents'
+        opengoat = Path.home() / '.opengoat' / 'agents'
+    
+    return openclaw, opengoat
+
+def get_platform_info():
+    """Return platform info for display."""
+    system = platform.system()
+    if system == 'Windows':
+        return f"🪟 Windows ({platform.release()})"
+    elif system == 'Darwin':
+        return f"🍎 macOS ({platform.mac_ver()[0]})"
+    else:
+        return f"🐧 Linux ({platform.release().split('-')[0]})"
+
+# Initialize paths based on platform
+OPENCLAW_AGENTS, OPENGOAT_AGENTS = get_platform_paths()
 
 # Managers por división
 DIVISION_MANAGERS = {
@@ -93,13 +133,16 @@ def generate_agent(typology: str, name: str, model: str = "qwen2.5:14b",
 
 
 def add_to_openclaw(agent_dir: Path, name: str) -> bool:
-    """Copia el agente a OpenClaw."""
+    """Copy agent to OpenClaw directory."""
     agent_id = name.lower().replace(' ', '_')
     dest = OPENCLAW_AGENTS / agent_id
     
-    print(f"\n🦞 Añadiendo a OpenClaw...")
+    print(f"\n🦞 Adding to OpenClaw...")
     
-    # Backup si existe
+    # Create parent directory if it doesn't exist
+    OPENCLAW_AGENTS.mkdir(parents=True, exist_ok=True)
+    
+    # Backup if exists
     if dest.exists():
         backup = dest.parent / f"{agent_id}_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         shutil.move(str(dest), str(backup))
@@ -118,14 +161,17 @@ def add_to_openclaw(agent_dir: Path, name: str) -> bool:
 
 
 def add_to_opengoat(name: str, mbti: str, role: str = "individual") -> bool:
-    """Registra el agente en OpenGoat."""
+    """Register agent in OpenGoat."""
     agent_id = name.lower().replace(' ', '_')
     manager = get_manager(mbti)
     division = get_division(mbti)
     
-    print(f"\n🐐 Registrando en OpenGoat...")
-    print(f"   División: {division.upper()}")
+    print(f"\n🐐 Registering in OpenGoat...")
+    print(f"   Division: {division.upper()}")
     print(f"   Manager: {manager}")
+    
+    # Create parent directory if it doesn't exist
+    OPENGOAT_AGENTS.mkdir(parents=True, exist_ok=True)
     
     agent_dir = OPENGOAT_AGENTS / agent_id
     agent_dir.mkdir(parents=True, exist_ok=True)
@@ -240,10 +286,14 @@ def main():
     mbti = parts[0]
     
     print("=" * 60)
-    print(f"🚀 INTEGRACIÓN COMPLETA: {args.name}")
-    print(f"   Tipología: {args.typology}")
-    print(f"   División: {get_division(mbti).upper()}")
+    print(f"🚀 FULL INTEGRATION: {args.name}")
+    print(f"   Platform: {get_platform_info()}")
+    print(f"   Typology: {args.typology}")
+    print(f"   Language: {'🇬🇧 English' if args.lang == 'en' else '🇪🇸 Spanish'}")
+    print(f"   Division: {get_division(mbti).upper()}")
     print(f"   Manager: {get_manager(mbti)}")
+    print(f"   OpenClaw: {OPENCLAW_AGENTS}")
+    print(f"   OpenGoat: {OPENGOAT_AGENTS}")
     print("=" * 60)
     
     # 1. Generar agente

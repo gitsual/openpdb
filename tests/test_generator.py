@@ -12,6 +12,7 @@ import json
 import shutil
 import tempfile
 import unittest
+import platform
 from pathlib import Path
 
 # Add parent to path
@@ -22,7 +23,8 @@ from agent_generator import (
     ENEAGRAMA, ALAS, INSTINTOS_COMPORTAMIENTO
 )
 from integrate_agent import (
-    get_division, get_manager, add_to_openclaw, add_to_opengoat
+    get_division, get_manager, add_to_openclaw, add_to_opengoat,
+    get_platform_paths, get_platform_info, OPENCLAW_AGENTS, OPENGOAT_AGENTS
 )
 
 
@@ -329,22 +331,58 @@ class TestEndToEnd(unittest.TestCase):
             )
 
 
+class TestPlatformDetection(unittest.TestCase):
+    """Test cross-platform support."""
+    
+    def test_get_platform_paths_returns_paths(self):
+        """Verify platform paths are returned."""
+        openclaw, opengoat = get_platform_paths()
+        self.assertIsInstance(openclaw, Path)
+        self.assertIsInstance(opengoat, Path)
+    
+    def test_get_platform_info_returns_string(self):
+        """Verify platform info is returned."""
+        info = get_platform_info()
+        self.assertIsInstance(info, str)
+        self.assertGreater(len(info), 0)
+    
+    def test_paths_are_absolute(self):
+        """Verify paths are absolute."""
+        openclaw, opengoat = get_platform_paths()
+        self.assertTrue(openclaw.is_absolute())
+        self.assertTrue(opengoat.is_absolute())
+    
+    def test_windows_paths_if_windows(self):
+        """On Windows, paths should use APPDATA or USERPROFILE."""
+        if platform.system() != 'Windows':
+            self.skipTest("Not on Windows")
+        openclaw, opengoat = get_platform_paths()
+        # Should not have leading dot on Windows
+        self.assertNotIn('.openclaw', str(openclaw))
+    
+    def test_unix_paths_if_unix(self):
+        """On Linux/macOS, paths should use dot directories."""
+        if platform.system() == 'Windows':
+            self.skipTest("Not on Unix")
+        openclaw, opengoat = get_platform_paths()
+        self.assertIn('.openclaw', str(openclaw))
+        self.assertIn('.opengoat', str(opengoat))
+
+
 class TestRealPaths(unittest.TestCase):
     """Test that real OpenClaw/OpenGoat paths exist (skip if not installed)."""
     
     def test_openclaw_agents_path(self):
         """Check if OpenClaw agents directory exists."""
-        openclaw_path = Path.home() / '.openclaw' / 'agents'
-        if openclaw_path.exists():
-            self.assertTrue(openclaw_path.is_dir())
+        if OPENCLAW_AGENTS.exists():
+            self.assertTrue(OPENCLAW_AGENTS.is_dir())
         else:
             self.skipTest("OpenClaw not installed")
     
     def test_opengoat_agents_path(self):
         """Check if OpenGoat agents directory exists."""
-        opengoat_path = Path.home() / '.opengoat' / 'agents'
-        if opengoat_path.exists():
-            self.assertTrue(opengoat_path.is_dir())
+        if OPENGOAT_AGENTS.exists():
+            self.assertTrue(OPENGOAT_AGENTS.is_dir())
         else:
             self.skipTest("OpenGoat not installed")
     

@@ -299,6 +299,18 @@ python run_tests.py --full
 - [OpenClaw](https://github.com/openclaw/openclaw) (for agent deployment)
 - [OpenGoat](https://github.com/openclaw/opengoat) (for organization features)
 
+### Cross-Platform Support
+
+The generator automatically detects your operating system and uses the correct paths:
+
+| Platform | OpenClaw Path | OpenGoat Path |
+|----------|---------------|---------------|
+| 🐧 Linux | `~/.openclaw/agents/` | `~/.opengoat/agents/` |
+| 🍎 macOS | `~/.openclaw/agents/` | `~/.opengoat/agents/` |
+| 🪟 Windows | `%APPDATA%\openclaw\agents\` | `%APPDATA%\opengoat\agents\` |
+
+Directories are created automatically if they don't exist.
+
 ### Setup
 
 ```bash
