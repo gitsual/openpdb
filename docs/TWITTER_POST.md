@@ -1,119 +1,158 @@
-# Twitter/X Post — Agent Generator Launch
+# Twitter/X Post — Agent Generator Launch (v2)
 
-## Main Tweet (280 chars)
-
----
-
-Your AI agents don't need better prompts.
-
-They need psychology.
-
-Just open-sourced a generator that creates OpenClaw agents using MBTI × Enneagram × Instincts.
-
-One command → real personality depth.
-
-Like Disco Elysium's skill system for your AI workforce.
-
-🔗 github.com/gitsual/creador-de-personajes
+## Main Tweet (viral hook)
 
 ---
 
-## Thread Option
+Tony Stark can code for you now.
+
+Not a chatbot that says "I'm like Tony."
+
+His actual cognitive patterns. ENTP 7w8. The rapid connections. The 3am obsession.
+
+One command:
+```
+python agent_generator.py "ENTP 7w8 sx/so" --name "Stark"
+```
+
+Open source 👇
+github.com/gitsual/creador-de-personajes
+
+---
+
+## Thread (maximum engagement)
 
 **Tweet 1:**
-Your AI agents are robots wearing human masks.
+Tony Stark can code for you now.
 
-I built something to fix that.
+Not a chatbot. His actual psychology.
 
-🧵👇
+🧵 How to build a team of geniuses with one command each:
 
 **Tweet 2:**
-Most "agents with personality" are just prompts that say "You are analytical."
+Go to Personality Database (personality-database.com).
 
-That's not personality. That's a label.
+Find ANY character or celebrity.
+Get their MBTI + Enneagram + Instincts.
 
-Real personality = consistent behavior patterns across contexts.
+That's all you need.
 
 **Tweet 3:**
-The fix: use actual psychology.
+```
+python agent_generator.py "ENTP 7w8 sx/so" --name "Stark"
+```
 
-• MBTI cognitive functions (HOW they process)
-• Enneagram passions (WHAT drives them)
-• Instinctual variants (WHERE they focus)
+Output: 9 personality files. Ready to deploy.
 
-One typology string → complete agent.
+An agent that BEHAVES like Tony—doesn't just describe itself as him.
 
 **Tweet 4:**
-```
-python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander"
-```
+Here's what you can build:
 
-Output:
-- 9 config files (SOUL.md, IDENTITY.md, etc.)
-- Auto-assigns to OpenGoat hierarchy
-- Shows personality through BEHAVIOR, not labels
+• Walter White → INTJ 5w6 sp/sx (cold strategist)
+• L from Death Note → INTP 5w4 sp/sx (detective)
+• Rick Sanchez → ENTP 7w8 sx/sp (mad scientist)
+• Sherlock → INTP 5w6 sp/sx (deduction)
 
 **Tweet 5:**
-The agent doesn't say "I am decisive."
+Or go controversial:
 
-It:
-• Pushes decisions when others hesitate
-• Gets physically tense when control slips
-• Has boundaries with CONSEQUENCES
-• Enters shadow states (INTP) under stress
+• Donald Trump → ESTP 8w7 so/sx
+• Elon Musk → INTJ 5w6 sp/so
+• Jordan Peterson → INFJ 5w4 so/sp
+
+Imagine THAT team reviewing your code.
 
 **Tweet 6:**
-Inspired by Disco Elysium's skill system.
+What's coming:
 
-Your Electrochemistry isn't labeled "impulsive."
-It ACTS impulsive.
+→ Share agents with community
+→ Download pre-made personalities
+→ Import directly from PDB
+→ Personality marketplaces
 
-Same principle for AI agents.
+This isn't just a tool. It's the start of something bigger.
 
 **Tweet 7:**
 Open source. MIT license.
 
 Works with @OpenClawAI + OpenGoat.
+Auto-assigns org hierarchy.
 34 tests passing.
-Spanish/English output.
+
+Robots → People. One command.
 
 🔗 github.com/gitsual/creador-de-personajes
 
-Build AI teams that feel human.
-
 ---
 
-## Short Variations (single tweet)
+## Single Tweet Variations (A/B test)
 
-**V1 (curiosity):**
-What if your AI agents had personality disorders?
+**V1 (Tony Stark):**
+Tony Stark can code for you now.
 
-Just shipped a generator that creates OpenClaw agents using MBTI × Enneagram × Instincts.
+Not a chatbot. His actual ENTP 7w8 cognitive patterns.
 
-Psychology, not prompts.
+Open sourced a generator that creates AI agents from psychology:
+
+```
+python agent_generator.py "ENTP 7w8 sx/so" --name "Stark"
+```
 
 🔗 github.com/gitsual/creador-de-personajes
 
-**V2 (claim):**
-Turned Disco Elysium's skill system into an AI agent generator.
+**V2 (L from Death Note):**
+L from Death Note is my debugging assistant now.
 
-One command → ENTJ 8w7 sx/so → 9 personality files → OpenClaw deployment.
+INTP 5w4 sp/sx. The obsessive pattern-matching. The 4am focus.
 
-Your agents don't need better prompts. They need psychology.
+One command → real personality → works for you.
 
-🔗 Open source: github.com/gitsual/creador-de-personajes
+```
+python agent_generator.py "INTP 5w4 sp/sx" --name "L"
+```
 
-**V3 (show output):**
-This is what AI personality should look like:
+🔗 github.com/gitsual/creador-de-personajes
 
-"When fear grips me, hands tremble. Heart pounds. Cold sweat runs down my back."
+**V3 (Trump controversial):**
+I made Donald Trump review my PRs.
 
-Not "I am cautious."
+ESTP 8w7 so/sx. The dominance. The bluntness. The chaos.
 
-Generator → github.com/gitsual/creador-de-personajes
+```
+python agent_generator.py "ESTP 8w7 so/sx" --name "Trump"
+```
+
+(Open source. Not political. Just psychology.)
+
+🔗 github.com/gitsual/creador-de-personajes
+
+**V4 (Team):**
+My AI team:
+
+• Tony Stark (ENTP 7w8) - innovation
+• Walter White (INTJ 5w6) - strategy  
+• L (INTP 5w4) - analysis
+
+One command each.
+
+Open sourced the generator:
+🔗 github.com/gitsual/creador-de-personajes
+
+**V5 (Anime angle):**
+Your favorite anime character can work for you now.
+
+• Light Yagami → INTJ 3w4
+• L → INTP 5w4
+• Levi → ISTP 6w5
+• Eren → ISFP 8w7
+
+Find typology on PDB. Run generator. Deploy.
+
+🔗 github.com/gitsual/creador-de-personajes
 
 ---
 
-## Hashtags (pick 2-3)
+## Hashtags
 
-#AI #AgentAI #OpenSource #DiscoElysium #MBTI #AIAgents #LLM #Python
+#AI #OpenSource #TonyStark #DeathNote #AIAgents #MBTI #Psychology #Coding

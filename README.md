@@ -75,6 +75,36 @@ python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander"
 python agent_generator.py "ENTJ 8w7 sx/so" --name "Commander" --lang en
 ```
 
+## 🌟 Build Your Dream Team
+
+**Find any character on [Personality Database](https://www.personality-database.com). Get their typology. Run one command.**
+
+| Character | Typology | Command | Use Case |
+|-----------|----------|---------|----------|
+| **Tony Stark** | ENTP 7w8 sx/so | `"ENTP 7w8 sx/so"` | Innovation, rapid prototyping |
+| **Walter White** | INTJ 5w6 sp/sx | `"INTJ 5w6 sp/sx"` | Cold strategy, planning |
+| **L (Death Note)** | INTP 5w4 sp/sx | `"INTP 5w4 sp/sx"` | Pattern detection, debugging |
+| **Sherlock Holmes** | INTP 5w6 sp/sx | `"INTP 5w6 sp/sx"` | Deduction, investigation |
+| **Elon Musk** | INTJ 5w6 sp/so | `"INTJ 5w6 sp/so"` | Long-term vision, systems |
+| **Rick Sanchez** | ENTP 7w8 sx/sp | `"ENTP 7w8 sx/sp"` | Mad science, no limits |
+| **Levi Ackerman** | ISTP 6w5 sp/sx | `"ISTP 6w5 sp/sx"` | Tactical execution |
+| **Light Yagami** | INTJ 3w4 so/sp | `"INTJ 3w4 so/sp"` | Strategic manipulation |
+
+```bash
+# Make Tony Stark code for you
+python agent_generator.py "ENTP 7w8 sx/so" --name "Stark" --lang en
+
+# L as your debugging assistant  
+python agent_generator.py "INTP 5w4 sp/sx" --name "L" --lang en
+
+# Walter White for ruthless strategy
+python agent_generator.py "INTJ 5w6 sp/sx" --name "Heisenberg" --lang en
+```
+
+> **Coming soon:** Share agents. Download pre-made personalities. Personality marketplaces. Your favorite characters, working for you.
+
+---
+
 ## 🌍 Internationalization
 
 The generator supports multiple languages via the `--lang` flag:
