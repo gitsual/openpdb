@@ -622,6 +622,13 @@ Examples:
   %(prog)s --character "Tony Stark" --lang en
   %(prog)s -c "Walter White"
   %(prog)s -c "Dr. House" --name House
+  
+  # Batch mode - multiple characters
+  %(prog)s --batch "Batman" "Tony Stark" "Joker" -o heroes/
+  %(prog)s --batch-file characters.txt --optimize-org
+  
+  # Export team to OpenGoat with optimal hierarchy
+  %(prog)s --batch "Ripley" "Batman" "Wonder Woman" --export-opengoat
         """
     )
     parser.add_argument('typology', nargs='?', 
@@ -638,6 +645,18 @@ Examples:
     parser.add_argument('--pdb-search', action='store_true',
                         help='Search PDB interactively')
     
+    # Batch and organization options
+    parser.add_argument('--batch', '-b', nargs='+',
+                        help='Generate multiple characters: -b "Batman" "Tony Stark" "Joker"')
+    parser.add_argument('--batch-file', type=Path,
+                        help='File with character names (one per line)')
+    parser.add_argument('--optimize-org', action='store_true',
+                        help='Calculate optimal org hierarchy after generation')
+    parser.add_argument('--export-opengoat', action='store_true',
+                        help='Export to OpenGoat with optimized hierarchy')
+    parser.add_argument('--opengoat-home', type=Path,
+                        help='OpenGoat home directory (default: ~/.opengoat)')
+    
     args = parser.parse_args()
     
     # Interactive PDB search mode
@@ -647,6 +666,92 @@ Examples:
             interactive_search()
         except ImportError:
             print("❌ pdb_search module not found")
+        return
+    
+    # Batch mode - generate multiple characters
+    if args.batch or args.batch_file:
+        characters = args.batch or []
+        
+        # Load from file if specified
+        if args.batch_file and args.batch_file.exists():
+            with open(args.batch_file) as f:
+                characters.extend([line.strip() for line in f if line.strip()])
+        
+        if not characters:
+            print("❌ No characters specified for batch mode")
+            sys.exit(1)
+        
+        print(f"🎭 Batch mode: generating {len(characters)} characters")
+        print("=" * 60)
+        
+        output_base = args.output or Path('./batch_output')
+        output_base.mkdir(parents=True, exist_ok=True)
+        
+        generated_dirs = []
+        for char_name in characters:
+            print(f"\n▶ Generating: {char_name}")
+            try:
+                from pdb_search import search, get_typology
+                results = search(char_name, limit=1)
+                if not results:
+                    print(f"  ⚠ Not found in PDB, skipping")
+                    continue
+                
+                best = results[0]
+                typology = get_typology(best['name'])
+                if not typology:
+                    print(f"  ⚠ Incomplete typology, skipping")
+                    continue
+                
+                print(f"  ✅ {best['name']} → {typology}")
+                
+                # Get context
+                character_context = None
+                try:
+                    from character_context import get_context, format_context_for_prompt
+                    ctx = get_context(best['name'])
+                    if ctx.get('has_context'):
+                        character_context = format_context_for_prompt(ctx)
+                except ImportError:
+                    pass
+                
+                # Parse typology
+                parts = typology.upper().split()
+                mbti = parts[0]
+                enneagram, wing = 5, 4
+                for p in parts:
+                    if 'W' in p:
+                        enneagram, wing = int(p.split('W')[0]), int(p.split('W')[1])
+                        break
+                inst_stack = next((p.lower() for p in parts if '/' in p.lower()), 'sp/so')
+                
+                # Generate
+                agent_name = best['name'].split()[0].strip('"').strip("'")
+                char_dir = output_base / char_name.lower().replace(" ", "_")
+                generate_all(mbti, enneagram, wing, inst_stack, agent_name, 
+                           char_dir, args.model, args.role, args.lang, character_context)
+                generated_dirs.append(char_dir)
+                
+            except Exception as e:
+                print(f"  ❌ Error: {e}")
+                continue
+        
+        print("\n" + "=" * 60)
+        print(f"✨ Generated {len(generated_dirs)} characters in {output_base}")
+        
+        # Optimize organization if requested
+        if args.optimize_org or args.export_opengoat:
+            print("\n🔄 Optimizing organization structure...")
+            try:
+                from org_optimizer import optimize_examples, export_to_opengoat
+                configs = optimize_examples(str(output_base))
+                
+                if args.export_opengoat:
+                    opengoat_home = str(args.opengoat_home) if args.opengoat_home else None
+                    export_to_opengoat(configs, str(output_base), opengoat_home)
+            except ImportError as e:
+                print(f"  ⚠ org_optimizer not available: {e}")
+        
         return
     
     # Character search mode
