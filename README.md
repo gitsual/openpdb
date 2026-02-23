@@ -2,9 +2,7 @@
 
 <div align="center">
 
-**Why settle for "I am a helpful assistant" when you can have Batman, Ripley, or Daenerys?**
-
-Generate AI agents that actually *behave* like their personality — not just describe it.
+**Generate AI agents with distinct personalities using MBTI + Enneagram + Wikipedia context.**
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Tests](https://img.shields.io/github/actions/workflow/status/gitsual/creador-de-personajes/test.yml?branch=main&style=flat-square&label=tests)](https://github.com/gitsual/creador-de-personajes/actions)
@@ -14,65 +12,95 @@ Generate AI agents that actually *behave* like their personality — not just de
 
 ---
 
-## 🎯 The Problem With Generic Agents
+## 🧪 Real Test Results (Not Marketing Copy)
 
-Most AI agents sound the same. They're helpful, they're polite, and they're **forgettable**.
+We ran the same questions through generic AI and personality-generated agents. Here are the **actual outputs**, unedited:
 
+### Test Question: "Should I take this risky business opportunity?"
+
+**Generic AI Response:**
 ```
-USER: "Should I take this risky business opportunity?"
+Deciding whether to take on a risky business opportunity involves careful 
+consideration of several factors. Here are some steps and questions you 
+might find useful in making your decision:
 
-GENERIC AGENT: "That's an interesting question. There are pros and cons to consider. 
-               On one hand, risk can lead to reward. On the other hand, it could fail. 
-               I recommend weighing your options carefully."
+1. **Assess the Risk**: Understand exactly what risks are involved...
+2. **Evaluate Potential Rewards**: What could be gained...
+3. **Market Analysis**: Is there a demand...
+4. **Resource Assessment**: Do you have the necessary resources...
+5. **Competitor Analysis**: Who else might be interested...
+[continues for 10 points]
+
+Ultimately, it's important to weigh these factors carefully before making 
+a decision.
 ```
 
-**Useful? Barely. Memorable? No. Actionable? Not really.**
+**Batman (INTJ 1w9) Response:**
+```
+We need to regroup and reassess—now. Consider all potential outcomes, not 
+just the immediate gains. Is it worth risking Wayne Enterprises' reputation 
+and resources on an uncertain venture? Focus on stability and long-term 
+strategies that align with our goals for Gotham's betterment. If it doesn't 
+advance our cause or strengthen our position, then it's a risk we cannot 
+afford to take.
+```
+
+**Tony Stark (ENTP 7w8) Response:**
+```
+Yo, listen up! Risky opportunities? That's like my middle name. But seriously, 
+do your due diligence. If the tech angle is there and it aligns with our values, 
+go for it. Just make sure you've got all the bases covered—security measures, 
+backup plans, the works. And if something feels off or unethical, trust that 
+gut feeling. We don't want to be a part of anything shady. So yeah, assess, 
+plan, then execute like a boss. Got your back.
+```
+
+**Ellen Ripley (INTJ 8w9) Response:**
+```
+If there's a chance it endangers us or jeopardizes our safety, then no. But 
+if the opportunity aligns with our mission and provides a clear path forward, 
+then we need to assess the risks and act accordingly. Don't seek comfort in 
+indecision; make a plan and move forward decisively.
+```
 
 ---
 
-## 💥 The Solution: Personality-Driven Responses
+### Test Question: "Our company's security system was designed 5 years ago. Should we update it?"
 
-Same question. Different agents. **Real value.**
+**The Joker (ENTP 7w8) Response:**
+```
+Oh boy, updating that old security system? That sounds like a fun challenge! 
+But you know what's even more exciting? Maybe the current setup is ripe for 
+a little... tweaking. Think about it—how long has Batman's equipment been 
+around? And yet, he still manages to break into places when he wants to.
 
-```
-USER: "Should I take this risky business opportunity?"
-```
+But seriously, if we're talking about keeping things interesting and 
+unpredictable, then yes, absolutely. An outdated security system is like 
+an open invitation to anyone with half a brain—and let's be real, Gotham's 
+full of people with more than that. So why wait for them to find the back 
+door? Let's twist this around and see how it fits.
 
-### Batman (INTJ — Strategic Planner)
+Let's think outside the box for once. What if we don't just update the 
+system; what if we turn it into a game? Imagine the thrill of watching 
+Batman try to outsmart something you designed with chaos in mind. That's 
+the kind of fun I live for.
 ```
-"What's your exit strategy? Before you commit, map every scenario where this fails. 
-Who benefits if you lose? I've seen too many people walk into traps because they 
-only looked at the upside. Show me your contingency plan first."
-```
-**Value:** Forces you to think about failure modes you hadn't considered.
-
-### Tony Stark (ENTP — Innovator)
-```
-"Risky? That's where the fun is. But here's the real question — is it risky because 
-it's actually dangerous, or risky because nobody's tried it yet? Those are very 
-different things. If it's the second one, you might be looking at your biggest win."
-```
-**Value:** Reframes "risk" to distinguish real danger from unexplored opportunity.
-
-### Ripley (INTJ — Crisis Survivor)
-```
-"I've walked into situations where everyone said it was fine. It wasn't. 
-Trust your gut, but verify everything. Who gave you this opportunity? 
-What do they gain? And what happens if you say no — do they pressure you?"
-```
-**Value:** Pattern recognition from someone who's survived actual disasters.
-
-### Daenerys (ENFJ — Visionary Leader)
-```
-"Will this opportunity let you help the people who depend on you, or will it 
-only serve yourself? I've taken risks that cost everything — but they were 
-for something larger than me. What's yours for?"
-```
-**Value:** Connects the decision to purpose and impact on others.
 
 ---
 
-## 🦸 The Full Team: 8 Iconic Personalities
+## 📊 What's Actually Different?
+
+| Aspect | Generic AI | Personality Agent |
+|--------|-----------|-------------------|
+| **Length** | Long, exhaustive lists | Concise, opinionated |
+| **Tone** | Neutral, hedging | Distinctive voice |
+| **References** | None | Their fictional world (Gotham, Wayne Enterprises, Batman) |
+| **Actionability** | "Consider these factors..." | Clear stance + reasoning |
+| **Memorability** | Forgettable | Distinctive |
+
+---
+
+## 🦸 The Full Team
 
 <div align="center">
 
@@ -80,164 +108,16 @@ for something larger than me. What's yours for?"
 
 </div>
 
-| Character | Type | Franchise | Strength | Best For |
-|-----------|------|-----------|----------|----------|
-| **Batman** | INTJ 1w9 | DC | Strategic planning | Risk assessment, contingencies |
-| **Daenerys** | ENFJ 1w2 | GoT | Inspiring vision | Leadership, motivation |
-| **Tony Stark** | ENTP 7w8 | MCU | Rapid innovation | Brainstorming, pivots |
-| **Ripley** | INTJ 8w9 | Alien | Crisis management | Threat analysis, survival |
-| **John Wick** | ISTP 6w5 | Action | Precise execution | Implementation, reliability |
-| **Katniss** | ISTP 6w5 | Hunger Games | Resourceful survival | Constraints, adaptation |
-| **Wonder Woman** | ENFJ 2w1 | DC | Diplomatic solutions | Conflict resolution |
-| **Joker** | ENTP 7w8 | DC | Chaos & stress-testing | Finding vulnerabilities |
-
----
-
-## 📊 Individual Use Cases: Generic vs. Personality
-
-### Use Case 1: Code Review
-
-**USER:** "Review this authentication code for security issues."
-
-| Agent | Response Style | Unique Value |
-|-------|---------------|--------------|
-| **Generic** | "Here are some best practices to consider..." | Checklist approach |
-| **Ripley** | "I've seen systems fail because people trusted the happy path. Where's your breach protocol? What happens when — not if — someone gets through?" | **Paranoid thoroughness from surviving the Nostromo** |
-| **Joker** | "Oh, this is fun. You're assuming users will behave. Let me show you 12 ways I'd break this before lunch." | **Adversarial thinking that finds real exploits** |
-
----
-
-### Use Case 2: Product Launch Decision
-
-**USER:** "Should we launch next month or wait for more features?"
-
-| Agent | Response | Unique Value |
-|-------|----------|--------------|
-| **Generic** | "Both options have merit. Consider your market timing." | Non-committal |
-| **Tony Stark** | "Ship it. Perfect is the enemy of done. I launched the Mark I in a cave with scraps. You've got more than that. Ship, learn, iterate." | **Bias toward action from someone who built Iron Man under fire** |
-| **Batman** | "What does your competition know that you don't? If they're moving, waiting costs you. If they're stalled, you have time. Don't launch blind." | **Competitive intelligence focus** |
-
----
-
-### Use Case 3: Team Conflict Resolution
-
-**USER:** "Two senior engineers are fighting over architecture decisions."
-
-| Agent | Response | Unique Value |
-|-------|----------|--------------|
-| **Generic** | "Communication is key. Try facilitating a meeting." | Obvious advice |
-| **Wonder Woman** | "Bring them together — but not to argue. Ask each to present the OTHER person's position fairly first. When they understand what they're actually fighting about, half the conflict dissolves." | **Diplomatic technique from an actual ambassador** |
-| **Daenerys** | "Who do they serve? If this fight is about ego, remove both from the decision. If it's about genuinely different visions, make them choose: unity or exile." | **Leadership clarity that cuts through politics** |
-
----
-
-### Use Case 4: Handling Burnout
-
-**USER:** "I'm exhausted and losing motivation. What should I do?"
-
-| Agent | Response | Unique Value |
-|-------|----------|--------------|
-| **Generic** | "Self-care is important. Consider taking breaks and maintaining work-life balance." | Platitudes |
-| **Katniss** | "You don't have to save everyone. I learned that the hard way. Protect what you can carry. Drop everything else. The people who matter will still be there." | **Survival wisdom from someone who carried too much** |
-| **John Wick** | "Focus on one thing. Complete it. Then the next. Don't think about the mountain — just the step in front of you. That's how I got through." | **Tactical focus from someone who literally fought his way out** |
-
----
-
-## 🚀 Full Team Collaboration: Complex Problem
-
-**SCENARIO:** Your startup just discovered a major security breach. Customer data may be compromised. You have 48 hours before it becomes public. What do you do?
-
-### Generic Agent Response:
-```
-"This is a serious situation. I recommend:
-1. Assess the damage
-2. Notify relevant parties
-3. Implement fixes
-4. Communicate transparently
-
-Would you like me to elaborate on any of these points?"
-```
-
-**Problem:** This is a checklist, not a strategy. It doesn't account for competing priorities, human factors, or the chaos of real crisis management.
-
----
-
-### The Full Team Response:
-
-#### **BATMAN** (Crisis Command)
-```
-"First: contain. No one outside this room knows anything until we control the 
-narrative. Ripley — assess what they actually got. Tony — can we patch the 
-vulnerability in 12 hours? Katniss — what's our absolute minimum viable response 
-if everything else fails?"
-```
-
-#### **RIPLEY** (Threat Assessment)
-```
-"I've pulled the logs. They were in the system for 72 hours before we noticed. 
-That's enough time for complete exfiltration. Assume they have everything. 
-The question isn't what they took — it's what they'll do with it. And why 
-they haven't moved yet."
-```
-
-#### **TONY STARK** (Technical Response)
-```
-"I can patch the entry point in 6 hours. But here's the thing — if they're still 
-watching, they'll see us patching and know we're onto them. We could use that. 
-Let them see us 'fix' a decoy while we actually rebuild the core system underneath."
-```
-
-#### **JOHN WICK** (Execution Planning)
-```
-"I'll handle the operational timeline. Every hour blocked out. Every person 
-assigned. No gaps. When we move, we move together — no one goes solo, 
-no one freelances. Clear?"
-```
-
-#### **DAENERYS** (Stakeholder Management)
-```
-"Our customers trusted us. That trust was broken. When we communicate, 
-we don't hide behind legal language — we speak to them as people. I'll draft 
-the message personally. They'll hear it from leadership, not PR."
-```
-
-#### **WONDER WOMAN** (External Relations)
-```
-"We have regulators, partners, and press to manage. I'll open direct lines 
-before the story breaks — frame it as proactive disclosure, not damage control. 
-We control the narrative by getting there first."
-```
-
-#### **KATNISS** (Worst-Case Preparation)
-```
-"If we can't contain this — if it all goes wrong — what do we need to survive? 
-I'm preparing the fallback: reduced operations, skeleton crew, emergency funds 
-accessible. Hope we don't need it, but it'll be ready."
-```
-
-#### **JOKER** (Red Team)
-```
-"You're all assuming they wanted data. What if that's not the point? What if 
-they wanted you to FIND the breach? While you're all staring at this door, 
-what's happening at the other ones? I'd check your supply chain partners. Today."
-```
-
----
-
-### Result: A Complete Crisis Response
-
-| Phase | Owner | Action | Timeline |
-|-------|-------|--------|----------|
-| **Command** | Batman | Central coordination, information control | Immediate |
-| **Assessment** | Ripley | Full threat analysis, assume worst case | 0-6 hours |
-| **Technical** | Tony Stark | Decoy patch + real rebuild | 0-24 hours |
-| **Operations** | John Wick | Hour-by-hour execution timeline | Continuous |
-| **Communications** | Daenerys | Customer messaging, human tone | 12-24 hours |
-| **External** | Wonder Woman | Regulator/partner/press management | 6-48 hours |
-| **Contingency** | Katniss | Survival plan if containment fails | Parallel |
-| **Red Team** | Joker | Adversarial analysis, find blind spots | Continuous |
-
-**This isn't a checklist. It's a coordinated response leveraging 8 distinct perspectives.**
+| Character | Type | Franchise | Generated Personality |
+|-----------|------|-----------|----------------------|
+| **Batman** | INTJ 1w9 | DC | Strategic, references Gotham/Wayne Enterprises |
+| **Tony Stark** | ENTP 7w8 | MCU | Casual, tech-focused, "execute like a boss" |
+| **John Wick** | ISTP 6w5 | Action | Direct, tactical, survival-focused |
+| **Joker** | ENTP 7w8 | DC | Chaotic, references Batman, adversarial thinking |
+| **Daenerys** | ENFJ 1w2 | GoT | Visionary, references dragons/Dothraki |
+| **Ripley** | INTJ 8w9 | Alien | Paranoid, safety-first, decisive |
+| **Katniss** | ISTP 6w5 | Hunger Games | Survival-focused, references District 12/Peeta |
+| **Wonder Woman** | ENFJ 2w1 | DC | Diplomatic, references Themyscira/Steve Trevor |
 
 ---
 
@@ -254,11 +134,104 @@ mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-
 # Install Ollama (free local LLM) — https://ollama.ai
 ollama pull qwen2.5:14b
 
-# Generate any character!
+# Generate a character
 python agent_generator.py -c "Batman" --lang en
-python agent_generator.py -c "Ripley" --lang en
-python agent_generator.py -c "Daenerys Targaryen" --lang en
 ```
+
+**Output:**
+```
+🔍 Searching PDB for 'Batman'...
+✅ Found: Bruce Wayne "Batman" → INTJ 1w9 so/sp
+📚 Context: wikipedia (Batman)
+🔥 V8 [🇬🇧 EN] — 'Bruce' (INTJ 1w9 so/sp)
+📁 test_batman
+------------------------------------------------------------
+  ✅ SOUL.md
+  ✅ IDENTITY.md
+  ✅ AGENTS.md
+  ✅ ROLE.md
+  ✅ TOOLS.md
+  ✅ USER.md
+  ✅ MEMORY.md
+  ✅ HEARTBEAT.md
+  ✅ BOOTSTRAP.md
+------------------------------------------------------------
+✨ V8 'Bruce' ready
+```
+
+---
+
+## 📄 What Gets Generated (Real Example)
+
+**File:** `SOUL.md` for Batman (actual generated content, not written by hand):
+
+```markdown
+# SOUL.md - Bruce
+
+## Who I Am
+Gotham City at night, a place that others see as a maze of danger and 
+despair, feels to me like the intricate dance floor of a grand chess game. 
+The shadows are not just darkness but potential allies or enemies lurking 
+in the dark corners. Tonight, I noticed how every streetlight casts different 
+patterns on the wet pavement after rain—patterns that tell stories about the 
+city's hidden pathways and routines.
+
+## My Voice
+1. That won't do at all.
+2. We need to regroup and reassess—now.
+3. You're missing the big picture here.
+4. Absolutely not acceptable.
+5. It's time for a new strategy.
+
+## A Story
+The night Thomas Wayne was murdered, everything changed. The scent of fear 
+lingered on every breath I took in the alley that night—sharp, metallic, and 
+unmistakable. It was as if time had slowed to a crawl, freezing me with each 
+word exchanged between my father and his assailants. I vowed then to be ready 
+next time.
+```
+
+---
+
+## 🔧 How To Use Generated Agents
+
+Once you have a SOUL.md, use it as a system prompt:
+
+```bash
+# Create prompt file
+echo "You are Bruce Wayne / Batman. Embody this personality:" > prompt.txt
+cat test_batman/SOUL.md >> prompt.txt
+echo "---" >> prompt.txt
+echo "USER: Should I take this risky business opportunity?" >> prompt.txt
+
+# Run through Ollama
+cat prompt.txt | ollama run qwen2.5:14b
+```
+
+**That's it.** The personality comes from the SOUL.md content, not magic.
+
+---
+
+## 🧠 How It Works
+
+1. **PDB Search** — Finds character in 12,000+ personality database
+2. **Typology** — Gets MBTI + Enneagram + Instinctual variants
+3. **Wikipedia** — Fetches character background for grounding
+4. **Generation** — Creates SOUL.md with personality-specific content
+
+The quality depends on:
+- How well-known the character is (better Wikipedia = better grounding)
+- The underlying LLM (qwen2.5:14b is decent, larger models = better)
+- The prompt structure (V9/V10 has been tested to ~6.8/10 quality ceiling)
+
+---
+
+## ⚠️ Honest Limitations
+
+- **Quality ceiling:** With qwen2.5:14b, expect ~6.5-7/10 quality. Larger models or API (Claude/GPT-4) will do better.
+- **Not magic:** The agents are as good as the SOUL.md content + the LLM interpreting it.
+- **Context matters:** Well-known characters (Batman, Tony Stark) work better than obscure ones.
+- **Still AI:** They have the personality *style*, not actual knowledge/memories of the character.
 
 ---
 
@@ -266,32 +239,15 @@ python agent_generator.py -c "Daenerys Targaryen" --lang en
 
 ```
 examples/
-├── batman/          # INTJ 1w9 - Strategic Commander
-├── tony_stark/      # ENTP 7w8 - Innovative Disruptor
-├── john_wick/       # ISTP 6w5 - Precise Executor
-├── joker/           # ENTP 7w8 - Chaos Consultant
-├── daenerys/        # ENFJ 1w2 - Visionary Leader
-├── ripley/          # INTJ 8w9 - Crisis Survivor
-├── katniss/         # ISTP 6w5 - Resourceful Adapter
-└── wonder_woman/    # ENFJ 2w1 - Diplomatic Bridge
+├── batman/          # INTJ 1w9 - DC Comics
+├── tony_stark/      # ENTP 7w8 - MCU
+├── john_wick/       # ISTP 6w5 - Action
+├── joker/           # ENTP 7w8 - DC Comics
+├── daenerys/        # ENFJ 1w2 - Game of Thrones
+├── ripley/          # INTJ 8w9 - Alien
+├── katniss/         # ISTP 6w5 - Hunger Games
+└── wonder_woman/    # ENFJ 2w1 - DC Comics
 ```
-
-Each character generates 9 files with deep personality profiles, behavioral rules, and organizational integration.
-
----
-
-## 🧠 How It Works
-
-**Three psychology frameworks + Wikipedia context:**
-
-| Layer | What It Provides |
-|-------|-----------------|
-| **MBTI** | Cognitive style (how they think) |
-| **Enneagram** | Core motivation (what drives them) |
-| **Instincts** | Focus area (what they prioritize) |
-| **Wikipedia** | Real-world grounding (their actual story) |
-
-**Result:** Ripley doesn't just "analyze threats" — she analyzes them like someone who survived the Nostromo. Batman doesn't just "plan" — he plans like someone who watched his parents die and vowed it would never happen again.
 
 ---
 
@@ -299,7 +255,7 @@ Each character generates 9 files with deep personality profiles, behavioral rule
 
 - **Python 3.9+**
 - **Ollama** with `qwen2.5:14b` — [Install Ollama](https://ollama.ai)
-- **Internet** for Wikipedia context (optional)
+- **Internet** for Wikipedia context (optional, works without)
 
 ---
 
@@ -311,12 +267,4 @@ Works standalone or with:
 
 ---
 
-**MIT License** | Built for humans who want AI with soul 🎭
-
----
-
-<div align="center">
-
-*"Generic agents give you answers. Personality-driven agents give you perspectives."*
-
-</div>
+**MIT License** | Tested, not just marketed 🎭
