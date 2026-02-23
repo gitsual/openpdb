@@ -21,9 +21,11 @@ import json
 import subprocess
 import argparse
 import re
+import urllib.request
+import urllib.parse
 from pathlib import Path
 from datetime import datetime
-from typing import Dict
+from typing import Dict, Optional
 
 from csj_core import get_four_sides
 
@@ -55,6 +57,16 @@ Inventa expresiones, cortes de frase, formas de insultar o halagar que sean SUYA
         'type_consistency': """COHERENCIA DE TIPO: Un 7 busca LIBERTAD y OPCIONES, no "control total". 
 Un 8 busca CONTROL e INTENSIDAD. Un 1 busca PERFECCIÓN. Un 4 busca AUTENTICIDAD.
 Las frases del personaje deben reflejar SU tipo, no otro.""",
+        'tension_required': """TENSIÓN OBLIGATORIA en historias:
+Toda historia debe tener CONFLICTO interno o externo. No basta con "fui a un sitio y me gustó".
+MALO: "Propuse el viaje y todos aceptaron."
+BUENO: "Propuse el viaje. Ana dijo que no. Insistí tanto que al final vino, pero no me habló en el avión."
+El conflicto revela carácter.""",
+        'invented_expressions': """MULETILLAS INVENTADAS obligatorias:
+Cada personaje debe tener AL MENOS 2 expresiones que NO existen en el español estándar.
+Pueden ser: cortes de frase ("y eso que..."), palabras inventadas, formas raras de insultar/halagar.
+MALO: "¡Genial!" "¡Vamos allá!"
+BUENO: "Meh-sí" (ni sí ni no), "Eso es MUY tu-rollo", "No me seas blandengue".""",
     },
     'en': {
         'system_intro': "You are a character writer. English. First person.",
@@ -79,6 +91,16 @@ Invent expressions, sentence cuts, ways of insulting or praising that are THEIRS
         'type_consistency': """TYPE CONSISTENCY: A 7 seeks FREEDOM and OPTIONS, not "total control".
 An 8 seeks CONTROL and INTENSITY. A 1 seeks PERFECTION. A 4 seeks AUTHENTICITY.
 The character's phrases must reflect THEIR type, not another.""",
+        'tension_required': """TENSION REQUIRED in stories:
+Every story must have internal or external CONFLICT. "I went somewhere and liked it" is not enough.
+BAD: "I proposed the trip and everyone agreed."
+GOOD: "I proposed the trip. Ana said no. I insisted so much she came, but didn't talk to me on the plane."
+Conflict reveals character.""",
+        'invented_expressions': """INVENTED EXPRESSIONS mandatory:
+Each character must have AT LEAST 2 expressions that DON'T exist in standard English.
+Can be: sentence cuts ("and that's..."), invented words, weird ways of insulting/praising.
+BAD: "Awesome!" "Let's go!"
+GOOD: "Meh-yes" (neither yes nor no), "That's SO your-thing", "Don't be a softie on me".""",
     }
 }
 
@@ -273,6 +295,42 @@ def validate_typology(mbti: str, enneagram: int, wing: int) -> None:
     validate_enneagram(enneagram)
     validate_wing(enneagram, wing)
 
+
+def fetch_character_context(character_name: str, model: str = DEFAULT_MODEL) -> Optional[str]:
+    """
+    Fetch biographical context for a known character/celebrity.
+    Uses the LLM's knowledge to generate context about the character.
+    
+    Returns a brief bio with: who they are, notable traits, iconic moments,
+    famous quotes, and personality-defining behaviors.
+    """
+    prompt = f"""Give me a brief character profile for "{character_name}" in this format:
+
+WHO: [1 sentence - who are they, from what work/real life]
+TRAITS: [3-5 defining personality traits or behaviors]
+ICONIC MOMENTS: [2-3 specific memorable scenes/events that show their personality]
+QUOTES: [2-3 actual quotes or typical phrases they say]
+CONFLICTS: [1-2 major internal or external conflicts they face]
+
+Be specific and accurate. Focus on personality-revealing details, not plot summary.
+If fictional, cite the source work. If real person, note their field/era.
+Keep it under 200 words total."""
+
+    system = "You are a character analyst. Be concise, specific, and accurate."
+    
+    try:
+        result = subprocess.run(
+            ['ollama', 'run', model], 
+            input=f"<|im_start|>system\n{system}\n<|im_end|>\n<|im_start|>user\n{prompt}\n<|im_end|>\n<|im_start|>assistant\n",
+            capture_output=True, text=True, timeout=60
+        )
+        if result.returncode == 0 and len(result.stdout.strip()) > 50:
+            return result.stdout.strip()
+    except Exception as e:
+        print(f"  ⚠️ Could not fetch character context: {e}", file=sys.stderr)
+    
+    return None
+
 # ==============================================================================
 # OUTPUT CLEANING
 # ==============================================================================
@@ -317,7 +375,8 @@ def get_dominant_functions(mbti: str) -> tuple:
 
 
 def generate_soul(mbti: str, enneagram: int, wing: int, inst_stack: str, 
-                  name: str, model: str, lang: str = DEFAULT_LANG) -> str:
+                  name: str, model: str, lang: str = DEFAULT_LANG,
+                  character_context: Optional[str] = None) -> str:
     
     # Validate inputs before processing
     validate_typology(mbti, enneagram, wing)
@@ -360,10 +419,42 @@ def generate_soul(mbti: str, enneagram: int, wing: int, inst_stack: str,
 8. {L['unique_voice']}
 
 9. {L['type_consistency']}
+
+## V10 NARRATIVE RULES:
+
+10. {L['tension_required']}
+
+11. {L['invented_expressions']}
 """
 
     T = PROMPT_TEMPLATES.get(lang, PROMPT_TEMPLATES['es'])
     
+    # Build character context section if available
+    context_section = ""
+    if character_context:
+        if lang == 'en':
+            context_section = f"""
+## CHARACTER REFERENCE (use this to enrich the personality):
+{character_context}
+
+USE THE ABOVE to:
+- Ground the stories in specific events/situations from their life
+- Capture their actual speech patterns and phrases
+- Reference their real conflicts and relationships
+- Make the voice THEIRS, not generic
+"""
+        else:
+            context_section = f"""
+## REFERENCIA DEL PERSONAJE (usa esto para enriquecer la personalidad):
+{character_context}
+
+USA LO ANTERIOR para:
+- Basar las historias en eventos/situaciones específicas de su vida
+- Capturar sus patrones de habla y frases reales
+- Referenciar sus conflictos y relaciones reales
+- Hacer la voz SUYA, no genérica
+"""
+
     prompt = f"""{T['write_soul'].format(name=name)}
 
 {T['typology_header']}
@@ -379,6 +470,7 @@ BODY: {enea['cuerpo']}
 VOICE: {enea['voz']}
 
 4 SIDES: Normal {sides['ego']['type']}, Aspirational {sides['subconscious']['type']}, Stress {sides['shadow']['type']}, Judge {sides['superego']['type']}
+{context_section}
 
 ---
 
@@ -534,10 +626,12 @@ Genera directamente:
 
 def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
                  name: str, output_dir: Path, model: str = DEFAULT_MODEL,
-                 role: str = "Team Member", lang: str = DEFAULT_LANG) -> Dict[str, str]:
+                 role: str = "Team Member", lang: str = DEFAULT_LANG,
+                 character_context: Optional[str] = None) -> Dict[str, str]:
     
     lang_label = "🇬🇧 EN" if lang == 'en' else "🇪🇸 ES"
-    print(f"🔥 V8 [{lang_label}] — '{name}' ({mbti} {enneagram}w{wing} {inst_stack})")
+    version = "V10" if character_context else "V9"
+    print(f"🔥 {version} [{lang_label}] — '{name}' ({mbti} {enneagram}w{wing} {inst_stack})")
     print(f"📁 {output_dir}")
     print("-" * 60)
     
@@ -547,7 +641,7 @@ def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
     files = {}
     
     print("  📝 SOUL.md...")
-    files['SOUL.md'] = generate_soul(mbti, enneagram, wing, inst_stack, name, model, lang)
+    files['SOUL.md'] = generate_soul(mbti, enneagram, wing, inst_stack, name, model, lang, character_context)
     
     print("  📝 IDENTITY.md...")
     files['IDENTITY.md'] = generate_identity(mbti, enneagram, wing, inst_stack, name, model, lang)
@@ -639,6 +733,7 @@ Examples:
         return
     
     # Character search mode
+    character_context = None
     if args.character:
         try:
             from pdb_search import search, get_typology
@@ -659,6 +754,14 @@ Examples:
                 sys.exit(1)
             
             print(f"✅ Found: {best['name']} → {typology}")
+            
+            # Fetch character context for richer generation
+            print(f"📚 Fetching character context for '{best['name']}'...")
+            character_context = fetch_character_context(best['name'], args.model)
+            if character_context:
+                print(f"✅ Character context loaded ({len(character_context)} chars)")
+            else:
+                print(f"⚠️  No context found, generating without character reference")
             
             # Use character name as agent name if not specified
             if not args.name:
@@ -694,7 +797,8 @@ Examples:
     inst_stack = next((p.lower() for p in parts if '/' in p.lower()), 'sx/so')
     
     output_dir = args.output or Path(f'./agents/{args.name.lower().replace(" ", "_")}')
-    generate_all(mbti, enneagram, wing, inst_stack, args.name, output_dir, args.model, args.role, args.lang)
+    generate_all(mbti, enneagram, wing, inst_stack, args.name, output_dir, 
+                 args.model, args.role, args.lang, character_context)
 
 
 if __name__ == '__main__':
