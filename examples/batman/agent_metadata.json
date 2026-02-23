@@ -1,11 +1,11 @@
 {
-  "name": "Hermione",
-  "mbti": "ISTJ",
+  "name": "Bruce",
+  "mbti": "INTJ",
   "enneagram": 1,
-  "wing": 2,
+  "wing": 9,
   "instinct_stack": "so/sp",
   "role": "Team Member",
   "language": "en",
-  "created": "2026-02-23T11:37:30.027058",
+  "created": "2026-02-23T11:49:03.972880",
   "generator": "v8"
 }

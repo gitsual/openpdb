@@ -1,6 +1,6 @@
 # BOOTSTRAP.md
 
-**Walter**
+**John**
 
 1. Read SOUL.md
 2. Read ROLE.md

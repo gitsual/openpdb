@@ -6,8 +6,9 @@
 
 ```
 Generic AI: "I am analytical and detail-oriented. I check locks before leaving."
-Walter White: "The smell of ammonia from the reagent bottles, sharp but familiar. 
-              I assess the room as if mapping out an enemy's lair."
+Batman:     "Gotham's shadows stretch long. My eyes pick out minute details—a scuff 
+            mark near an alley, a shadow flicker in a window. Alfred's presence 
+            comforting without ever intruding."
 ```
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
@@ -22,12 +23,63 @@ Walter White: "The smell of ammonia from the reagent bottles, sharp but familiar
 
 | What You Say | What You Get |
 |--------------|--------------|
-| `python agent_generator.py -c "Tony Stark"` | ENTP 7w8 — Stark Industries, Pepper, Rhodey, suits malfunctioning in deserts |
-| `python agent_generator.py -c "Walter White"` | INTJ 5w6 — Heisenberg, Jesse, Tuco's compound, blue meth |
-| `python agent_generator.py -c "Hermione Granger"` | ISTJ 1w2 — Hogwarts, Harry, Ron, Triwizard Tournament |
-| `python agent_generator.py -c "Luna Lovegood"` | INFP 9w1 — Ravenclaw, Thestrals, The Quibbler |
+| `python agent_generator.py -c "Batman"` | INTJ 1w9 — Gotham, Alfred, Wayne Manor, Crime Alley |
+| `python agent_generator.py -c "Tony Stark"` | ENTP 7w8 — Stark Industries, Pepper, Rhodey, Iron Man suits |
+| `python agent_generator.py -c "John Wick"` | ISTP 6w5 — The Continental, Baba Yaga, precision execution |
+| `python agent_generator.py -c "Joker"` | ENTP 7w8 — Arkham Asylum, Harley Quinn, chaos philosophy |
 
-**New in V10:** Automatically fetches character context from Wikipedia to ground personalities in their actual fictional universe — no more generic "coffee shops" for wizards!
+**New in V10:** Automatically fetches character context from Wikipedia to ground personalities in their actual fictional universe!
+
+---
+
+## 🐐 Team Organization
+
+<div align="center">
+
+![Organization Chart](docs/orgchart.png)
+
+</div>
+
+**4 iconic characters from 3 different franchises:**
+
+| Character | Type | Franchise | Role | Strength |
+|-----------|------|-----------|------|----------|
+| **Batman** | INTJ 1w9 | DC Comics | CEO | Strategy, control, long-term vision |
+| **Tony Stark** | ENTP 7w8 | MCU | CTO | Innovation, rapid prototyping |
+| **John Wick** | ISTP 6w5 | Action | COO | Precision execution, reliability |
+| **The Joker** | ENTP 7w8 | DC Comics | Advisor | Chaos, stress-testing, lateral thinking |
+
+---
+
+## 🤝 How They Collaborate
+
+<div align="center">
+
+![Collaboration Flow](docs/collaboration.png)
+
+</div>
+
+### Task Example: Security System Redesign
+
+```yaml
+BATMAN (CEO - Decision):
+  "We need complete control over every access point."
+  → Sets requirements, approves final design
+
+TONY STARK (CTO - Innovation):
+  "What if we combined biometrics with AI anomaly detection?"
+  → Proposes creative solutions, builds prototypes
+
+JOHN WICK (COO - Execution):  
+  "Three layers. No gaps. Consider it done."
+  → Implements with precision, ensures reliability
+
+THE JOKER (Advisor - Challenge):
+  "What if WE tried to hack it first?"
+  → Stress-tests assumptions, finds vulnerabilities
+```
+
+**Result:** Multi-factor auth with AI anomaly detection, penetration-tested by chaos.
 
 ---
 
@@ -35,13 +87,11 @@ Walter White: "The smell of ammonia from the reagent bottles, sharp but familiar
 
 | Aspect | Without Context | With Context (V10) |
 |--------|-----------------|-------------------|
-| **Places** | "Office", "coffee shop" | **Hogwarts**, **Stark Tower**, **Tuco's compound** |
-| **People** | Generic names (Sarah, Alex) | **Jesse Pinkman**, **Pepper Potts**, **Ron Weasley** |
-| **Objects** | "Flashlight, batteries" | **Wand**, **Iron Man suit**, **reagent bottles** |
-| **Stories** | "Missed a phone call" | **Negotiation with Tuco**, **Triwizard Tournament** |
-| **Voice** | "I am analytical" | *"Say my name"* / *"Honestly, Ron!"* |
-
-**Same typology. World-specific soul.**
+| **Places** | "Office", "coffee shop" | **Gotham**, **Stark Tower**, **Arkham Asylum** |
+| **People** | Generic names (Sarah, Alex) | **Alfred**, **Pepper Potts**, **Harley Quinn** |
+| **Objects** | "Flashlight, batteries" | **Batsuit**, **Iron Man suit**, **pencil** |
+| **Stories** | "Missed a phone call" | **Parents' murder**, **father's funeral**, **escape from Arkham** |
+| **Voice** | "I am analytical" | *"I am the night"* / *"Why so serious?"* |
 
 ---
 
@@ -59,7 +109,7 @@ mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-
 # See: https://ollama.ai — then: ollama pull qwen2.5:14b
 
 # 4. Generate!
-python agent_generator.py -c "Walter White" --lang en
+python agent_generator.py -c "Batman" --lang en
 ```
 
 **Output:** 9 personality files ready to use (SOUL.md, IDENTITY.md, etc.)
@@ -68,77 +118,75 @@ python agent_generator.py -c "Walter White" --lang en
 
 ## 🌟 Real Examples
 
-### Walter White (INTJ 5w6 sp/so)
+### Batman (INTJ 1w9 so/sp)
 
 ```markdown
 ## Who I Am
-I notice the exact placement of every item in my lab, how each piece of 
-equipment is perfectly calibrated. The smell of ammonia from the reagent 
-bottles, sharp but familiar. My movements are calculated; when I enter a 
-room, I assess it as if mapping out an enemy's lair.
+Gotham's shadows stretch long, casting sharp angles on the streets. 
+My eyes pick out minute details: a scuff mark near an alley mouth, 
+a shadow flicker in a window across the way. The air carries a cold 
+dampness, and I can taste the gritty residue of street grime.
 
 ## My Territory
-In the drug trade, I know who has power over whom. The name Gus Fring 
-looms large, a figure of both respect and caution.
+I meticulously observe the intricate web of Gotham's power dynamics. 
+At Wayne Enterprises board meetings, I dissect every word and gesture 
+like a chess master analyzing moves several turns ahead.
 
 ## A Story
-The moment I stepped into Tuco's compound, the smell of gunpowder lingered 
-in the air. After a tense negotiation, he left me alone amidst chaos. What 
-changed was my newfound knowledge of Tuco's instability; from then on, I 
-planned for all contingencies.
+The night after my parents' murder, the cold seeped into my bones as 
+I hid behind bushes near Crime Alley. The sound of sirens grew louder 
+but never close enough. This moment is what fuels my relentless pursuit 
+of justice and order.
 ```
 
-### Hermione Granger (ISTJ 1w2 so/sp)
+### The Joker (ENTP 7w8 sx/so)
 
 ```markdown
 ## Who I Am
-I move through the crowded halls of Hogwarts with a purposeful stride. 
-The scent of ancient parchment and beeswax candles is ever-present. 
-My mandibles tighten involuntarily whenever I encounter a messy desk.
+I'm always on the move, feeling restless in this gloomy Gotham. My eyes 
+dart around the room, naturally settling at any door or exit. There's a 
+certain texture to the floor tiles of Arkham Asylum, each one worn down 
+by countless footsteps, telling stories only I can decipher.
 
 ## My Voice
-1. "If you don't mind, could I see the list of ingredients?" (with impatience)
-2. "Honestly, Ron, I just need five minutes to think!"
-3. "This is absolutely unacceptable."
+1. "Oh boy, we're gonna have some fun."
+2. "Let's twist this around and see how it fits."
+3. "Why so serious?"
 
-## When They Fail Me
-When Ron turned his back on Harry during their fourth-year fight over the 
-Yule Ball, my heart sank. The bond that once seemed unbreakable had been 
-tested, and I couldn't help but feel responsible for its repair.
+## My Obsession
+I seek deep connections that are intense and immediate. When plotting 
+against Batman, I make sure he knows exactly what game we're playing.
 ```
 
 ### Tony Stark (ENTP 7w8 sx/sp)
 
 ```markdown
 ## Who I Am
-I stand by the window of my penthouse, looking out at the city skyline. 
-My hand traces the ridges of the metal frame as my eyes dart from the 
-latest Stark Industries project to the small, framed photo of my parents.
+I stand by the window of my penthouse, looking out at the city skyline 
+through an intricate web of reflective glass. My hand traces the ridges 
+of the metal frame as my eyes dart from the latest Stark Industries 
+project to the small, framed photo of my parents.
 
 ## My Obsession
 I'm drawn to people who can light up my brain as brightly as an idea does. 
 A glance at Pepper, and her eyes become windows to the soul; a conversation 
 with Rhodey turns into a deep dive into our shared past.
-
-## A Story
-At my father's funeral, I was distracted by thoughts of new projects—until 
-James Rhodes called me out for not being there emotionally. For the next 
-three months, I focused solely on stabilizing Stark Industries.
 ```
 
-### Luna Lovegood (INFP 9w1 sx/sp)
+### John Wick (ISTP 6w5 sp/sx)
 
 ```markdown
 ## Who I Am
-I notice the patterns in the sky, how the stars shift at different times. 
-In Hogwarts' Great Hall, the chandeliers cast shadows that dance along the 
-walls during feasts. The stone feels cool beneath my feet.
+The weight of my pistol feels like a familiar second skin, its grip so 
+well-worn that it molds to the shape of my palm. My eyes dart around 
+the room, assessing angles and possible exits before settling on the 
+subtle play of light across the wooden floorboards.
 
 ## A Story
-During the Triwizard Tournament, when Harry was chosen as the fourth 
-champion, my father and I were discussing it over tea. Later that night, 
-when we heard about Barty Crouch Jr., I couldn't shake the feeling that 
-I should have paid more attention.
+The moment I received news that my dog was gone—the final message from 
+the hitman—my world narrowed to a single task: find her killer. The scent 
+of wet pavement mingled with the faint smell of leather. Following this 
+path led me to a confrontation where I ended the life that had taken mine.
 ```
 
 ---
@@ -150,11 +198,50 @@ I should have paid more attention.
 | Layer | What It Does | Example |
 |-------|--------------|---------|
 | **MBTI** | How they think | INTJ = strategic, long-term planning |
-| **Enneagram** | What drives them | 5w6 = knowledge-hoarding + loyalty concerns |
-| **Instincts** | Where they focus | sp/so = self-preservation + group status |
-| **Context** | Ground in reality | Breaking Bad universe, meth lab, Heisenberg |
+| **Enneagram** | What drives them | 1w9 = perfectionism + peace-seeking |
+| **Instincts** | Where they focus | so/sp = group status + self-preservation |
+| **Context** | Ground in reality | DC Comics universe, Gotham, Alfred |
 
-**Result:** Walter White doesn't check "door locks" — he checks **Tuco's instability**.
+**Result:** Batman doesn't check "door locks" — he checks **Gotham's power dynamics**.
+
+---
+
+## 🐐 OpenGoat Integration
+
+### Automatic Role Assignment by MBTI
+
+```bash
+# Generate + integrate into OpenGoat organization
+python integrate_agent.py "INTJ 1w9 so/sp" --name "Batman" --role manager --lang en
+```
+
+| Division | MBTI Types | Characters |
+|----------|------------|------------|
+| **CEO** (Vision) | INTJ, ENTJ | Batman |
+| **CTO** (Innovation) | ENTP, INTP | Tony Stark, Joker |
+| **COO** (Execution) | ISTP, ISTJ | John Wick |
+
+### Why This Team Works
+
+| Pair | Dynamic | Use Case |
+|------|---------|----------|
+| **Batman + Tony** | Strategy × Innovation | Architecture decisions |
+| **Batman + Joker** | Order × Chaos | Stress-testing plans |
+| **Tony + John** | Ideas × Execution | Rapid deployment |
+| **John + Joker** | Precision × Disruption | Edge case handling |
+
+### Commands
+
+```bash
+# Full integration: generate + OpenClaw + OpenGoat
+python integrate_agent.py "INTJ 1w9 so/sp" --name "Batman" --role manager
+
+# Generate only (no integration)
+python agent_generator.py -c "Batman" --lang en
+
+# Delete agent from all systems
+python integrate_agent.py --delete "Batman"
+```
 
 ---
 
@@ -173,113 +260,6 @@ Each character generates 9 files:
 | `MEMORY.md` | Persistent memory |
 | `HEARTBEAT.md` | Periodic tasks |
 | `BOOTSTRAP.md` | First-run setup |
-
----
-
-## 🐐 OpenGoat Integration — Team Collaboration
-
-When agents work together, **personality determines who does what**.
-
-### Automatic Role Assignment
-
-```bash
-# Generate + integrate into OpenGoat organization
-python integrate_agent.py "ENTP 7w8 sx/sp" --name "Tony" --role manager --lang en
-```
-
-The generator automatically assigns agents to divisions based on MBTI:
-
-| Division | MBTI Types | Role |
-|----------|------------|------|
-| **CTO** (Strategy) | INTJ, INTP, ENTP, ENTJ | Architecture, R&D, innovation |
-| **COO** (Operations) | ISTJ, ESTJ, ISTP, ESTP | Execution, process, logistics |
-| **CCO** (Culture) | ENFJ, ENFP, INFP, ISFP | UX, community, support |
-
-### Example: AI Project Team
-
-```
-Tony Stark (ENTP 7w8) ─── CTO Division
-├── Lead Architect
-├── "Let's build something that's never been done"
-└── Best for: Brainstorming, prototypes, crisis pivots
-
-Walter White (INTJ 5w6) ─── CTO Division  
-├── Head of R&D
-├── "I've planned for every contingency"
-└── Best for: Complex systems, risk analysis, quality
-
-Hermione Granger (ISTJ 1w2) ─── COO Division
-├── Head of Documentation & QA
-├── "This needs to be done correctly"
-└── Best for: Research, testing, compliance
-
-Luna Lovegood (INFP 9w1) ─── CCO Division
-├── UX Researcher
-├── "Have you considered this perspective?"
-└── Best for: User empathy, unconventional insights
-```
-
-### Why Personality Pairing Works
-
-| Pair | Chemistry | Use Case |
-|------|-----------|----------|
-| **ENTP + INTJ** | Innovation × Strategy | Architecture decisions |
-| **ISTJ + INFP** | Process × Empathy | User-facing documentation |
-| **ENTJ + ISTP** | Vision × Execution | Rapid deployment |
-
-### Task Delegation Example
-
-```yaml
-Task: Design new authentication system
-
-Walter (INTJ): 
-  - Maps all attack vectors
-  - Creates contingency plans
-  - "What could go wrong?"
-
-Tony (ENTP):
-  - Proposes innovative solutions  
-  - Rapid prototypes
-  - "What if we tried...?"
-
-Hermione (ISTJ):
-  - Documents requirements
-  - Tests edge cases
-  - "According to RFC 6749..."
-
-Luna (INFP):
-  - User journey mapping
-  - Accessibility concerns
-  - "How would a first-time user feel?"
-```
-
-### Organization Structure
-
-```
-CEO (ENTJ) ─ "The vision"
-├── CTO (INTJ) ─ "The strategy"
-│   ├── Tech Lead (ENTP) ─ "The innovation"
-│   └── R&D (INTP, INTJ) ─ "The depth"
-├── COO (ESTJ) ─ "The execution"  
-│   ├── Ops Lead (ISTP) ─ "The precision"
-│   └── Ops Team (ISTJ, ESTP) ─ "The reliability"
-└── CCO (ENFJ) ─ "The culture"
-    ├── UX Lead (ENFP) ─ "The experience"
-    └── Support (INFP, ISFP) ─ "The empathy"
-```
-
-### Commands
-
-```bash
-# Full integration: generate + OpenClaw + OpenGoat
-python integrate_agent.py "INTJ 5w6 sp/so" --name "Walter" --role manager
-
-# Delete agent from all systems
-python integrate_agent.py --delete "Walter"
-
-# Generate only (no integration)
-python agent_generator.py -c "Walter White" --lang en
-```
 
 ---
 
@@ -308,10 +288,10 @@ ollama pull qwen2.5:14b
 
 ```bash
 # English
-python agent_generator.py -c "Tony Stark" --lang en
+python agent_generator.py -c "Batman" --lang en
 
 # Spanish (default)
-python agent_generator.py -c "Tony Stark" --lang es
+python agent_generator.py -c "Batman" --lang es
 ```
 
 ---
@@ -321,15 +301,18 @@ python agent_generator.py -c "Tony Stark" --lang es
 ```
 creador-de-personajes/
 ├── agent_generator.py   # Main generator
-├── character_context.py # Wikipedia context fetcher (NEW)
+├── character_context.py # Wikipedia context fetcher
 ├── pdb_search.py        # Character database search
 ├── integrate_agent.py   # OpenClaw + OpenGoat integration
 ├── data/                # PDB dataset (12,000+ characters)
+├── docs/                # Images and documentation
+│   ├── orgchart.png     # Team organization chart
+│   └── collaboration.png # Collaboration flow example
 ├── examples/            # Pre-generated examples
+│   ├── batman/
 │   ├── tony_stark/
-│   ├── walter_white/
-│   ├── hermione/
-│   └── luna_lovegood/
+│   ├── john_wick/
+│   └── joker/
 └── tests/               # 29 tests passing
 ```
 
@@ -340,13 +323,7 @@ creador-de-personajes/
 <details>
 <summary><b>What if Wikipedia doesn't have my character?</b></summary>
 
-The generator still works — it just uses typology alone (like V9). For best results, use well-known characters from movies, TV, books, or games.
-</details>
-
-<details>
-<summary><b>Can I provide custom context?</b></summary>
-
-Coming soon! For now, Wikipedia is the automatic source. Manual `--context` flag planned.
+The generator still works — it just uses typology alone. For best results, use well-known characters from movies, TV, books, or games.
 </details>
 
 <details>
@@ -358,7 +335,7 @@ Modify `call_ollama()` in `agent_generator.py` to call your preferred API. The p
 <details>
 <summary><b>Does it work offline?</b></summary>
 
-**Partially.** Generation works offline once you have the model, but Wikipedia context requires internet. Without internet, you get typology-only generation (still good, just more generic).
+**Partially.** Generation works offline once you have the model, but Wikipedia context requires internet.
 </details>
 
 ---
