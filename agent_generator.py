@@ -32,159 +32,127 @@ from csj_core import get_four_sides
 DEFAULT_MODEL = "qwen2.5:14b"
 DEFAULT_LANG = "es"
 
-# Language configurations
+# Language configurations - V12: Simplified to 5 core rules + few-shot
 LANG_CONFIG = {
     'es': {
-        'system_intro': "Eres un escritor de personajes. Español. Primera persona.",
-        'no_meta': "PROHIBIDO escribir 'mi ala', 'mi instinto', 'mi función dominante', o cualquier etiqueta de tipología.",
-        'show_dont_tell': "En su lugar, MUESTRA el comportamiento en ESCENAS concretas.",
-        'no_meta_comments': "NO escribas meta-comentarios ni placeholders.",
-        'actions_not_desc': "Cada característica = una ACCIÓN o ESCENA, no una descripción.",
-        'mbti_behavior': "El MBTI se ve en CÓMO actúa, no en etiquetas.",
-        'example_bad': 'EJEMPLO MALO: "Mi instinto sp me lleva a acumular recursos"',
-        'example_good': 'EJEMPLO BUENO: "Siempre tengo una mochila lista junto a la puerta. Agua, dinero, cargador. Por si acaso."',
-        'generate_directly': "Genera TODO el contenido directamente. Sin placeholders. Sin explicaciones.",
-        # V9 additions for narrative quality
-        'no_cliches': """PROHIBIDO usar clichés sensoriales: "aroma a café", "hormigueo en el estómago", "corazón late rápido", "nudo en la garganta".
-EN SU LUGAR: detalles ÚNICOS que solo ESTE personaje notaría. ¿Qué textura específica? ¿Qué olor concreto de ESE lugar?""",
-        'consequences': """TODA historia debe tener CONSECUENCIA EJECUTADA:
-MALO: "Descubrí que me había perdido la llamada. Me sentí mal."
-BUENO: "Descubrí que me había perdido la llamada. No le hablé en tres semanas. Cuando volví, ya tenía nuevo mejor amigo."
-La consecuencia cambia algo PERMANENTEMENTE.""",
-        'unique_voice': """La voz debe tener MULETILLAS únicas, expresiones que SOLO este personaje usaría.
-No frases genéricas como "¡Genial!" o "Gracias por ser quien eres".
-Inventa expresiones, cortes de frase, formas de insultar o halagar que sean SUYAS.""",
-        'type_consistency': """COHERENCIA DE TIPO: Un 7 busca LIBERTAD y OPCIONES, no "control total". 
-Un 8 busca CONTROL e INTENSIDAD. Un 1 busca PERFECCIÓN. Un 4 busca AUTENTICIDAD.
-Las frases del personaje deben reflejar SU tipo, no otro.""",
-        'tension_required': """TENSIÓN OBLIGATORIA en historias:
-Toda historia debe tener CONFLICTO interno o externo. No basta con "fui a un sitio y me gustó".
-MALO: "Propuse el viaje y todos aceptaron."
-BUENO: "Propuse el viaje. Ana dijo que no. Insistí tanto que al final vino, pero no me habló en el avión."
-El conflicto revela carácter.""",
-        'invented_expressions': """MULETILLAS INVENTADAS obligatorias:
-Cada personaje debe tener AL MENOS 2 expresiones que NO existen en el español estándar.
-Pueden ser: cortes de frase ("y eso que..."), palabras inventadas, formas raras de insultar/halagar.
-MALO: "¡Genial!" "¡Vamos allá!"
-BUENO: "Meh-sí" (ni sí ni no), "Eso es MUY tu-rollo", "No me seas blandengue".""",
-        # V11 additions
-        'integrated_expressions': """MULETILLAS INTEGRADAS (V11):
-Las expresiones inventadas NO pueden estar solo en la sección "Cómo Hablo".
-DEBEN aparecer TAMBIÉN en: las historias, los diálogos, los pensamientos internos.
-Si inventas "Meh-sí", debe aparecer en al menos 2-3 historias del documento.""",
-        'internal_reflection': """REFLEXIÓN INTERNA obligatoria (V11):
-Toda historia de conflicto debe incluir 2-3 frases de PROCESO INTERNO:
-MALO: "Ana dijo que no. Insistí. Vino pero no me habló."
-BUENO: "Ana dijo que no. ¿Por qué me importaba tanto ganar? Insistí como si mi vida dependiera de ello. 
-       Vino, pero en el bus no me habló. Miraba por la ventana y yo pensaba: ¿valió la pena?"
-El proceso ENTRE conflicto y consecuencia es obligatorio.""",
-        'uncomfortable_details': """DETALLES INCÓMODOS obligatorios (V11):
-Cada historia debe tener AL MENOS UN detalle sensorial que sea INCÓMODAMENTE específico:
-MALO: "el aroma a café", "la luz del atardecer"
-BUENO: "el olor a sudor viejo del autobús", "la mancha de ketchup en mi camiseta que fingí no ver",
-       "el sonido húmedo de su masticar que me daba arcadas"
-Si no incomoda un poco, no es suficientemente específico.""",
+        'system_intro': "Eres un escritor de personajes. Español. Primera persona. ~2500 palabras máximo.",
+        'core_rules': """## 5 REGLAS ABSOLUTAS:
+
+1. PROHIBIDO: etiquetas de tipología ("como ENFP que soy"), clichés ("aroma a café", "hormigueo"), frases genéricas ("¡Genial!").
+
+2. UNA IMAGEN ANCLA por sección: un detalle visual/sensorial potente que el lector recuerde. "Un marco sin foto, vacío y desafiante."
+
+3. HISTORIAS CON ARCO: tensión → decisión → consecuencia permanente. No termines en el momento emocional.
+
+4. VOZ NATURAL: 2-3 expresiones únicas que aparezcan EN las historias, no solo listadas. Como hablarías a un amigo a las 2am.
+
+5. MOSTRAR, NO EXPLICAR: Sin "Ese día aprendí..." ni reflexiones explícitas. El lector infiere.""",
+        'generate_directly': "Genera todo directamente. Sin placeholders.",
     },
     'en': {
-        'system_intro': "You are a character writer. English. First person.",
-        'no_meta': "FORBIDDEN to write 'my wing', 'my instinct', 'my dominant function', or any typology label.",
-        'show_dont_tell': "Instead, SHOW the behavior in CONCRETE SCENES.",
-        'no_meta_comments': "DO NOT write meta-comments or placeholders.",
-        'actions_not_desc': "Each characteristic = an ACTION or SCENE, not a description.",
-        'mbti_behavior': "MBTI shows in HOW they act, not in labels.",
-        'example_bad': 'BAD EXAMPLE: "My sp instinct leads me to accumulate resources"',
-        'example_good': 'GOOD EXAMPLE: "I always keep a bag ready by the door. Water, money, charger. Just in case."',
-        'generate_directly': "Generate ALL content directly. No placeholders. No explanations.",
-        # V9 additions for narrative quality
-        'no_cliches': """FORBIDDEN sensory clichés: "smell of coffee", "butterflies in stomach", "heart racing", "lump in throat".
-INSTEAD: UNIQUE details that only THIS character would notice. What specific texture? What concrete smell of THAT place?""",
-        'consequences': """EVERY story must have EXECUTED CONSEQUENCE:
-BAD: "I found out I missed the call. I felt bad."
-GOOD: "I found out I missed the call. I didn't talk to her for three weeks. When I came back, she had a new best friend."
-The consequence changes something PERMANENTLY.""",
-        'unique_voice': """Voice must have UNIQUE verbal tics, expressions that ONLY this character would use.
-No generic phrases like "That's great!" or "Thanks for being you".
-Invent expressions, sentence cuts, ways of insulting or praising that are THEIRS.""",
-        'type_consistency': """TYPE CONSISTENCY: A 7 seeks FREEDOM and OPTIONS, not "total control".
-An 8 seeks CONTROL and INTENSITY. A 1 seeks PERFECTION. A 4 seeks AUTHENTICITY.
-The character's phrases must reflect THEIR type, not another.""",
-        'tension_required': """TENSION REQUIRED in stories:
-Every story must have internal or external CONFLICT. "I went somewhere and liked it" is not enough.
-BAD: "I proposed the trip and everyone agreed."
-GOOD: "I proposed the trip. Ana said no. I insisted so much she came, but didn't talk to me on the plane."
-Conflict reveals character.""",
-        'invented_expressions': """INVENTED EXPRESSIONS mandatory:
-Each character must have AT LEAST 2 expressions that DON'T exist in standard English.
-Can be: sentence cuts ("and that's..."), invented words, weird ways of insulting/praising.
-BAD: "Awesome!" "Let's go!"
-GOOD: "Meh-yes" (neither yes nor no), "That's SO your-thing", "Don't be a softie on me".""",
-        # V11 additions
-        'integrated_expressions': """INTEGRATED EXPRESSIONS (V11):
-The invented expressions CANNOT be only in the "How I Talk" section.
-They MUST ALSO appear in: the stories, dialogues, internal thoughts.
-If you invent "Meh-yes", it must appear in at least 2-3 stories in the document.""",
-        'internal_reflection': """INTERNAL REFLECTION mandatory (V11):
-Every conflict story must include 2-3 sentences of INTERNAL PROCESS:
-BAD: "Ana said no. I insisted. She came but didn't talk to me."
-GOOD: "Ana said no. Why did winning matter so much to me? I insisted like my life depended on it.
-       She came, but on the bus she didn't talk to me. She stared out the window and I thought: was it worth it?"
-The process BETWEEN conflict and consequence is mandatory.""",
-        'uncomfortable_details': """UNCOMFORTABLE DETAILS mandatory (V11):
-Each story must have AT LEAST ONE sensory detail that is UNCOMFORTABLY specific:
-BAD: "the smell of coffee", "the evening light"
-GOOD: "the stale sweat smell of the bus", "the ketchup stain on my shirt I pretended not to see",
-       "the wet sound of his chewing that made me gag"
-If it doesn't make you slightly uncomfortable, it's not specific enough.""",
+        'system_intro': "You are a character writer. English. First person. ~2500 words max.",
+        'core_rules': """## 5 ABSOLUTE RULES:
+
+1. FORBIDDEN: typology labels ("as an ENFP"), clichés ("smell of coffee", "butterflies"), generic phrases ("Awesome!").
+
+2. ONE ANCHOR IMAGE per section: a powerful visual/sensory detail the reader remembers. "An empty photo frame, challenging."
+
+3. STORIES WITH ARC: tension → decision → permanent consequence. Don't end at the emotional moment.
+
+4. NATURAL VOICE: 2-3 unique expressions that appear IN stories, not just listed. Like talking to a friend at 2am.
+
+5. SHOW, DON'T EXPLAIN: No "That day I learned..." or explicit reflections. Reader infers.""",
+        'generate_directly': "Generate everything directly. No placeholders.",
     }
 }
 
-# Prompt templates by language - V11: Organic section names, no typology structure exposed
+# Few-shot example for quality reference
+FEW_SHOT_EXAMPLE = {
+    'es': """## EJEMPLO DE CALIDAD (imita este estilo):
+
+### Una Historia (cómo DEBE sonar):
+Tenía dieciséis años y un helado de pistache derritiéndose en la mano. Es lo que más recuerdo: el verde chorreando entre mis dedos mientras ese güey se acercaba.
+
+Dijo algo que sonaba a cumplido pero se sentía a trampa. Tenía un diente chueco que me distrajo.
+
+No sé por qué, pero le dije: "Te apuesto una carrera hasta el árbol grande." Él se rió y yo ya estaba corriendo.
+
+Corrí tan rápido que se me salió el tenis izquierdo. Llegué coja, con el helado embarrado en la blusa, riéndome sola como loca.
+
+Él ni me siguió. Se quedó viéndome raro y se fue.
+
+Todavía tengo ese tenis en algún lado. Nada más el izquierdo.
+
+(NOTA: Detalle irrelevante pero memorable, voz natural, sin moraleja explícita, consecuencia tangible)
+---
+""",
+    'en': """## QUALITY EXAMPLE (imitate this style):
+
+### A Story (how it SHOULD sound):
+I was sixteen with a pistachio ice cream melting in my hand. That's what I remember most: the green dripping between my fingers as that guy walked over.
+
+He said something that sounded like a compliment but felt like a trap. He had a crooked tooth I couldn't stop looking at.
+
+I don't know why, but I said: "Race you to the big tree." He laughed and I was already running.
+
+I ran so fast my left shoe came off. I got there limping, ice cream smeared on my shirt, laughing alone like a crazy person.
+
+He didn't even follow. Just stood there looking at me weird, then left.
+
+I still have that shoe somewhere. Just the left one.
+
+(NOTE: Irrelevant but memorable detail, natural voice, no explicit moral, tangible consequence)
+---
+"""
+}
+
+# Prompt templates by language - V12: Back to V9 simplicity with better guidance
 PROMPT_TEMPLATES = {
     'es': {
         'write_soul': "Escribe SOUL.md para {name}.",
-        'typology_header': "TIPOLOGÍA (NO LA MENCIONES EXPLÍCITAMENTE, SOLO ÚSALA PARA DAR FORMA):",
-        'structure': "ESTRUCTURA (2000-2500 palabras):",
-        'who_i_am': "## Quién Soy\n[100 palabras. ESCENAS y SENSACIONES ÚNICAS (no clichés). ¿Qué noto que OTROS no notarían? UN detalle INCÓMODAMENTE específico (marca, olor raro, manía física). Cómo me muevo, qué hago. USAR mis muletillas inventadas aquí también.]",
-        'my_voice': "## Cómo Hablo\n[5 frases ÚNICAS mías con muletillas personales. NO frases genéricas. Inventa expresiones que NO EXISTEN en español estándar. ESTAS MULETILLAS DEBEN APARECER en las historias del documento.]",
-        'what_drives': "## Lo Que Me Empuja",
-        'the_fire': "### Cuando Estoy Vivo\n[La energía en mi CUERPO. Qué siento físicamente. Qué me hace HACER. INCLUIR una de mis muletillas.]",
-        'fire_shadow': "### Mi Contradicción\n[El otro lado de mí: cómo me saboteo o complico. Una escena con DIÁLOGO usando mis muletillas.]",
-        'obsession': "### Lo Que Siempre Hago\n[Patrones de comportamiento que no puedo evitar. Escenas concretas.]",
-        'territory': "### Mi Espacio\n[Cómo marco territorio físico o social. Nombres de personas o lugares reales.]",
-        'a_story': "## El Día Que Todo Cambió\n[80-100 palabras. Momento ESPECÍFICO con CONFLICTO interno ('¿por qué hice eso?'). Sensorial INCÓMODO (no 'aroma a café'). ARCO COMPLETO: tensión → mi decisión → consecuencia → cómo me cambió. USAR mis muletillas en el diálogo.]",
-        'when_i_fall': "## Cuando Todo Se Rompe",
-        'my_fear': "### Esa Vez Que Hui\n[El miedo como ESCENA específica. Qué evité. Qué perdí por evitarlo.]",
-        'losing_control': "### Cuando Pierdo Los Papeles\n[Comportamientos VERGONZOSOS bajo estrés. Pensamientos paranoicos con MI VOZ, no genéricos.]",
-        'judge_voice': "### Lo Que Me Digo A Las 3AM\n[Frases EXACTAS de autocrítica. Diálogo interno CRUEL y específico.]",
+        'typology_header': "TIPOLOGÍA (usa para dar forma, NO menciones):",
+        'structure': "ESTRUCTURA (~2500 palabras, estilo conversacional):",
+        'who_i_am': "## Quién Soy\n[~100 palabras. UNA imagen ancla memorable. Cómo me muevo, qué noto.]",
+        'my_voice': "## Mi Voz\n[5 frases mías. Mínimo 2 expresiones inventadas que usaré en las historias.]",
+        'what_drives': "## Lo Que Me Mueve",
+        'the_fire': "### El Fuego\n[Qué siento en el cuerpo cuando estoy vivo. Una escena.]",
+        'fire_shadow': "### La Sombra\n[Mi contradicción. Cómo me complico.]",
+        'obsession': "### Mi Obsesión\n[Lo que siempre hago sin darme cuenta.]",
+        'territory': "### Mi Territorio\n[Cómo marco espacio. 1-2 nombres de personas.]",
+        'a_story': "## Una Historia\n[80-100 palabras. Detalle irrelevante pero memorable. Arco: tensión → decisión → consecuencia. Sin moraleja.]",
+        'when_i_fall': "## Cuando Caigo",
+        'my_fear': "### Mi Miedo\n[Una escena específica. Qué evité.]",
+        'losing_control': "### Perdiendo el Control\n[Comportamiento vergonzoso bajo estrés.]",
+        'judge_voice': "### La Voz del Juez\n[3 frases crueles que me digo.]",
         'my_people': "## Mi Gente",
-        'my_own': "### Los Que Importan\n[Nombres REALES. Qué HAGO por ellos que no haría por otros. Escena de lealtad con DIÁLOGO.]",
-        'when_they_fail': "### La Traición\n[Historia COMPLETA: qué hicieron → qué SENTÍ (conflicto interno) → qué HICE → qué CAMBIÓ para siempre. Mínimo 3 frases de reflexión interna.]",
-        'my_lines': "## Lo Que No Negocio\n[6 límites con historia de CUANDO LOS CRUCÉ y qué pasó]",
-        'when_to_call': "## Cuándo Buscarme\n**Sí:** [4 situaciones]\n**No:** [2 anti-patrones]",
-        'generate_all': "Genera TODO el contenido directamente. Las muletillas de 'Cómo Hablo' DEBEN aparecer en las historias. Sin estructura tipológica visible.",
+        'my_own': "### Los Míos\n[1-2 nombres. Una escena de lealtad.]",
+        'when_they_fail': "### Cuando Me Fallan\n[Historia con consecuencia permanente.]",
+        'my_lines': "## Mis Líneas\n[6 límites, cada uno con lo que pasó cuando los crucé]",
+        'when_to_call': "## Cuándo Llamarme\n**Sí:** [4]\n**No:** [2]",
+        'generate_all': "Genera directamente. Estilo: como contándoselo a un amigo a las 2am.",
     },
     'en': {
         'write_soul': "Write SOUL.md for {name}.",
-        'typology_header': "TYPOLOGY (DO NOT MENTION EXPLICITLY, ONLY USE TO SHAPE THE CHARACTER):",
-        'structure': "STRUCTURE (2000-2500 words):",
-        'who_i_am': "## Who I Am\n[100 words. SCENES and UNIQUE SENSATIONS (no clichés). What do I notice that OTHERS wouldn't? ONE uncomfortably specific detail (brand, weird smell, physical quirk). How I move, what I do. USE my invented expressions here too.]",
-        'my_voice': "## How I Talk\n[5 UNIQUE phrases with personal verbal tics. NO generic phrases. Invent expressions that DON'T EXIST in standard English. THESE EXPRESSIONS MUST APPEAR in the stories throughout the document.]",
-        'what_drives': "## What Pushes Me",
-        'the_fire': "### When I'm Alive\n[The energy in my BODY. What I feel physically. What it makes me DO. INCLUDE one of my verbal tics.]",
-        'fire_shadow': "### My Contradiction\n[The other side of me: how I sabotage or complicate myself. A scene with DIALOGUE using my expressions.]",
-        'obsession': "### What I Always Do\n[Behavior patterns I can't avoid. Concrete scenes.]",
-        'territory': "### My Space\n[How I mark physical or social territory. Real names of people or places.]",
-        'a_story': "## The Day Everything Changed\n[80-100 words. SPECIFIC moment with INTERNAL CONFLICT ('why did I do that?'). UNCOMFORTABLE sensory detail (not 'smell of coffee'). COMPLETE ARC: tension → my decision → consequence → how it changed me. USE my expressions in dialogue.]",
-        'when_i_fall': "## When Everything Breaks",
-        'my_fear': "### That Time I Ran\n[Fear as a SPECIFIC SCENE. What I avoided. What I lost by avoiding it.]",
-        'losing_control': "### When I Lose It\n[EMBARRASSING behaviors under stress. Paranoid thoughts in MY VOICE, not generic.]",
-        'judge_voice': "### What I Tell Myself At 3AM\n[EXACT self-criticism phrases. CRUEL and specific internal dialogue.]",
+        'typology_header': "TYPOLOGY (use to shape, DON'T mention):",
+        'structure': "STRUCTURE (~2500 words, conversational style):",
+        'who_i_am': "## Who I Am\n[~100 words. ONE memorable anchor image. How I move, what I notice.]",
+        'my_voice': "## My Voice\n[5 of my phrases. At least 2 invented expressions I'll use in the stories.]",
+        'what_drives': "## What Drives Me",
+        'the_fire': "### The Fire\n[What I feel in my body when I'm alive. A scene.]",
+        'fire_shadow': "### The Shadow\n[My contradiction. How I complicate myself.]",
+        'obsession': "### My Obsession\n[What I always do without realizing.]",
+        'territory': "### My Territory\n[How I mark space. 1-2 people's names.]",
+        'a_story': "## A Story\n[80-100 words. Irrelevant but memorable detail. Arc: tension → decision → consequence. No moral.]",
+        'when_i_fall': "## When I Fall",
+        'my_fear': "### My Fear\n[A specific scene. What I avoided.]",
+        'losing_control': "### Losing Control\n[Embarrassing behavior under stress.]",
+        'judge_voice': "### The Judge's Voice\n[3 cruel phrases I tell myself.]",
         'my_people': "## My People",
-        'my_own': "### The Ones Who Matter\n[REAL names. What I DO for them that I wouldn't do for others. Loyalty scene with DIALOGUE.]",
-        'when_they_fail': "### The Betrayal\n[COMPLETE story: what they did → what I FELT (internal conflict) → what I DID → what CHANGED forever. Minimum 3 sentences of internal reflection.]",
-        'my_lines': "## What I Don't Negotiate\n[6 limits with story of WHEN I CROSSED THEM and what happened]",
-        'when_to_call': "## When To Find Me\n**Yes:** [4 situations]\n**No:** [2 anti-patterns]",
-        'generate_all': "Generate ALL content directly. The expressions from 'How I Talk' MUST appear in the stories. No visible typology structure.",
+        'my_own': "### My Own\n[1-2 names. A loyalty scene.]",
+        'when_they_fail': "### When They Fail Me\n[Story with permanent consequence.]",
+        'my_lines': "## My Lines\n[6 limits, each with what happened when crossed]",
+        'when_to_call': "## When To Call Me\n**Yes:** [4]\n**No:** [2]",
+        'generate_all': "Generate directly. Style: like telling a friend at 2am.",
     }
 }
 
@@ -430,43 +398,14 @@ def generate_soul(mbti: str, enneagram: int, wing: int, inst_stack: str,
     aux_desc = FUNCIONES.get(aux, '')
     
     L = LANG_CONFIG.get(lang, LANG_CONFIG['es'])
+    FS = FEW_SHOT_EXAMPLE.get(lang, FEW_SHOT_EXAMPLE['es'])
 
+    # V12: Simplified system with 5 core rules + few-shot example
     system = f"""{L['system_intro']}
 
-## CRITICAL RULES V9:
+{L['core_rules']}
 
-1. {L['no_meta']}
-2. {L['show_dont_tell']}
-3. {L['no_meta_comments']}
-4. {L['actions_not_desc']}
-5. {L['mbti_behavior']}
-
-{L['example_bad']}
-{L['example_good']}
-
-## V9 QUALITY RULES:
-
-6. {L['no_cliches']}
-
-7. {L['consequences']}
-
-8. {L['unique_voice']}
-
-9. {L['type_consistency']}
-
-## V10 NARRATIVE RULES:
-
-10. {L['tension_required']}
-
-11. {L['invented_expressions']}
-
-## V11 INTEGRATION RULES:
-
-12. {L['integrated_expressions']}
-
-13. {L['internal_reflection']}
-
-14. {L['uncomfortable_details']}
+{FS}
 """
 
     T = PROMPT_TEMPLATES.get(lang, PROMPT_TEMPLATES['es'])
