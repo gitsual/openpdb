@@ -317,7 +317,8 @@ def get_dominant_functions(mbti: str) -> tuple:
 
 
 def generate_soul(mbti: str, enneagram: int, wing: int, inst_stack: str, 
-                  name: str, model: str, lang: str = DEFAULT_LANG) -> str:
+                  name: str, model: str, lang: str = DEFAULT_LANG,
+                  character_context: str = None) -> str:
     
     # Validate inputs before processing
     validate_typology(mbti, enneagram, wing)
@@ -380,7 +381,16 @@ VOICE: {enea['voz']}
 
 4 SIDES: Normal {sides['ego']['type']}, Aspirational {sides['subconscious']['type']}, Stress {sides['shadow']['type']}, Judge {sides['superego']['type']}
 
----
+{f'''---
+
+CHARACTER CONTEXT (USE THIS TO GROUND THE PERSONALITY IN SPECIFIC DETAILS):
+{character_context}
+
+IMPORTANT: Use the character's actual background, world, relationships, and history from the context above. 
+Do NOT use generic modern details (coffee shops, phones, emails) if the character lives in a different world.
+Reference specific events, people, places, and objects from this character's actual story.
+
+''' if character_context else ''}---
 
 {T['structure']}
 
@@ -534,7 +544,8 @@ Genera directamente:
 
 def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
                  name: str, output_dir: Path, model: str = DEFAULT_MODEL,
-                 role: str = "Team Member", lang: str = DEFAULT_LANG) -> Dict[str, str]:
+                 role: str = "Team Member", lang: str = DEFAULT_LANG,
+                 character_context: str = None) -> Dict[str, str]:
     
     lang_label = "🇬🇧 EN" if lang == 'en' else "🇪🇸 ES"
     print(f"🔥 V8 [{lang_label}] — '{name}' ({mbti} {enneagram}w{wing} {inst_stack})")
@@ -547,7 +558,7 @@ def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
     files = {}
     
     print("  📝 SOUL.md...")
-    files['SOUL.md'] = generate_soul(mbti, enneagram, wing, inst_stack, name, model, lang)
+    files['SOUL.md'] = generate_soul(mbti, enneagram, wing, inst_stack, name, model, lang, character_context)
     
     print("  📝 IDENTITY.md...")
     files['IDENTITY.md'] = generate_identity(mbti, enneagram, wing, inst_stack, name, model, lang)
@@ -639,6 +650,7 @@ Examples:
         return
     
     # Character search mode
+    character_context = None
     if args.character:
         try:
             from pdb_search import search, get_typology
@@ -659,6 +671,16 @@ Examples:
                 sys.exit(1)
             
             print(f"✅ Found: {best['name']} → {typology}")
+            
+            # Get character context for richer generation
+            try:
+                from character_context import get_context, format_context_for_prompt
+                ctx = get_context(best['name'])
+                if ctx.get('has_context'):
+                    character_context = format_context_for_prompt(ctx)
+                    print(f"📚 Context: {ctx.get('source', 'found')}")
+            except ImportError:
+                pass  # Context module not available, continue without
             
             # Use character name as agent name if not specified
             if not args.name:
@@ -694,7 +716,7 @@ Examples:
     inst_stack = next((p.lower() for p in parts if '/' in p.lower()), 'sx/so')
     
     output_dir = args.output or Path(f'./agents/{args.name.lower().replace(" ", "_")}')
-    generate_all(mbti, enneagram, wing, inst_stack, args.name, output_dir, args.model, args.role, args.lang)
+    generate_all(mbti, enneagram, wing, inst_stack, args.name, output_dir, args.model, args.role, args.lang, character_context)
 
 
 if __name__ == '__main__':
