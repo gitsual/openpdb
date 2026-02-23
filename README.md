@@ -176,6 +176,113 @@ Each character generates 9 files:
 
 ---
 
+## 🐐 OpenGoat Integration — Team Collaboration
+
+When agents work together, **personality determines who does what**.
+
+### Automatic Role Assignment
+
+```bash
+# Generate + integrate into OpenGoat organization
+python integrate_agent.py "ENTP 7w8 sx/sp" --name "Tony" --role manager --lang en
+```
+
+The generator automatically assigns agents to divisions based on MBTI:
+
+| Division | MBTI Types | Role |
+|----------|------------|------|
+| **CTO** (Strategy) | INTJ, INTP, ENTP, ENTJ | Architecture, R&D, innovation |
+| **COO** (Operations) | ISTJ, ESTJ, ISTP, ESTP | Execution, process, logistics |
+| **CCO** (Culture) | ENFJ, ENFP, INFP, ISFP | UX, community, support |
+
+### Example: AI Project Team
+
+```
+Tony Stark (ENTP 7w8) ─── CTO Division
+├── Lead Architect
+├── "Let's build something that's never been done"
+└── Best for: Brainstorming, prototypes, crisis pivots
+
+Walter White (INTJ 5w6) ─── CTO Division  
+├── Head of R&D
+├── "I've planned for every contingency"
+└── Best for: Complex systems, risk analysis, quality
+
+Hermione Granger (ISTJ 1w2) ─── COO Division
+├── Head of Documentation & QA
+├── "This needs to be done correctly"
+└── Best for: Research, testing, compliance
+
+Luna Lovegood (INFP 9w1) ─── CCO Division
+├── UX Researcher
+├── "Have you considered this perspective?"
+└── Best for: User empathy, unconventional insights
+```
+
+### Why Personality Pairing Works
+
+| Pair | Chemistry | Use Case |
+|------|-----------|----------|
+| **ENTP + INTJ** | Innovation × Strategy | Architecture decisions |
+| **ISTJ + INFP** | Process × Empathy | User-facing documentation |
+| **ENTJ + ISTP** | Vision × Execution | Rapid deployment |
+
+### Task Delegation Example
+
+```yaml
+Task: Design new authentication system
+
+Walter (INTJ): 
+  - Maps all attack vectors
+  - Creates contingency plans
+  - "What could go wrong?"
+
+Tony (ENTP):
+  - Proposes innovative solutions  
+  - Rapid prototypes
+  - "What if we tried...?"
+
+Hermione (ISTJ):
+  - Documents requirements
+  - Tests edge cases
+  - "According to RFC 6749..."
+
+Luna (INFP):
+  - User journey mapping
+  - Accessibility concerns
+  - "How would a first-time user feel?"
+```
+
+### Organization Structure
+
+```
+CEO (ENTJ) ─ "The vision"
+├── CTO (INTJ) ─ "The strategy"
+│   ├── Tech Lead (ENTP) ─ "The innovation"
+│   └── R&D (INTP, INTJ) ─ "The depth"
+├── COO (ESTJ) ─ "The execution"  
+│   ├── Ops Lead (ISTP) ─ "The precision"
+│   └── Ops Team (ISTJ, ESTP) ─ "The reliability"
+└── CCO (ENFJ) ─ "The culture"
+    ├── UX Lead (ENFP) ─ "The experience"
+    └── Support (INFP, ISFP) ─ "The empathy"
+```
+
+### Commands
+
+```bash
+# Full integration: generate + OpenClaw + OpenGoat
+python integrate_agent.py "INTJ 5w6 sp/so" --name "Walter" --role manager
+
+# Delete agent from all systems
+python integrate_agent.py --delete "Walter"
+
+# Generate only (no integration)
+python agent_generator.py -c "Walter White" --lang en
+```
+
+---
+
 ## 🔧 Requirements
 
 - **Python 3.9+** (uses modern type hints)
