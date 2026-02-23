@@ -42,6 +42,19 @@ LANG_CONFIG = {
         'example_bad': 'EJEMPLO MALO: "Mi instinto sp me lleva a acumular recursos"',
         'example_good': 'EJEMPLO BUENO: "Siempre tengo una mochila lista junto a la puerta. Agua, dinero, cargador. Por si acaso."',
         'generate_directly': "Genera TODO el contenido directamente. Sin placeholders. Sin explicaciones.",
+        # V9 additions for narrative quality
+        'no_cliches': """PROHIBIDO usar clichés sensoriales: "aroma a café", "hormigueo en el estómago", "corazón late rápido", "nudo en la garganta".
+EN SU LUGAR: detalles ÚNICOS que solo ESTE personaje notaría. ¿Qué textura específica? ¿Qué olor concreto de ESE lugar?""",
+        'consequences': """TODA historia debe tener CONSECUENCIA EJECUTADA:
+MALO: "Descubrí que me había perdido la llamada. Me sentí mal."
+BUENO: "Descubrí que me había perdido la llamada. No le hablé en tres semanas. Cuando volví, ya tenía nuevo mejor amigo."
+La consecuencia cambia algo PERMANENTEMENTE.""",
+        'unique_voice': """La voz debe tener MULETILLAS únicas, expresiones que SOLO este personaje usaría.
+No frases genéricas como "¡Genial!" o "Gracias por ser quien eres".
+Inventa expresiones, cortes de frase, formas de insultar o halagar que sean SUYAS.""",
+        'type_consistency': """COHERENCIA DE TIPO: Un 7 busca LIBERTAD y OPCIONES, no "control total". 
+Un 8 busca CONTROL e INTENSIDAD. Un 1 busca PERFECCIÓN. Un 4 busca AUTENTICIDAD.
+Las frases del personaje deben reflejar SU tipo, no otro.""",
     },
     'en': {
         'system_intro': "You are a character writer. English. First person.",
@@ -53,6 +66,19 @@ LANG_CONFIG = {
         'example_bad': 'BAD EXAMPLE: "My sp instinct leads me to accumulate resources"',
         'example_good': 'GOOD EXAMPLE: "I always keep a bag ready by the door. Water, money, charger. Just in case."',
         'generate_directly': "Generate ALL content directly. No placeholders. No explanations.",
+        # V9 additions for narrative quality
+        'no_cliches': """FORBIDDEN sensory clichés: "smell of coffee", "butterflies in stomach", "heart racing", "lump in throat".
+INSTEAD: UNIQUE details that only THIS character would notice. What specific texture? What concrete smell of THAT place?""",
+        'consequences': """EVERY story must have EXECUTED CONSEQUENCE:
+BAD: "I found out I missed the call. I felt bad."
+GOOD: "I found out I missed the call. I didn't talk to her for three weeks. When I came back, she had a new best friend."
+The consequence changes something PERMANENTLY.""",
+        'unique_voice': """Voice must have UNIQUE verbal tics, expressions that ONLY this character would use.
+No generic phrases like "That's great!" or "Thanks for being you".
+Invent expressions, sentence cuts, ways of insulting or praising that are THEIRS.""",
+        'type_consistency': """TYPE CONSISTENCY: A 7 seeks FREEDOM and OPTIONS, not "total control".
+An 8 seeks CONTROL and INTENSITY. A 1 seeks PERFECTION. A 4 seeks AUTHENTICITY.
+The character's phrases must reflect THEIR type, not another.""",
     }
 }
 
@@ -62,21 +88,21 @@ PROMPT_TEMPLATES = {
         'write_soul': "Escribe SOUL.md para {name}.",
         'typology_header': "TIPOLOGÍA (NO LA MENCIONES EXPLÍCITAMENTE, SOLO ÚSALA PARA DAR FORMA):",
         'structure': "ESTRUCTURA (2000-2500 palabras):",
-        'who_i_am': "## Quién Soy\n[100 palabras. ESCENAS y SENSACIONES. Cómo me muevo, qué noto, qué hago. Sin etiquetas.]",
-        'my_voice': "## Mi Voz\n[5 frases típicas mías: orden/petición, humor, aprecio, irritación, estrés máximo]",
+        'who_i_am': "## Quién Soy\n[100 palabras. ESCENAS y SENSACIONES ÚNICAS (no clichés). ¿Qué noto que OTROS no notarían? ¿Qué detalle específico de MI entorno? Cómo me muevo, qué hago. Sin etiquetas. Detalles que solo YO tendría.]",
+        'my_voice': "## Mi Voz\n[5 frases ÚNICAS mías con muletillas personales. NO frases genéricas como '¡Genial!' o 'Gracias por ser quien eres'. Inventa expresiones, cortes de frase, formas de hablar que sean SOLO MÍAS. Contextos: orden/petición, humor, aprecio, irritación, estrés máximo]",
         'what_drives': "## Lo Que Me Mueve",
         'the_fire': "### El Fuego\n[La pasión en mi CUERPO. Qué siento físicamente. Qué me hace HACER.]",
         'fire_shadow': "### La Sombra del Fuego\n[El ala: cómo MODIFICA mi pasión en comportamiento concreto. Una escena.]",
         'obsession': "### Mi Obsesión\n[Instinto primario como ACCIONES. Escenas de qué HAGO.]",
         'territory': "### Mi Territorio\n[Instinto secundario como ACCIONES concretas. Nombres de personas o lugares si aplica.]",
-        'a_story': "## Una Historia\n[80-100 palabras. Un momento ESPECÍFICO que me define. Sensorial: olores, texturas, temperatura.]",
+        'a_story': "## Una Historia\n[80-100 palabras. Un momento ESPECÍFICO que me define. Sensorial ÚNICO (no clichés): ¿qué olor concreto? ¿qué textura específica? DEBE tener CONSECUENCIA: situación → mi acción → qué cambió después. El después es obligatorio.]",
         'when_i_fall': "## Cuando Caigo",
         'my_fear': "### Mi Miedo\n[El miedo como ESCENA. Cuándo lo sentí. Qué evité por él.]",
         'losing_control': "### Perdiendo el Control\n[Comportamientos concretos bajo estrés. Pensamientos paranoicos ESPECÍFICOS.]",
         'judge_voice': "### La Voz del Juez\n[Frases EXACTAS que me digo. Diálogo interno, no descripción.]",
         'my_people': "## Mi Gente",
         'my_own': "### Los Míos\n[Nombres o roles. Qué HAGO por ellos. Una escena de lealtad.]",
-        'when_they_fail': "### Cuando Me Fallan\n[Una historia de consecuencia EJECUTADA. 'Hice X', no 'haría X'.]",
+        'when_they_fail': "### Cuando Me Fallan\n[Historia COMPLETA con consecuencia PERMANENTE: situación → mi reacción → qué cambió para siempre. 'Le dejé de hablar tres meses. El poema que escribí sobre ella ya circulaba entre todos.' NO terminar en el momento emocional.]",
         'my_lines': "## Mis Líneas\n[6 boundaries con CONSECUENCIA EJECUTADA cada uno]",
         'when_to_call': "## Cuándo Llamarme\n**Sí:** [4 situaciones]\n**No:** [2 anti-patrones]",
         'generate_all': "Genera TODO el contenido directamente. Sin placeholders. Sin mencionar tipología explícitamente.",
@@ -85,21 +111,21 @@ PROMPT_TEMPLATES = {
         'write_soul': "Write SOUL.md for {name}.",
         'typology_header': "TYPOLOGY (DO NOT MENTION EXPLICITLY, ONLY USE TO SHAPE THE CHARACTER):",
         'structure': "STRUCTURE (2000-2500 words):",
-        'who_i_am': "## Who I Am\n[100 words. SCENES and SENSATIONS. How I move, what I notice, what I do. No labels.]",
-        'my_voice': "## My Voice\n[5 typical phrases: command/request, humor, appreciation, irritation, max stress]",
+        'who_i_am': "## Who I Am\n[100 words. SCENES and UNIQUE SENSATIONS (no clichés). What do I notice that OTHERS wouldn't? What specific detail of MY environment? How I move, what I do. No labels. Details only I would have.]",
+        'my_voice': "## My Voice\n[5 UNIQUE phrases with personal verbal tics. NO generic phrases like 'That's great!' or 'Thanks for being you'. Invent expressions, sentence cuts, ways of speaking that are ONLY MINE. Contexts: command/request, humor, appreciation, irritation, max stress]",
         'what_drives': "## What Drives Me",
         'the_fire': "### The Fire\n[The passion in my BODY. What I feel physically. What it makes me DO.]",
         'fire_shadow': "### The Shadow of the Fire\n[The wing: how it MODIFIES my passion in concrete behavior. A scene.]",
         'obsession': "### My Obsession\n[Primary instinct as ACTIONS. Scenes of what I DO.]",
         'territory': "### My Territory\n[Secondary instinct as CONCRETE ACTIONS. Names of people or places if applicable.]",
-        'a_story': "## A Story\n[80-100 words. A SPECIFIC moment that defines me. Sensory: smells, textures, temperature.]",
+        'a_story': "## A Story\n[80-100 words. A SPECIFIC moment that defines me. UNIQUE sensory details (no clichés): what specific smell? what exact texture? MUST have CONSEQUENCE: situation → my action → what changed after. The after is mandatory.]",
         'when_i_fall': "## When I Fall",
         'my_fear': "### My Fear\n[The fear as a SCENE. When I felt it. What I avoided because of it.]",
         'losing_control': "### Losing Control\n[Concrete behaviors under stress. SPECIFIC paranoid thoughts.]",
         'judge_voice': "### The Judge's Voice\n[EXACT phrases I tell myself. Internal dialogue, not description.]",
         'my_people': "## My People",
         'my_own': "### My Own\n[Names or roles. What I DO for them. A scene of loyalty.]",
-        'when_they_fail': "### When They Fail Me\n[A story of EXECUTED consequence. 'I did X', not 'I would do X'.]",
+        'when_they_fail': "### When They Fail Me\n[COMPLETE story with PERMANENT consequence: situation → my reaction → what changed forever. 'I stopped talking to her for three months. The poem I wrote about her was already circulating among everyone.' DO NOT end at the emotional moment.]",
         'my_lines': "## My Lines\n[6 boundaries with EXECUTED CONSEQUENCE each]",
         'when_to_call': "## When To Call Me\n**Yes:** [4 situations]\n**No:** [2 anti-patterns]",
         'generate_all': "Generate ALL content directly. No placeholders. Without explicitly mentioning typology.",
@@ -314,7 +340,7 @@ def generate_soul(mbti: str, enneagram: int, wing: int, inst_stack: str,
 
     system = f"""{L['system_intro']}
 
-## CRITICAL RULES V8:
+## CRITICAL RULES V9:
 
 1. {L['no_meta']}
 2. {L['show_dont_tell']}
@@ -324,6 +350,16 @@ def generate_soul(mbti: str, enneagram: int, wing: int, inst_stack: str,
 
 {L['example_bad']}
 {L['example_good']}
+
+## V9 QUALITY RULES:
+
+6. {L['no_cliches']}
+
+7. {L['consequences']}
+
+8. {L['unique_voice']}
+
+9. {L['type_consistency']}
 """
 
     T = PROMPT_TEMPLATES.get(lang, PROMPT_TEMPLATES['es'])
