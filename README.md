@@ -259,11 +259,27 @@ examples/
 
 ---
 
-## 🤝 Integration
+## 🤝 Integration with OpenGoat
 
-Works standalone or with:
-- [OpenClaw](https://github.com/openclaw/openclaw) — AI agent framework
-- [OpenGoat](https://github.com/openclaw/opengoat) — Multi-agent organization
+Works standalone or with multi-agent orchestration via [OpenGoat](https://github.com/openclaw/opengoat).
+
+### OpenGoat Organization Chart
+
+Generated characters can be imported into OpenGoat for team-based AI orchestration:
+
+![OpenGoat Demo](docs/opengoat_demo.png)
+
+### Navigation Demo
+
+![OpenGoat Navigation](docs/opengoat_navigation.gif)
+
+### Folder Structure
+
+![Folder Structure](docs/folder_structure.png)
+
+### Generation Process
+
+![Generation Demo](docs/generation_demo.gif)
 
 ---
 
