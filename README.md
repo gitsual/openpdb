@@ -284,3 +284,49 @@ Generated characters can be imported into OpenGoat for team-based AI orchestrati
 ---
 
 **MIT License** | Tested, not just marketed 🎭
+
+---
+
+## 🔄 Organization Optimizer (NEW)
+
+Automatically determines optimal hierarchical structure for N agents based on personality:
+
+```bash
+# Analyze examples and show optimal structure
+python org_optimizer.py -d examples
+
+# Export optimized structure to OpenGoat
+python org_optimizer.py -d examples --export-opengoat
+
+# Custom OpenGoat home directory
+python org_optimizer.py -d examples --export-opengoat --opengoat-home /path/to/opengoat
+```
+
+### How It Works
+
+The optimizer scores each agent for different organizational roles:
+
+| Role | Best MBTI | Best Enneagram | Function |
+|------|-----------|----------------|----------|
+| **CEO** | ENTJ, ESTJ, ENFJ | 8, 3 | Strategic leadership |
+| **CTO** | INTJ, INTP, ISTP | 5, 1 | Technical strategy |
+| **COO** | ESTJ, ISTJ, ISTP | 6, 1 | Operations |
+| **CCO** | ENFJ, ESFJ, INFJ | 2, 9 | Culture & people |
+
+### Example Output
+
+```
+Ellen Ripley [CEO] (INTJ 8w9)
+  └── Batman [CTO] (INTJ 1w9)
+    └── Daenerys Targaryen [IC] (ENFJ 1w2)
+    └── Katniss Everdeen [IC] (ISTP 6w5)
+  └── John Wick [COO] (ISTP 6w5)
+    └── Tony Stark [IC] (ENTP 7w8)
+  └── Wonder Woman [CCO] (ENFJ 2w1)
+    └── The Joker [IC] (ENTP 7w8)
+```
+
+The INTJ 8w9 combination (Ripley) ranks highest for CEO because:
+- **INTJ** provides strategic thinking
+- **Type 8** provides leadership drive and decisiveness
+- **w9** moderates aggression with diplomacy
