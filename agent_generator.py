@@ -206,6 +206,51 @@ INSTINTOS_COMPORTAMIENTO = {
     },
 }
 
+# ==============================================================================
+# VALIDATION FUNCTIONS
+# ==============================================================================
+
+VALID_ENNEAGRAM_TYPES = set(range(1, 10))  # 1-9
+VALID_WINGS = set(ALAS.keys())  # Only valid wing combinations
+
+def validate_enneagram(enneagram: int) -> int:
+    """Valida que el eneagrama esté en rango 1-9. Lanza ValueError si no."""
+    if enneagram not in VALID_ENNEAGRAM_TYPES:
+        raise ValueError(
+            f"Eneagrama inválido: {enneagram}. Debe ser un número entre 1 y 9."
+        )
+    return enneagram
+
+def validate_wing(enneagram: int, wing: int) -> int:
+    """Valida que el ala sea adyacente al tipo base. Lanza ValueError si no."""
+    # Wings must be adjacent: 1 can have w9 or w2, 9 can have w8 or w1
+    valid_for_type = {
+        1: (9, 2), 2: (1, 3), 3: (2, 4), 4: (3, 5), 5: (4, 6),
+        6: (5, 7), 7: (6, 8), 8: (7, 9), 9: (8, 1)
+    }
+    valid_wings = valid_for_type.get(enneagram, ())
+    if wing not in valid_wings:
+        raise ValueError(
+            f"Ala inválida: {enneagram}w{wing}. Las alas válidas para tipo {enneagram} son: "
+            f"{enneagram}w{valid_wings[0]} o {enneagram}w{valid_wings[1]}"
+        )
+    return wing
+
+def validate_typology(mbti: str, enneagram: int, wing: int) -> None:
+    """Valida toda la tipología. Lanza ValueError con mensaje descriptivo si algo falla."""
+    from csj_core import VALID_MBTI_TYPES
+    
+    if mbti.upper() not in VALID_MBTI_TYPES:
+        raise ValueError(
+            f"MBTI inválido: '{mbti}'. Debe ser uno de: {', '.join(sorted(VALID_MBTI_TYPES))}"
+        )
+    validate_enneagram(enneagram)
+    validate_wing(enneagram, wing)
+
+# ==============================================================================
+# OUTPUT CLEANING
+# ==============================================================================
+
 def clean_output(text: str) -> str:
     """Limpieza agresiva."""
     text = re.sub(r'[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uff00-\uffef，。""'']+', '', text)
@@ -248,9 +293,12 @@ def get_dominant_functions(mbti: str) -> tuple:
 def generate_soul(mbti: str, enneagram: int, wing: int, inst_stack: str, 
                   name: str, model: str, lang: str = DEFAULT_LANG) -> str:
     
+    # Validate inputs before processing
+    validate_typology(mbti, enneagram, wing)
+    
     sides = get_four_sides(mbti)
-    enea = ENEAGRAMA.get(enneagram, ENEAGRAMA[8])
-    ala = ALAS.get((enneagram, wing), f"Modulado por ala {wing}")
+    enea = ENEAGRAMA[enneagram]  # Safe after validation
+    ala = ALAS[(enneagram, wing)]  # Safe after validation
     
     parts = inst_stack.replace('-', '/').split('/')
     inst1, inst2 = (parts[0], parts[1]) if len(parts) > 1 else (parts[0], 'so')
@@ -350,7 +398,10 @@ VOICE: {enea['voz']}
 
 def generate_identity(mbti: str, enneagram: int, wing: int, inst_stack: str,
                       name: str, model: str, lang: str = DEFAULT_LANG) -> str:
-    enea = ENEAGRAMA.get(enneagram, ENEAGRAMA[8])
+    # Validate inputs
+    validate_typology(mbti, enneagram, wing)
+    
+    enea = ENEAGRAMA[enneagram]  # Safe after validation
     
     if lang == 'en':
         prompt = f"""IDENTITY.md for {name}.
@@ -392,7 +443,10 @@ Genera directamente:
 
 def generate_agents(mbti: str, enneagram: int, name: str, model: str, 
                     lang: str = DEFAULT_LANG) -> str:
-    enea = ENEAGRAMA.get(enneagram, ENEAGRAMA[8])
+    # Validate enneagram (MBTI already validated in generate_soul)
+    validate_enneagram(enneagram)
+    
+    enea = ENEAGRAMA[enneagram]  # Safe after validation
     
     if lang == 'en':
         prompt = f"""AGENTS.md for {name}.
@@ -464,6 +518,15 @@ def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
     
     print("  📝 AGENTS.md...")
     files['AGENTS.md'] = generate_agents(mbti, enneagram, name, model, lang)
+    
+    # Validate generated content (minimum quality check)
+    MIN_CONTENT_LENGTH = 200  # Characters
+    for key in ['SOUL.md', 'IDENTITY.md', 'AGENTS.md']:
+        content = files.get(key, '')
+        if len(content) < MIN_CONTENT_LENGTH:
+            print(f"  ⚠️  Warning: {key} seems too short ({len(content)} chars). Model may have failed.")
+        if 'error' in content.lower()[:100]:
+            print(f"  ⚠️  Warning: {key} may contain an error message.")
     
     # Static files - language aware
     if lang == 'en':

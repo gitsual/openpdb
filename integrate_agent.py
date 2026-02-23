@@ -31,6 +31,26 @@ import argparse
 import platform
 from pathlib import Path
 from datetime import datetime
+import re
+import unicodedata
+
+# ==============================================================================
+# UTILITIES
+# ==============================================================================
+
+def sanitize_agent_id(name: str) -> str:
+    """
+    Sanitize name for use as agent ID (filesystem-safe).
+    Handles: José → jose, O'Connor → oconnor, emojis → removed
+    """
+    # Normalize unicode (é → e, ñ → n, etc.)
+    normalized = unicodedata.normalize('NFKD', name)
+    # Remove non-ASCII characters (accents, emojis, etc.)
+    ascii_only = normalized.encode('ASCII', 'ignore').decode('ASCII')
+    # Lowercase and replace spaces/special chars with underscore
+    clean = re.sub(r'[^a-z0-9]+', '_', ascii_only.lower())
+    # Remove leading/trailing underscores
+    return clean.strip('_') or 'agent'
 
 # ==============================================================================
 # PLATFORM DETECTION & PATHS
@@ -114,7 +134,7 @@ def generate_agent(typology: str, name: str, model: str = "qwen2.5:14b",
                    lang: str = "es") -> Path:
     """Generate agent using V8."""
     script_dir = Path(__file__).parent
-    output_dir = script_dir / 'agents' / name.lower().replace(' ', '_')
+    output_dir = script_dir / 'agents' / sanitize_agent_id(name)
     
     cmd = [
         'python', str(script_dir / 'agent_generator.py'),
@@ -133,10 +153,16 @@ def generate_agent(typology: str, name: str, model: str = "qwen2.5:14b",
 
 def add_to_openclaw(agent_dir: Path, name: str) -> bool:
     """Copy agent to OpenClaw directory."""
-    agent_id = name.lower().replace(' ', '_')
+    agent_id = sanitize_agent_id(name)
     dest = OPENCLAW_AGENTS / agent_id
     
     print(f"\n🦞 Adding to OpenClaw...")
+    
+    # Check if OpenClaw is installed
+    if not OPENCLAW_AGENTS.parent.exists():
+        print(f"   ⚠️  Warning: OpenClaw directory not found (~/.openclaw/)")
+        print(f"       Install OpenClaw: npm install -g openclaw")
+        print(f"       Creating directory anyway...")
     
     # Create parent directory if it doesn't exist
     OPENCLAW_AGENTS.mkdir(parents=True, exist_ok=True)
@@ -161,13 +187,19 @@ def add_to_openclaw(agent_dir: Path, name: str) -> bool:
 
 def add_to_opengoat(name: str, mbti: str, role: str = "individual") -> bool:
     """Register agent in OpenGoat."""
-    agent_id = name.lower().replace(' ', '_')
+    agent_id = sanitize_agent_id(name)
     manager = get_manager(mbti)
     division = get_division(mbti)
     
     print(f"\n🐐 Registering in OpenGoat...")
     print(f"   Division: {division.upper()}")
     print(f"   Manager: {manager}")
+    
+    # Check if OpenGoat is installed
+    if not OPENGOAT_AGENTS.parent.exists():
+        print(f"   ⚠️  Warning: OpenGoat directory not found (~/.opengoat/)")
+        print(f"       Install OpenGoat: npm install -g opengoat")
+        print(f"       Creating directory anyway...")
     
     # Create parent directory if it doesn't exist
     OPENGOAT_AGENTS.mkdir(parents=True, exist_ok=True)
@@ -266,18 +298,61 @@ def print_org_structure(new_agent: str, mbti: str):
     print(f"\n   🆕 {new_agent} → reports to {manager.upper()}")
 
 
+def delete_agent(name: str) -> bool:
+    """Delete agent from local, OpenClaw, and OpenGoat."""
+    agent_id = sanitize_agent_id(name)
+    deleted = []
+    
+    # Local agents directory
+    local_dir = Path(__file__).parent / 'agents' / agent_id
+    if local_dir.exists():
+        shutil.rmtree(local_dir)
+        deleted.append(f"local: {local_dir}")
+    
+    # OpenClaw
+    openclaw_dir = OPENCLAW_AGENTS / agent_id
+    if openclaw_dir.exists():
+        shutil.rmtree(openclaw_dir)
+        deleted.append(f"openclaw: {openclaw_dir}")
+    
+    # OpenGoat
+    opengoat_dir = OPENGOAT_AGENTS / agent_id
+    if opengoat_dir.exists():
+        shutil.rmtree(opengoat_dir)
+        deleted.append(f"opengoat: {opengoat_dir}")
+    
+    if deleted:
+        print(f"🗑️  Deleted agent '{name}':")
+        for d in deleted:
+            print(f"   ✓ {d}")
+        return True
+    else:
+        print(f"⚠️  Agent '{name}' not found in any location.")
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser(description='Integrate complete OpenClaw agent')
-    parser.add_argument('typology', help="Typology: 'MBTI Xw# inst/inst'")
-    parser.add_argument('--name', '-n', required=True, help='Agent name')
+    parser.add_argument('typology', nargs='?', help="Typology: 'MBTI Xw# inst/inst'")
+    parser.add_argument('--name', '-n', help='Agent name')
     parser.add_argument('--model', '-m', default='qwen2.5:14b')
     parser.add_argument('--role', '-r', default='individual', choices=['manager', 'individual'])
     parser.add_argument('--lang', '-l', default='es', choices=['es', 'en'],
                         help='Output language: es (Spanish, default) or en (English)')
     parser.add_argument('--skip-generate', action='store_true')
     parser.add_argument('--agent-dir', type=Path)
+    parser.add_argument('--delete', '-D', metavar='NAME', help='Delete agent by name')
     
     args = parser.parse_args()
+    
+    # Handle delete mode
+    if args.delete:
+        success = delete_agent(args.delete)
+        sys.exit(0 if success else 1)
+    
+    # Validate required args for create mode
+    if not args.typology or not args.name:
+        parser.error("typology and --name are required (unless using --delete)")
     
     parts = args.typology.upper().split()
     mbti = parts[0]

@@ -178,6 +178,8 @@ QUATERNITIES = {
     'INFP': ['ENFJ', 'ISTP', 'ESTJ', 'INFP'],
 }
 
+VALID_MBTI_TYPES = set(MBTI_FUNCTIONS.keys())
+
 def get_four_sides(mbti: str) -> dict:
     """
     Calcula los 4 lados de la mente para un tipo MBTI.
@@ -186,8 +188,16 @@ def get_four_sides(mbti: str) -> dict:
     
     CORRECCIÓN: Usar las cuaternidades directamente, no cálculos.
     El orden en cada cuaternidad es: [Ego, Subconsciente, Shadow, Superego]
+    
+    Raises:
+        ValueError: Si el tipo MBTI no es válido (debe ser uno de los 16 tipos)
     """
     mbti = mbti.upper()
+    
+    if mbti not in VALID_MBTI_TYPES:
+        raise ValueError(
+            f"MBTI inválido: '{mbti}'. Debe ser uno de: {', '.join(sorted(VALID_MBTI_TYPES))}"
+        )
     quaternity = QUATERNITIES.get(mbti, [mbti, mbti, mbti, mbti])
     
     # Las cuaternidades ya tienen el orden correcto

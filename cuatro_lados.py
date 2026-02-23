@@ -567,13 +567,13 @@ Example:
     args = parser.parse_args()
     
     if args.dry_run:
-        typology = parse_typology(args.perfil)
+        typology = parse_typology(args.profile)
         variants = generate_all_variants(typology)
         print(json.dumps(variants, indent=2, ensure_ascii=False))
         return
     
     generate_and_save(
-        args.perfil,
+        args.profile,
         output_dir=args.output,
         model=args.model,
         verbose=not args.quiet

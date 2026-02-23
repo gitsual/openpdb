@@ -14,9 +14,14 @@ import json
 import argparse
 import subprocess
 import re
+from typing import Tuple
 
 # Default model
-DEFAULT_MODEL = "huihui_ai/gpt-oss-abliterated:20b"
+DEFAULT_MODEL = "qwen2.5:14b"
+
+# Timeout for Ollama calls (configurable via env var)
+import os
+OLLAMA_TIMEOUT = int(os.environ.get('OLLAMA_TIMEOUT', 120))
 
 # Typology knowledge system (compact to avoid context saturation)
 SYSTEM_PROMPT = """Eres un escritor visceral que crea narradores arquetípicos basados en tipología de personalidad.
@@ -66,6 +71,14 @@ FRASES PROHIBIDAS (relleno vacío):
 - "por otro lado"
 - "de alguna manera"
 - "utiliza su [X] para [Y]" → reemplaza con imagen concreta
+
+FRASES PROHIBIDAS (meta-tipología):
+- "como ENTJ/INFP/etc que soy/es"
+- "siendo un tipo 7/5/etc"
+- "su eneagrama"
+- "su MBTI"
+- "típico de un"
+- Referencias a la tipología como sistema — SOLO comportamientos concretos
 
 MÁXIMO 2 conectores por párrafo. El resto: oraciones contundentes.
 
@@ -153,8 +166,36 @@ def build_prompt(typology: dict) -> str:
 
 Recuerda: un párrafo denso, evocador, con referencias culturales y la paradoja central. Empieza con "Debe ser un narrador como..." """
 
+def check_ollama_available() -> Tuple[bool, str]:
+    """Verifica si Ollama está corriendo. Devuelve (ok, mensaje)"""
+    try:
+        result = subprocess.run(
+            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", 
+             "http://localhost:11434/api/tags"],
+            capture_output=True, text=True, timeout=5
+        )
+        if result.stdout.strip() == "200":
+            return True, "OK"
+        else:
+            return False, f"Ollama no responde (HTTP {result.stdout.strip()})"
+    except subprocess.TimeoutExpired:
+        return False, "Ollama no responde (timeout)"
+    except FileNotFoundError:
+        return False, "curl no encontrado. Instala curl o usa Windows con curl en PATH"
+    except Exception as e:
+        return False, f"Error verificando Ollama: {e}"
+
+
 def call_ollama(prompt: str, model: str = DEFAULT_MODEL) -> str:
     """Llama a Ollama y devuelve la respuesta"""
+    
+    # Verificar que Ollama está disponible
+    ok, msg = check_ollama_available()
+    if not ok:
+        print(f"\n❌ {msg}", file=sys.stderr)
+        print("   Asegúrate de que Ollama está corriendo: ollama serve", file=sys.stderr)
+        print(f"   Modelo requerido: {model}", file=sys.stderr)
+        sys.exit(1)
     
     payload = {
         "model": model,
@@ -178,7 +219,7 @@ def call_ollama(prompt: str, model: str = DEFAULT_MODEL) -> str:
     ]
     
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=OLLAMA_TIMEOUT)
         if result.returncode != 0:
             return f"Error llamando a Ollama: {result.stderr}"
         
