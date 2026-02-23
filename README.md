@@ -10,6 +10,7 @@ Tony Stark: "The room spins around me, a carousel of ideas. My fingers drum agai
 ```
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Tests](https://img.shields.io/github/actions/workflow/status/gitsual/creador-de-personajes/test.yml?branch=main&style=flat-square&label=tests)](https://github.com/gitsual/creador-de-personajes/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/gitsual/creador-de-personajes?style=social)](https://github.com/gitsual/creador-de-personajes/stargazers)
 
@@ -52,6 +53,8 @@ cd creador-de-personajes
 
 # 2. Get character database (12,000+ characters)
 mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-personality-database/main/pdb_dataset.csv" -o data/pdb_raw.csv
+# Verify download (should be ~2MB+)
+ls -lh data/pdb_raw.csv
 
 # 3. Install Ollama (free local LLM)
 # See: https://ollama.ai — then: ollama pull qwen2.5:14b
@@ -205,7 +208,10 @@ python agent_generator.py -c "Tony Stark" --lang es
 
 - **Python 3.8+**
 - **Ollama** with `qwen2.5:14b` — [Install Ollama](https://ollama.ai) (free, runs locally)
+- **curl** in PATH (included in Linux/macOS; Windows: install via `winget install curl`)
 - **No external Python packages required**
+
+> ⚠️ **Windows users:** Run scripts with `python script.py` instead of `./script.py`. Ensure `curl` is in PATH.
 
 ```bash
 # Verify Ollama is running
@@ -254,6 +260,8 @@ Based on established typology systems:
 - **Enneagram**: Riso-Hudson tradition with instinctual variants
 - **Instincts**: Beatrice Chestnut's somatic approach
 
+> **Note:** These are personality frameworks for creative characterization, not scientifically validated psychological assessments. Great for AI personas; not for clinical use.
+
 ---
 
 ## 🔗 Related
@@ -261,6 +269,59 @@ Based on established typology systems:
 - [OpenClaw](https://github.com/openclaw/openclaw) — AI agent framework
 - [OpenGoat](https://github.com/openclaw/opengoat) — Agent organization management
 - [Personality Database](https://www.personality-database.com) — Character typology source
+
+---
+
+## ❓ FAQ
+
+<details>
+<summary><b>How do I update an agent without losing manual changes?</b></summary>
+
+The generator creates backups automatically before overwriting. Find them in the agent directory with `_backup_YYYYMMDD_HHMMSS` suffix. To preserve changes:
+1. Copy your customized files somewhere safe
+2. Regenerate the agent
+3. Merge your changes back manually
+</details>
+
+<details>
+<summary><b>Can I use GPT-4/Claude instead of Ollama?</b></summary>
+
+Currently hardcoded for Ollama. To use other providers, modify `call_ollama()` in `narrador.py` or `agent_generator.py` to call your preferred API. The prompt structure remains the same.
+</details>
+
+<details>
+<summary><b>How do I verify generation was successful?</b></summary>
+
+Check that `SOUL.md` has 200+ words of coherent content. The generator now shows warnings if output seems too short or contains error messages.
+</details>
+
+<details>
+<summary><b>How do I delete/uninstall an agent?</b></summary>
+
+```bash
+python integrate_agent.py --delete "Agent Name"
+```
+This removes the agent from local, OpenClaw, and OpenGoat directories.
+</details>
+
+<details>
+<summary><b>What are the system requirements?</b></summary>
+
+- **RAM:** 16GB+ recommended (model loads into memory)
+- **VRAM:** 12GB+ for `qwen2.5:14b` (GPU acceleration)
+- **Disk:** ~10GB for model, ~5MB per generated agent
+- **CPU-only:** Works but slow (~2-5 min per agent)
+</details>
+
+<details>
+<summary><b>Does it work offline?</b></summary>
+
+**Yes**, once you have:
+1. Downloaded the model (`ollama pull qwen2.5:14b`)
+2. Downloaded the PDB dataset (`data/pdb_raw.csv`)
+
+No internet required for generation after that.
+</details>
 
 ---
 
