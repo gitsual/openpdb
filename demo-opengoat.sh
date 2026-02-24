@@ -1,18 +1,18 @@
 #!/bin/bash
 # =============================================================================
-# Lanza OpenGoat con la instancia de DEMO (personajes ficticios)
-# Completamente aislada de tu OpenGoat real
+# Launch OpenGoat with DEMO instance (fictional characters)
+# Completely isolated from your real OpenGoat
 # =============================================================================
 
 export OPENGOAT_HOME="/home/lorty/m2/programas/creador_de_personajes/.opengoat-demo"
 
-echo "🎭 OpenGoat DEMO - Personajes Ficticios"
+echo "🎭 OpenGoat DEMO - Fictional Characters"
 echo "   Home: $OPENGOAT_HOME"
 echo ""
 
 # Configurar jerarquía si no existe
 if [[ ! -f "$OPENGOAT_HOME/.hierarchy_set" ]]; then
-    echo "📊 Configurando jerarquía..."
+    echo "📊 Setting up hierarchy..."
     
     # Crear configs con jerarquía
     for agent in ripley batman katniss wonder-woman tony-stark john-wick daenerys joker; do

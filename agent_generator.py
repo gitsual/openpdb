@@ -286,7 +286,7 @@ def clean_output(text: str) -> str:
         r'\[.*?palabras.*?\]',
         r'Para cumplir con.*',
         r'Continuaré expandiendo.*',
-        r'\n---\s*\n.*con su pasión.*$',  # Meta-comentario final
+        r'\n---\s*\n.*con su pasión.*$',  # Final meta-comment
     ]
     for p in patterns:
         text = re.sub(p, '', text, flags=re.DOTALL | re.IGNORECASE)
@@ -585,8 +585,8 @@ def generate_all(mbti: str, enneagram: int, wing: int, inst_stack: str,
         files['BOOTSTRAP.md'] = f"# BOOTSTRAP.md\n\n**{name}**\n\n1. Read SOUL.md\n2. Read ROLE.md\n3. Delete this file\n"
     else:
         files['ROLE.md'] = f"# ROLE.md\n\nSoy **{name.lower()}**. Rol: {role}.\n"
-        files['TOOLS.md'] = "# TOOLS.md\n\nMis configuraciones van aquí.\n"
-        files['USER.md'] = "# USER.md\n\n*(Completo según interactúo)*\n"
+        files['TOOLS.md'] = "# TOOLS.md\n\nMy configurations go here.\n"
+        files['USER.md'] = "# USER.md\n\n*(Complete as I interact)*\n"
         files['MEMORY.md'] = f"# MEMORY.md\n\n## {datetime.now().strftime('%Y-%m-%d')}\n\nNací.\n"
         files['HEARTBEAT.md'] = "# HEARTBEAT.md\n"
         files['BOOTSTRAP.md'] = f"# BOOTSTRAP.md\n\n**{name}**\n\n1. Lee SOUL.md\n2. Lee ROLE.md\n3. Borra este archivo\n"
