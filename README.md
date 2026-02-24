@@ -6,10 +6,23 @@
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gitsual/creador-de-personajes/blob/main/demo.ipynb)
 
-[Demo](#-real-results) • [Quick Start](#-quick-start-30-seconds) • [How It Works](#-how-it-works) • [OpenGoat Integration](#-opengoat-integration)
+[**Try Demo →**](#-try-it-now) • [Quick Start](#-quick-start-30-seconds) • [How It Works](#-how-it-works) • [OpenGoat Integration](#-opengoat-multi-agent-collaboration)
 
 </div>
+
+---
+
+## 🎮 Try It Now
+
+**No installation required.** Click the button to run in your browser:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gitsual/creador-de-personajes/blob/main/demo.ipynb)
+
+The notebook lets you:
+1. Generate any character's personality
+2. Chat with them using their unique voice
 
 ---
 
@@ -23,92 +36,115 @@ When you ask ChatGPT for advice, you get a neutral, comprehensive response. When
 
 ## 🧪 Real Results (Actual Outputs, Not Marketing)
 
-We ran identical questions through generic AI and personality-generated agents. These are **literal outputs** from `ollama run qwen3-coder`:
+These are **literal outputs** from `ollama run qwen3-coder`:
 
-### "I'm creatively blocked on my project, haven't made progress in weeks"
+### "I'm creatively blocked on my project"
 
 <details>
 <summary>🤖 <b>Generic AI</b> — Click to expand</summary>
 
 ```
-Creative block is a common experience and can be very frustrating, especially 
-when you're working on a project you're passionate about. Here are some 
-strategies you could try:
+Creative block is a common experience. Here are some strategies:
 
-1. **Change your environment** - Sometimes, a change of scenery can help you 
-   see things from a different perspective.
-
-2. **Take a break** - Stopping to force creativity might be what you need.
-
-3. **Establish a routine** - Even if you don't have clear ideas, write something.
-
-4. **Seek inspiration** - Read a book, watch a movie, listen to music.
-
-5. **Break your project into smaller pieces** - If it seems overwhelming, 
-   divide it into manageable tasks.
-
-6. **Talk to someone** - [continues with 4 more generic points...]
+1. **Change your environment** - A change of scenery can help.
+2. **Take a break** - Stopping to force creativity might help.
+3. **Establish a routine** - Even without ideas, write something.
+4. **Seek inspiration** - Read a book, watch a movie.
+5. **Break it into smaller pieces** - Divide into manageable tasks.
+6. **Talk to someone** - [continues with more points...]
 ```
 
 </details>
 
 **🦇 Batman (INTJ 1w9):**
 ```
-*You're not blocked. You're stuck in the same room, staring at the same wall, 
-and you know it.*
+*You're not blocked. You're stuck in the same room, staring at the 
+same wall, and you know it.*
 
-Look, I've been there — more times than I care to count. When ideas die on the 
-page, when expectations are crushing you... that's not failure. That's the moment 
-before the breakthrough.
+Look, I've been there — more times than I care to count. When ideas 
+die on the page, when expectations are crushing you... that's not 
+failure. That's the moment before the breakthrough.
 
-**Step one:** Stop trying to force it. You won't solve a creative problem with 
-more pressure.
-
-**Step two:** Go back to basics. What was your original spark? Reconnect with 
-that fire.
-
-**Step three:** Work in silence. Let your subconscious work. Sometimes the best 
-ideas come when you're not looking for them.
+**Step one:** Stop trying to force it.
+**Step two:** Go back to basics. What was your original spark?
+**Step three:** Work in silence. Let your subconscious work.
 ```
 
-### "My friend is going through depression, how can I help without being intrusive?"
-
-**🔧 Tony Stark (ENTP 7w8):**
-```
-— Listen, don't get me wrong, but if your friend is dealing with depression, 
-you can't "fix" them like it's a software bug that gets patched. It's deeper 
-than that.
-
-*Leans in, with that look of someone who's been through the same thing.*
-
-— What you need is to be present. You don't need to tell them "everything will 
-be fine" or "just be positive." You just need to be there.
-
-— If they don't want to talk, don't push them. If they want to talk, listen. 
-Don't try to fix it with quick solutions.
-
-— I've had my own fall. And the only person who helped me... was someone who 
-didn't try to "cure" me. They let me breathe.
-
-— So don't be intrusive. Be a friend. Don't push them, but don't let them fall 
-either.
-```
-
-### "Is it worth investing in cryptocurrency now?"
+### "Is it worth investing in cryptocurrency?"
 
 **🃏 Joker (ENTP 7w8):**
 ```
 **[Soft, slightly unhinged laughter]**
 
 This is like playing with fire, but with a digital coin in your hand! 
-Isn't that exactly what makes it fun? You can't predict it, you can't 
-control it!
+Isn't that what makes it fun? You can't predict it, you can't control it!
 
 Cryptocurrencies are like chaos in asset form! You can have all your 
 money one night and then... boom! Gone!
 
 **But remember... if you're not willing to lose it all, you're not 
 playing big!**
+```
+
+---
+
+## 🐐 OpenGoat Multi-Agent Collaboration
+
+The real power comes when agents **work together**. Here's a real collaboration:
+
+### Scenario: Startup Crisis
+
+> "Our startup has 3 months of runway. Pivot or seek investment?"
+
+**The Team:**
+- **Ripley** (CEO) — Makes the final call
+- **Batman** (CTO) — Technical assessment  
+- **Katniss** (COO) — Operational reality
+- **Wonder Woman** (CCO) — Team alignment
+
+### How They Collaborate
+
+**RIPLEY (CEO)** opens:
+```
+"We've got three months. That's not a luxury — that's a death sentence. 
+Batman — can we pivot without betraying our vision?
+Katniss — what are the real numbers?
+Tell me the truth — not the one that sounds good."
+```
+
+**BATMAN (CTO)** responds:
+```
+"If we're going to pivot, it has to be strategic, not reactive. 
+The problem isn't features — it's trust. We can pivot — but only 
+from a place of clarity, not chaos."
+```
+
+**KATNISS (COO)** delivers numbers:
+```
+Burn rate: $2.3M runway at current pace
+Timeline: Need $1.2M by Q2 or we're looking at hard stop
+Tactical: Can cut overhead 15% if we streamline
+```
+
+**RIPLEY (CEO)** decides:
+```
+Decision: Pursue investment with clear pivot strategy.
+
+Week 1-4: Batman refines positioning
+Week 5-8: Katniss prepares investor materials  
+Week 9-12: We pitch. No traction? Controlled pivot.
+
+The ship doesn't go down on my watch.
+```
+
+👉 **[Full collaboration transcript](docs/COLLABORATION_DEMO.md)**
+
+### Run OpenGoat Demo
+
+```bash
+./demo-opengoat.sh
+# → Isolated instance at http://127.0.0.1:19124
+# → Pre-configured: Ripley (CEO) → Batman/Katniss/Wonder Woman → ICs
 ```
 
 ---
@@ -120,8 +156,8 @@ playing big!**
 | **Tone** | Neutral, hedging | Distinctive voice |
 | **Length** | 10-point lists | Concise, opinionated |
 | **References** | None | Their world (Gotham, Stark Industries...) |
-| **Actionability** | "Consider these factors..." | Clear stance |
-| **Emotional Connection** | None | High (speaks from experience) |
+| **Collaboration** | N/A | Natural conflict & resolution |
+| **Decision-making** | "Consider factors..." | Takes a stance |
 
 ---
 
@@ -157,31 +193,8 @@ python agent_generator.py -c "Batman" --lang en
 
 **Use the output:**
 ```bash
-# The SOUL.md becomes your system prompt
 cat test_batman/SOUL.md | ollama run qwen3-coder
 ```
-
----
-
-## 🐐 OpenGoat Integration
-
-Generated agents work with [OpenGoat](https://github.com/marian2js/opengoat) for multi-agent orchestration.
-
-<!-- TODO: Replace with actual OpenGoat UI screenshot -->
-![OpenGoat Hierarchy](docs/opengoat_hierarchy.png)
-
-### Demo Mode (Isolated)
-
-Run a complete OpenGoat instance with fictional characters **without touching your real setup**:
-
-```bash
-./demo-opengoat.sh
-# → Creates isolated instance at .opengoat-demo/
-# → Runs on port 19124
-# → Pre-configured hierarchy: Ripley (CEO) → Batman/Katniss/Wonder Woman → ICs
-```
-
-Access at: `http://127.0.0.1:19124`
 
 ---
 
@@ -221,7 +234,8 @@ Or generate any of the 12,000+ characters in the database.
 
 ## 📖 More Examples
 
-See [docs/REAL_TEST_RESULTS.md](docs/REAL_TEST_RESULTS.md) for more real outputs.
+- [Real Test Results](docs/REAL_TEST_RESULTS.md) — Individual agent outputs
+- [Collaboration Demo](docs/COLLABORATION_DEMO.md) — Full multi-agent transcript
 
 ---
 
