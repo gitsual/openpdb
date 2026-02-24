@@ -165,7 +165,7 @@ The ship doesn't go down on my watch.
 
 ```bash
 # 1. Clone
-git clone https://github.com/gitsual/openpdb.git && cd creador-de-personajes
+git clone https://github.com/gitsual/openpdb.git && cd openpdb
 
 # 2. Get character database (12,000+ characters)
 mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-personality-database/main/pdb_dataset.csv" -o data/pdb_raw.csv
