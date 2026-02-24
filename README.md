@@ -10,6 +10,8 @@
 
 [**Try Demo →**](#-try-it-now) • [Quick Start](#-quick-start-30-seconds) • [How It Works](#-how-it-works) • [OpenGoat Integration](#-opengoat-multi-agent-collaboration)
 
+<img src="assets/screenshot_20260224_012023.png" alt="OpenPDB demo screenshot" width="800" />
+
 </div>
 
 ---
