@@ -327,6 +327,46 @@ Generated characters can be imported into OpenGoat for team-based AI orchestrati
 
 ---
 
+## 🎭 OpenGoat Demo Mode (Isolated)
+
+Run a complete OpenGoat instance with fictional characters **without touching your real OpenGoat setup**:
+
+```bash
+# Launch demo instance (port 19124)
+./demo-opengoat.sh
+```
+
+**What it does:**
+- Creates isolated OpenGoat home at `.opengoat-demo/`
+- Auto-configures hierarchy: Ripley (CEO) → Batman/Katniss/Wonder Woman (C-Suite) → ICs
+- Runs on port `19124` (your real OpenGoat stays on default port)
+- Uses `ollama/qwen3-coder` for all agents
+
+**Pre-configured hierarchy:**
+```
+Ripley [CEO] (INTJ 8w9)
+├── Batman [CTO] (INTJ 1w9)
+│   ├── Tony Stark [IC - Innovation]
+│   └── John Wick [IC - Execution]
+├── Katniss [COO] (ISTP 6w5)
+└── Wonder Woman [CCO] (ENFJ 2w1)
+    ├── Daenerys [IC - Vision]
+    └── Joker [IC - Disruption]
+```
+
+**Demo structure:**
+```
+.opengoat-demo/
+├── agents/           # 8 fictional agents with SOUL.md
+├── workspaces/       # Isolated workspaces
+├── boards.sqlite     # Task boards
+└── config.json       # Demo-specific config
+```
+
+Access at: `http://127.0.0.1:19124`
+
+---
+
 ## 🔄 Organization Optimizer
 
 Automatically determines optimal hierarchical structure for N agents based on MBTI + Enneagram:
