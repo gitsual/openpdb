@@ -6,7 +6,7 @@
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gitsual/creador-de-personajes/blob/main/demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gitsual/openpdb/blob/main/demo.ipynb)
 
 [**Try Demo →**](#-try-it-now) • [Quick Start](#-quick-start-30-seconds) • [How It Works](#-how-it-works) • [OpenGoat Integration](#-opengoat-multi-agent-collaboration)
 
@@ -18,7 +18,7 @@
 
 **No installation required.** Click the button to run in your browser:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gitsual/creador-de-personajes/blob/main/demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gitsual/openpdb/blob/main/demo.ipynb)
 
 The notebook lets you:
 1. Generate any character's personality
@@ -165,7 +165,7 @@ The ship doesn't go down on my watch.
 
 ```bash
 # 1. Clone
-git clone https://github.com/gitsual/creador-de-personajes.git && cd creador-de-personajes
+git clone https://github.com/gitsual/openpdb.git && cd creador-de-personajes
 
 # 2. Get character database (12,000+ characters)
 mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-personality-database/main/pdb_dataset.csv" -o data/pdb_raw.csv
