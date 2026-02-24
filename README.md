@@ -121,6 +121,46 @@ the kind of fun I live for.
 
 ---
 
+## 🏛️ Organization Chart (OpenGoat Integration)
+
+The generator creates agents optimized for hierarchical collaboration. Using MBTI + Enneagram scoring, it automatically determines optimal roles (CEO, CTO, COO, CCO, IC) and reporting relationships.
+
+<div align="center">
+
+![OpenGoat Hierarchy](docs/opengoat_hierarchy.png)
+
+</div>
+
+**Hierarchy Logic:**
+- **INTJ 8w9** (Ripley) → CEO: Strategic thinking + Leadership drive
+- **INTJ 1w9** (Batman) → CTO: Analytical + Perfectionist
+- **ISTP 6w5** (Katniss) → COO: Practical + Security-focused
+- **ENFJ 2w1** (Wonder Woman) → CCO: Empathetic + Helper
+
+See [`org_optimizer.py`](org_optimizer.py) for the full scoring algorithm.
+
+---
+
+## 🎬 Collaboration Demo
+
+Watch how AI agents with distinct personalities collaborate on a strategic decision:
+
+**Scenario:** *"Should we pivot to AI-first features?"*
+
+Each agent responds in character:
+
+| Agent | Role | Response Style |
+|-------|------|----------------|
+| **Ripley** | CEO | Decisive, gathers input, makes final call |
+| **Batman** | CTO | Thorough risk analysis, phased approach |
+| **Tony Stark** | IC | Optimistic but realistic capacity assessment |
+| **Joker** | IC | Devil's advocate, exposes blind spots |
+| **Wonder Woman** | CCO | Empathetic, user communication focus |
+
+👉 **[Full collaboration transcript](demos/collaboration_demo.md)**
+
+---
+
 ## 🚀 Quick Start
 
 ```bash
@@ -287,46 +327,54 @@ Generated characters can be imported into OpenGoat for team-based AI orchestrati
 
 ---
 
-## 🔄 Organization Optimizer (NEW)
+## 🔄 Organization Optimizer
 
-Automatically determines optimal hierarchical structure for N agents based on personality:
+Automatically determines optimal hierarchical structure for N agents based on MBTI + Enneagram:
+
+### Optimized Team Structure
+
+![Optimized Org Chart](docs/optimized_orgchart.png)
+
+### Batch Generation with Auto-Optimization
 
 ```bash
-# Analyze examples and show optimal structure
-python org_optimizer.py -d examples
+# Generate team and optimize hierarchy automatically
+python agent_generator.py \
+  --batch "Batman" "Tony Stark" "Ripley" "Wonder Woman" \
+  --optimize-org \
+  --export-opengoat
 
-# Export optimized structure to OpenGoat
-python org_optimizer.py -d examples --export-opengoat
-
-# Custom OpenGoat home directory
-python org_optimizer.py -d examples --export-opengoat --opengoat-home /path/to/opengoat
+# From a file
+echo -e "Batman\nTony Stark\nJoker\nRipley" > team.txt
+python agent_generator.py --batch-file team.txt --export-opengoat
 ```
 
-### How It Works
+### How Scoring Works
 
-The optimizer scores each agent for different organizational roles:
+| Role | Best MBTI | Best Enneagram | Why |
+|------|-----------|----------------|-----|
+| **CEO** | ENTJ, INTJ | 8, 3 | Strategic + Decisive |
+| **CTO** | INTJ, INTP | 5, 1 | Analytical + Systematic |
+| **COO** | ISTJ, ISTP | 6, 1 | Practical + Security-focused |
+| **CCO** | ENFJ, ESFJ | 2, 9 | Empathetic + Team-oriented |
 
-| Role | Best MBTI | Best Enneagram | Function |
-|------|-----------|----------------|----------|
-| **CEO** | ENTJ, ESTJ, ENFJ | 8, 3 | Strategic leadership |
-| **CTO** | INTJ, INTP, ISTP | 5, 1 | Technical strategy |
-| **COO** | ESTJ, ISTJ, ISTP | 6, 1 | Operations |
-| **CCO** | ENFJ, ESFJ, INFJ | 2, 9 | Culture & people |
-
-### Example Output
+### Example: Why Ripley is CEO
 
 ```
 Ellen Ripley [CEO] (INTJ 8w9)
-  └── Batman [CTO] (INTJ 1w9)
-    └── Daenerys Targaryen [IC] (ENFJ 1w2)
-    └── Katniss Everdeen [IC] (ISTP 6w5)
-  └── John Wick [COO] (ISTP 6w5)
-    └── Tony Stark [IC] (ENTP 7w8)
-  └── Wonder Woman [CCO] (ENFJ 2w1)
-    └── The Joker [IC] (ENTP 7w8)
+├── Batman [CTO] (INTJ 1w9)
+│   ├── Daenerys [IC]
+│   └── John Wick [IC]
+├── Katniss [COO] (ISTP 6w5)
+│   └── Tony Stark [IC]
+└── Wonder Woman [CCO] (ENFJ 2w1)
+    └── The Joker [IC]
 ```
 
-The INTJ 8w9 combination (Ripley) ranks highest for CEO because:
-- **INTJ** provides strategic thinking
-- **Type 8** provides leadership drive and decisiveness
-- **w9** moderates aggression with diplomacy
+- **INTJ** → Strategic thinking, long-term planning
+- **Type 8** → Natural leadership, takes charge in crisis
+- **w9** → Balances aggression with diplomacy
+
+### Team Collaboration Example
+
+See [COLLABORATION_EXAMPLE.md](docs/COLLABORATION_EXAMPLE.md) for a full scenario showing how the agents interact based on their personalities and org structure
