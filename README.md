@@ -1,8 +1,8 @@
-# 🎭 AI Personality Generator
+# 🎭 OpenPDB
 
 <div align="center">
 
-**Turn any fictional character into an AI agent with their real personality.**
+**Generate AI agents with real personalities using MBTI + Enneagram + Instincts from the Personality Database.**
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
