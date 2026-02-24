@@ -21,7 +21,7 @@ from pathlib import Path
 from datetime import datetime
 
 # Import base narrator functions
-from narrador import parse_typology, build_prompt, call_ollama, DEFAULT_MODEL
+from narrator import parse_typology, build_prompt, call_ollama, DEFAULT_MODEL
 
 # Enneagram integration/disintegration map
 INTEGRACION = {
