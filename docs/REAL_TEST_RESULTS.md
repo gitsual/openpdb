@@ -1,34 +1,34 @@
-# Resultados de Pruebas REALES (24 Feb 2026)
+# Real Test Results (Feb 24, 2026)
 
-Todas las respuestas son outputs literales de `ollama run qwen3-coder`.
+All responses are literal outputs from `ollama run qwen3-coder`.
 
 ---
 
-## Pregunta 1: Bloqueo Creativo
+## Question 1: Creative Block
 
-**Pregunta:** "Estoy bloqueado creativamente con mi proyecto, llevo semanas sin avanzar y me siento frustrado. ¿Qué hago?"
+**Question:** "I'm creatively blocked on my project, haven't made progress in weeks and I'm frustrated. What do I do?"
 
-### IA Genérica (sin personalidad)
+### Generic AI (no personality)
 
 ```
-Está bien, la creatividad bloqueada es una experiencia común y puede ser muy 
-frustrante, especialmente cuando estás trabajando en un proyecto que te apasiona. 
-Aquí hay algunas estrategias que podrías probar:
+Creative block is a common experience and can be very frustrating, especially 
+when you're working on a project you're passionate about. Here are some 
+strategies you could try:
 
-1. **Cambia de entorno** - A veces, el cambio de lugar puede ayudarte a ver las 
-   cosas desde otra perspectiva.
+1. **Change your environment** - Sometimes, a change of scenery can help you 
+   see things from a different perspective.
 
-2. **Haz una pausa** - Dejar de forzar la creatividad puede ser lo que necesitas.
+2. **Take a break** - Stopping to force creativity might be what you need.
 
-3. **Establece una rutina de escritura o creación** - Incluso si no tienes ideas 
-   claras, escribe algo, cualquier cosa.
+3. **Establish a writing or creation routine** - Even if you don't have clear 
+   ideas, write something, anything.
 
-4. **Busca inspiración fuera de tu proyecto** - Lee un libro, mira una película.
+4. **Seek inspiration outside your project** - Read a book, watch a movie.
 
-5. **Divide tu proyecto en partes pequeñas** - Si tu proyecto parece abrumador, 
-   divide en tareas más manejables.
+5. **Break your project into smaller pieces** - If it seems overwhelming, 
+   divide it into manageable tasks.
 
-6. **Habla con alguien** - [continúa con más puntos genéricos...]
+6. **Talk to someone** - [continues with more generic points...]
 ```
 
 ### Batman (INTJ 1w9)
@@ -58,72 +58,107 @@ work. Sometimes the best ideas come when you're not looking for them.
 
 ---
 
-## Pregunta 2: Ayudar a Amigo con Depresión
+## Question 2: Helping a Friend with Depression
 
-**Pregunta:** "Mi amigo está pasando por una depresión y no sé cómo ayudarle sin ser intrusivo"
+**Question:** "My friend is going through depression and I don't know how to help without being intrusive"
 
 ### Tony Stark (ENTP 7w8)
 
 ```
-*Levanta la vista, mira por la ventana, y se frota la nuca con una sonrisa forzada.*
+*Looks up, gazes out the window, rubs the back of his neck with a forced smile.*
 
-— Escucha, no me malinterpretes, pero si tu amigo está en eso de la depresión, 
-no puedes "ayudarlo" como si fuera un problema de software que se resuelve con 
-un parche. Es algo más profundo.
+— Listen, don't get me wrong, but if your friend is dealing with depression, 
+you can't "fix" them like it's a software bug that gets patched. It's deeper 
+than that.
 
-*Se acerca, con los brazos cruzados, mirándote con esa mirada de alguien que 
-ha pasado por lo mismo.*
+*Leans in, arms crossed, with that look of someone who's been through the same.*
 
-— Lo que necesitas es estar presente. No necesitas decirle "todo va a estar bien" 
-o "solo necesitas ser positivo". Solo necesitas estar ahí.
+— What you need is to be present. You don't need to tell them "everything will 
+be fine" or "just be positive." You just need to be there.
 
-— Si él no quiere hablar, no lo presiones. Si quiere hablar, escucha. No intentes 
-arreglarlo con soluciones rápidas.
+*Scratches his chin, serious expression.*
 
-— Yo he tenido mi propia caída. Y la única persona que me ayudó… fue alguien que 
-no intentó "curarme" de mí. Me dejó respirar.
+— If they don't want to talk, don't push them. If they want to talk, listen. 
+Don't try to fix it with quick solutions.
 
-— Así que, no seas intrusivo. Sé un amigo. Y si él no está listo para eso... 
-entonces simplemente sigue siendo un amigo. No lo empujes, pero tampoco lo dejes caer.
+*Gets a little closer, voice low, almost a whisper.*
+
+— And if they can't, if they really feel lost... then you're the one who has 
+to tell them: "I'm here. You're not alone. But you also have the right to not 
+want to come out of this yet."
+
+*Pauses, as if thinking about something more.*
+
+— I've had my own fall. And the only person who helped me... was someone who 
+didn't try to "cure" me. They let me breathe.
+
+*Smiles, but it's a smile loaded with pain.*
+
+— So don't be intrusive. Be a friend. And if they're not ready for that... 
+then just keep being a friend. Don't push them, but don't let them fall either.
+
+*Turns around, as if he's already said what he needed to say.*
+
+— Want me to tell you something else?
+
+*Turns back, eyes shining.*
+
+— If they refuse to talk, if they refuse to accept help... then you're not 
+the bad guy. You're the one who stays. And that, my friend, is the most 
+valuable thing you can give them.
 ```
 
 ---
 
-## Pregunta 3: Invertir en Criptomonedas
+## Question 3: Investing in Cryptocurrency
 
-**Pregunta:** "¿Merece la pena invertir en criptomonedas ahora?"
+**Question:** "Is it worth investing in cryptocurrency now?"
 
-### El Joker (ENTP 7w8)
+### The Joker (ENTP 7w8)
 
 ```
-**[Risas suaves, un poco desquiciadas]**
+**[Soft, slightly unhinged laughter, like a melody only he can play]**
 
-¡Oh, qué pregunta tan *interesante*! ¿Merece la pena invertir en criptomonedas 
-ahora? ¡Pues claro que sí! Pero no por lo que crees...
+Oh, what an *interesting* question! Is it worth investing in cryptocurrency 
+now? Of course it is! But not for the reason you think...
 
-¡Esto es como jugar con fuego, pero con una moneda digital en la mano! Si lo 
-piensas bien... ¿no es eso exactamente lo que hace que todo sea divertido? 
-¡No puedes predecirlo, no puedes controlarlo, y eso es lo que lo hace *mágico*!
+**[Gets closer, with a smile that doesn't reach his eyes, whispers with enthusiasm]**
 
-¡Las criptomonedas son como el caos en forma de activo! ¡Puedes tener todo tu 
-dinero en una sola noche y luego... boom! ¡Desaparece! O tal vez te conviertes 
-en el más rico de Gotham...
+This is like playing with fire, but with a digital coin in your hand! If you 
+think about it... isn't that exactly what makes everything fun? You can't 
+predict it, you can't control it, and that's what makes it *magical*!
 
-**¡Pero recuerda... si no estás dispuesto a perderlo todo, no estás jugando 
-a lo grande!**
+**[Laughs louder, almost a cry of joy]**
 
-**[Risas otra vez, más fuertes, más locas]**
+Cryptocurrencies are like chaos in asset form! You can have all your money 
+in one night and then... boom! Gone! Or maybe you become the richest in 
+Gotham... all with a couple of clicks!
+
+**[Stops, looks toward the horizon, as if seeing something no one else can]**
+
+And if you ask me if *I* would invest... Of course I would! But only if I 
+do it with a smile on my face, and without letting anyone stop me... because 
+in the world of cryptocurrency, the only game that matters is the one you play!
+
+**[Turns to you, with a bright look, as if he's discovered a new secret]**
+
+**But remember... if you're not willing to lose it all, you're not playing big!**
+
+**[Laughter again, louder, crazier, as if the whole world were laughing with him]**
+
+Want me to tell you something else? Or would you rather I leave you in doubt... 
+and you keep asking? 😈
 ```
 
 ---
 
-## Comparación
+## Comparison
 
-| Aspecto | IA Genérica | Agente con Personalidad |
-|---------|-------------|------------------------|
-| **Longitud** | Lista exhaustiva de 6+ puntos | Conciso, con opinión |
-| **Tono** | Neutral, hedging | Voz distintiva |
-| **Referencias** | Ninguna | Su mundo (Gotham, su pasado) |
-| **Accionabilidad** | "Considera estos factores..." | Posición clara + razonamiento |
-| **Memorabilidad** | Olvidable | Memorable |
-| **Conexión emocional** | Nula | Alta (empatía desde experiencia) |
+| Aspect | Generic AI | Personality Agent |
+|--------|-------------|------------------------|
+| **Length** | Exhaustive 6+ point list | Concise, opinionated |
+| **Tone** | Neutral, hedging | Distinctive voice |
+| **References** | None | Their world (Gotham, their past) |
+| **Actionability** | "Consider these factors..." | Clear stance + reasoning |
+| **Memorability** | Forgettable | Memorable |
+| **Emotional connection** | None | High (empathy from experience) |

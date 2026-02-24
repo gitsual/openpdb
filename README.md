@@ -25,21 +25,29 @@ When you ask ChatGPT for advice, you get a neutral, comprehensive response. When
 
 We ran identical questions through generic AI and personality-generated agents. These are **literal outputs** from `ollama run qwen3-coder`:
 
-### "Estoy bloqueado creativamente con mi proyecto"
+### "I'm creatively blocked on my project, haven't made progress in weeks"
 
 <details>
 <summary>🤖 <b>Generic AI</b> — Click to expand</summary>
 
 ```
-Está bien, la creatividad bloqueada es una experiencia común. Aquí hay algunas 
-estrategias:
+Creative block is a common experience and can be very frustrating, especially 
+when you're working on a project you're passionate about. Here are some 
+strategies you could try:
 
-1. **Cambia de entorno** - A veces, el cambio de lugar puede ayudarte.
-2. **Haz una pausa** - Dejar de forzar la creatividad puede ser lo que necesitas.
-3. **Establece una rutina** - Incluso si no tienes ideas claras, escribe algo.
-4. **Busca inspiración** - Lee un libro, mira una película.
-5. **Divide tu proyecto** - Si parece abrumador, divide en tareas manejables.
-6. **Habla con alguien** - [continúa 4 puntos más...]
+1. **Change your environment** - Sometimes, a change of scenery can help you 
+   see things from a different perspective.
+
+2. **Take a break** - Stopping to force creativity might be what you need.
+
+3. **Establish a routine** - Even if you don't have clear ideas, write something.
+
+4. **Seek inspiration** - Read a book, watch a movie, listen to music.
+
+5. **Break your project into smaller pieces** - If it seems overwhelming, 
+   divide it into manageable tasks.
+
+6. **Talk to someone** - [continues with 4 more generic points...]
 ```
 
 </details>
@@ -63,39 +71,44 @@ that fire.
 ideas come when you're not looking for them.
 ```
 
-### "Mi amigo está pasando por depresión, ¿cómo ayudo sin ser intrusivo?"
+### "My friend is going through depression, how can I help without being intrusive?"
 
 **🔧 Tony Stark (ENTP 7w8):**
 ```
-— Escucha, si tu amigo está en eso de la depresión, no puedes "ayudarlo" como 
-si fuera un problema de software que se resuelve con un parche.
+— Listen, don't get me wrong, but if your friend is dealing with depression, 
+you can't "fix" them like it's a software bug that gets patched. It's deeper 
+than that.
 
-*Se acerca, con esa mirada de alguien que ha pasado por lo mismo.*
+*Leans in, with that look of someone who's been through the same thing.*
 
-— Lo que necesitas es estar presente. No necesitas decirle "todo va a estar 
-bien". Solo necesitas estar ahí.
+— What you need is to be present. You don't need to tell them "everything will 
+be fine" or "just be positive." You just need to be there.
 
-— Yo he tenido mi propia caída. Y la única persona que me ayudó… fue alguien 
-que no intentó "curarme" de mí. Me dejó respirar.
+— If they don't want to talk, don't push them. If they want to talk, listen. 
+Don't try to fix it with quick solutions.
 
-— No seas intrusivo. Sé un amigo. No lo empujes, pero tampoco lo dejes caer.
+— I've had my own fall. And the only person who helped me... was someone who 
+didn't try to "cure" me. They let me breathe.
+
+— So don't be intrusive. Be a friend. Don't push them, but don't let them fall 
+either.
 ```
 
-### "¿Merece la pena invertir en criptomonedas?"
+### "Is it worth investing in cryptocurrency now?"
 
 **🃏 Joker (ENTP 7w8):**
 ```
-**[Risas suaves, un poco desquiciadas]**
+**[Soft, slightly unhinged laughter]**
 
-¡Esto es como jugar con fuego, pero con una moneda digital en la mano! 
-¿No es eso exactamente lo que hace que todo sea divertido? ¡No puedes 
-predecirlo, no puedes controlarlo!
+This is like playing with fire, but with a digital coin in your hand! 
+Isn't that exactly what makes it fun? You can't predict it, you can't 
+control it!
 
-¡Las criptomonedas son como el caos en forma de activo! ¡Puedes tener todo 
-tu dinero en una sola noche y luego... boom! ¡Desaparece!
+Cryptocurrencies are like chaos in asset form! You can have all your 
+money one night and then... boom! Gone!
 
-**¡Pero recuerda... si no estás dispuesto a perderlo todo, no estás jugando 
-a lo grande!**
+**But remember... if you're not willing to lose it all, you're not 
+playing big!**
 ```
 
 ---
@@ -108,7 +121,7 @@ a lo grande!**
 | **Length** | 10-point lists | Concise, opinionated |
 | **References** | None | Their world (Gotham, Stark Industries...) |
 | **Actionability** | "Consider these factors..." | Clear stance |
-| **Emotional Connection** | None | High (from experience) |
+| **Emotional Connection** | None | High (speaks from experience) |
 
 ---
 
