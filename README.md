@@ -2,179 +2,126 @@
 
 <div align="center">
 
-**Generate AI agents with distinct personalities using MBTI + Enneagram + Wikipedia context.**
+**Turn any fictional character into an AI agent with their real personality.**
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/github/actions/workflow/status/gitsual/creador-de-personajes/test.yml?branch=main&style=flat-square&label=tests)](https://github.com/gitsual/creador-de-personajes/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
 
+[Demo](#-real-results) • [Quick Start](#-quick-start-30-seconds) • [How It Works](#-how-it-works) • [OpenGoat Integration](#-opengoat-integration)
+
 </div>
 
 ---
 
-## 🧪 Real Test Results (Not Marketing Copy)
+## 🤔 What's the Point?
 
-We ran the same questions through generic AI and personality-generated agents. Here are the **actual outputs**, unedited:
+**Generic AI gives you lists. Personality agents give you perspective.**
 
-### Test Question: "Should I take this risky business opportunity?"
+When you ask ChatGPT for advice, you get a neutral, comprehensive response. When you ask Batman, you get *Batman's* response — direct, strategic, with references to his world and values.
 
-**Generic AI Response:**
+---
+
+## 🧪 Real Results (Actual Outputs, Not Marketing)
+
+We ran identical questions through generic AI and personality-generated agents. These are **literal outputs** from `ollama run qwen3-coder`:
+
+### "Estoy bloqueado creativamente con mi proyecto"
+
+<details>
+<summary>🤖 <b>Generic AI</b> — Click to expand</summary>
+
 ```
-Deciding whether to take on a risky business opportunity involves careful 
-consideration of several factors. Here are some steps and questions you 
-might find useful in making your decision:
+Está bien, la creatividad bloqueada es una experiencia común. Aquí hay algunas 
+estrategias:
 
-1. **Assess the Risk**: Understand exactly what risks are involved...
-2. **Evaluate Potential Rewards**: What could be gained...
-3. **Market Analysis**: Is there a demand...
-4. **Resource Assessment**: Do you have the necessary resources...
-5. **Competitor Analysis**: Who else might be interested...
-[continues for 10 points]
-
-Ultimately, it's important to weigh these factors carefully before making 
-a decision.
-```
-
-**Batman (INTJ 1w9) Response:**
-```
-We need to regroup and reassess—now. Consider all potential outcomes, not 
-just the immediate gains. Is it worth risking Wayne Enterprises' reputation 
-and resources on an uncertain venture? Focus on stability and long-term 
-strategies that align with our goals for Gotham's betterment. If it doesn't 
-advance our cause or strengthen our position, then it's a risk we cannot 
-afford to take.
+1. **Cambia de entorno** - A veces, el cambio de lugar puede ayudarte.
+2. **Haz una pausa** - Dejar de forzar la creatividad puede ser lo que necesitas.
+3. **Establece una rutina** - Incluso si no tienes ideas claras, escribe algo.
+4. **Busca inspiración** - Lee un libro, mira una película.
+5. **Divide tu proyecto** - Si parece abrumador, divide en tareas manejables.
+6. **Habla con alguien** - [continúa 4 puntos más...]
 ```
 
-**Tony Stark (ENTP 7w8) Response:**
+</details>
+
+**🦇 Batman (INTJ 1w9):**
 ```
-Yo, listen up! Risky opportunities? That's like my middle name. But seriously, 
-do your due diligence. If the tech angle is there and it aligns with our values, 
-go for it. Just make sure you've got all the bases covered—security measures, 
-backup plans, the works. And if something feels off or unethical, trust that 
-gut feeling. We don't want to be a part of anything shady. So yeah, assess, 
-plan, then execute like a boss. Got your back.
+*You're not blocked. You're stuck in the same room, staring at the same wall, 
+and you know it.*
+
+Look, I've been there — more times than I care to count. When ideas die on the 
+page, when expectations are crushing you... that's not failure. That's the moment 
+before the breakthrough.
+
+**Step one:** Stop trying to force it. You won't solve a creative problem with 
+more pressure.
+
+**Step two:** Go back to basics. What was your original spark? Reconnect with 
+that fire.
+
+**Step three:** Work in silence. Let your subconscious work. Sometimes the best 
+ideas come when you're not looking for them.
 ```
 
-**Ellen Ripley (INTJ 8w9) Response:**
+### "Mi amigo está pasando por depresión, ¿cómo ayudo sin ser intrusivo?"
+
+**🔧 Tony Stark (ENTP 7w8):**
 ```
-If there's a chance it endangers us or jeopardizes our safety, then no. But 
-if the opportunity aligns with our mission and provides a clear path forward, 
-then we need to assess the risks and act accordingly. Don't seek comfort in 
-indecision; make a plan and move forward decisively.
+— Escucha, si tu amigo está en eso de la depresión, no puedes "ayudarlo" como 
+si fuera un problema de software que se resuelve con un parche.
+
+*Se acerca, con esa mirada de alguien que ha pasado por lo mismo.*
+
+— Lo que necesitas es estar presente. No necesitas decirle "todo va a estar 
+bien". Solo necesitas estar ahí.
+
+— Yo he tenido mi propia caída. Y la única persona que me ayudó… fue alguien 
+que no intentó "curarme" de mí. Me dejó respirar.
+
+— No seas intrusivo. Sé un amigo. No lo empujes, pero tampoco lo dejes caer.
+```
+
+### "¿Merece la pena invertir en criptomonedas?"
+
+**🃏 Joker (ENTP 7w8):**
+```
+**[Risas suaves, un poco desquiciadas]**
+
+¡Esto es como jugar con fuego, pero con una moneda digital en la mano! 
+¿No es eso exactamente lo que hace que todo sea divertido? ¡No puedes 
+predecirlo, no puedes controlarlo!
+
+¡Las criptomonedas son como el caos en forma de activo! ¡Puedes tener todo 
+tu dinero en una sola noche y luego... boom! ¡Desaparece!
+
+**¡Pero recuerda... si no estás dispuesto a perderlo todo, no estás jugando 
+a lo grande!**
 ```
 
 ---
 
-### Test Question: "Our company's security system was designed 5 years ago. Should we update it?"
+## 📊 The Difference
 
-**The Joker (ENTP 7w8) Response:**
-```
-Oh boy, updating that old security system? That sounds like a fun challenge! 
-But you know what's even more exciting? Maybe the current setup is ripe for 
-a little... tweaking. Think about it—how long has Batman's equipment been 
-around? And yet, he still manages to break into places when he wants to.
-
-But seriously, if we're talking about keeping things interesting and 
-unpredictable, then yes, absolutely. An outdated security system is like 
-an open invitation to anyone with half a brain—and let's be real, Gotham's 
-full of people with more than that. So why wait for them to find the back 
-door? Let's twist this around and see how it fits.
-
-Let's think outside the box for once. What if we don't just update the 
-system; what if we turn it into a game? Imagine the thrill of watching 
-Batman try to outsmart something you designed with chaos in mind. That's 
-the kind of fun I live for.
-```
-
----
-
-## 📊 What's Actually Different?
-
-| Aspect | Generic AI | Personality Agent |
-|--------|-----------|-------------------|
-| **Length** | Long, exhaustive lists | Concise, opinionated |
+| | Generic AI | Personality Agent |
+|---|-----------|------------------|
 | **Tone** | Neutral, hedging | Distinctive voice |
-| **References** | None | Their fictional world (Gotham, Wayne Enterprises, Batman) |
-| **Actionability** | "Consider these factors..." | Clear stance + reasoning |
-| **Memorability** | Forgettable | Distinctive |
+| **Length** | 10-point lists | Concise, opinionated |
+| **References** | None | Their world (Gotham, Stark Industries...) |
+| **Actionability** | "Consider these factors..." | Clear stance |
+| **Emotional Connection** | None | High (from experience) |
 
 ---
 
-## 🦸 The Full Team
-
-<div align="center">
-
-![Full Team](docs/full_team.png)
-
-</div>
-
-| Character | Type | Franchise | Generated Personality |
-|-----------|------|-----------|----------------------|
-| **Batman** | INTJ 1w9 | DC | Strategic, references Gotham/Wayne Enterprises |
-| **Tony Stark** | ENTP 7w8 | MCU | Casual, tech-focused, "execute like a boss" |
-| **John Wick** | ISTP 6w5 | Action | Direct, tactical, survival-focused |
-| **Joker** | ENTP 7w8 | DC | Chaotic, references Batman, adversarial thinking |
-| **Daenerys** | ENFJ 1w2 | GoT | Visionary, references dragons/Dothraki |
-| **Ripley** | INTJ 8w9 | Alien | Paranoid, safety-first, decisive |
-| **Katniss** | ISTP 6w5 | Hunger Games | Survival-focused, references District 12/Peeta |
-| **Wonder Woman** | ENFJ 2w1 | DC | Diplomatic, references Themyscira/Steve Trevor |
-
----
-
-## 🏛️ Organization Chart (OpenGoat Integration)
-
-The generator creates agents optimized for hierarchical collaboration. Using MBTI + Enneagram scoring, it automatically determines optimal roles (CEO, CTO, COO, CCO, IC) and reporting relationships.
-
-<div align="center">
-
-![OpenGoat Hierarchy](docs/opengoat_hierarchy.png)
-
-</div>
-
-**Hierarchy Logic:**
-- **INTJ 8w9** (Ripley) → CEO: Strategic thinking + Leadership drive
-- **INTJ 1w9** (Batman) → CTO: Analytical + Perfectionist
-- **ISTP 6w5** (Katniss) → COO: Practical + Security-focused
-- **ENFJ 2w1** (Wonder Woman) → CCO: Empathetic + Helper
-
-See [`org_optimizer.py`](org_optimizer.py) for the full scoring algorithm.
-
----
-
-## 🎬 Collaboration Demo
-
-Watch how AI agents with distinct personalities collaborate on a strategic decision:
-
-**Scenario:** *"Should we pivot to AI-first features?"*
-
-Each agent responds in character:
-
-| Agent | Role | Response Style |
-|-------|------|----------------|
-| **Ripley** | CEO | Decisive, gathers input, makes final call |
-| **Batman** | CTO | Thorough risk analysis, phased approach |
-| **Tony Stark** | IC | Optimistic but realistic capacity assessment |
-| **Joker** | IC | Devil's advocate, exposes blind spots |
-| **Wonder Woman** | CCO | Empathetic, user communication focus |
-
-👉 **[Full collaboration transcript](demos/collaboration_demo.md)**
-
----
-
-## 🚀 Quick Start
+## 🚀 Quick Start (30 seconds)
 
 ```bash
-# Clone
-git clone https://github.com/gitsual/creador-de-personajes.git
-cd creador-de-personajes
+# 1. Clone
+git clone https://github.com/gitsual/creador-de-personajes.git && cd creador-de-personajes
 
-# Get character database (12,000+ characters)
+# 2. Get character database (12,000+ characters)
 mkdir -p data && curl -sL "https://raw.githubusercontent.com/AKAazure/character-personality-database/main/pdb_dataset.csv" -o data/pdb_raw.csv
 
-# Install Ollama (free local LLM) — https://ollama.ai
-ollama pull qwen2.5:14b
-
-# Generate a character
+# 3. Generate a character
 python agent_generator.py -c "Batman" --lang en
 ```
 
@@ -183,99 +130,49 @@ python agent_generator.py -c "Batman" --lang en
 🔍 Searching PDB for 'Batman'...
 ✅ Found: Bruce Wayne "Batman" → INTJ 1w9 so/sp
 📚 Context: wikipedia (Batman)
-🔥 V8 [🇬🇧 EN] — 'Bruce' (INTJ 1w9 so/sp)
-📁 test_batman
-------------------------------------------------------------
-  ✅ SOUL.md
-  ✅ IDENTITY.md
-  ✅ AGENTS.md
-  ✅ ROLE.md
-  ✅ TOOLS.md
-  ✅ USER.md
-  ✅ MEMORY.md
-  ✅ HEARTBEAT.md
-  ✅ BOOTSTRAP.md
-------------------------------------------------------------
-✨ V8 'Bruce' ready
+✨ V8 'Bruce' ready → test_batman/
 ```
-
----
-
-## 📄 What Gets Generated (Real Example)
-
-**File:** `SOUL.md` for Batman (actual generated content, not written by hand):
-
-```markdown
-# SOUL.md - Bruce
-
-## Who I Am
-Gotham City at night, a place that others see as a maze of danger and 
-despair, feels to me like the intricate dance floor of a grand chess game. 
-The shadows are not just darkness but potential allies or enemies lurking 
-in the dark corners. Tonight, I noticed how every streetlight casts different 
-patterns on the wet pavement after rain—patterns that tell stories about the 
-city's hidden pathways and routines.
-
-## My Voice
-1. That won't do at all.
-2. We need to regroup and reassess—now.
-3. You're missing the big picture here.
-4. Absolutely not acceptable.
-5. It's time for a new strategy.
-
-## A Story
-The night Thomas Wayne was murdered, everything changed. The scent of fear 
-lingered on every breath I took in the alley that night—sharp, metallic, and 
-unmistakable. It was as if time had slowed to a crawl, freezing me with each 
-word exchanged between my father and his assailants. I vowed then to be ready 
-next time.
-```
-
----
-
-## 🔧 How To Use Generated Agents
-
-Once you have a SOUL.md, use it as a system prompt:
-
-```bash
-# Create prompt file
-echo "You are Bruce Wayne / Batman. Embody this personality:" > prompt.txt
-cat test_batman/SOUL.md >> prompt.txt
-echo "---" >> prompt.txt
-echo "USER: Should I take this risky business opportunity?" >> prompt.txt
-
-# Run through Ollama
-cat prompt.txt | ollama run qwen2.5:14b
-```
-
-**That's it.** The personality comes from the SOUL.md content, not magic.
 
 ---
 
 ## 🧠 How It Works
 
-1. **PDB Search** — Finds character in 12,000+ personality database
+1. **PDB Search** — Finds character in 12,000+ [personality database](https://www.personality-database.com/)
 2. **Typology** — Gets MBTI + Enneagram + Instinctual variants
 3. **Wikipedia** — Fetches character background for grounding
-4. **Generation** — Creates SOUL.md with personality-specific content
+4. **Generation** — Creates SOUL.md with personality-specific voice, values, stories
 
-The quality depends on:
-- How well-known the character is (better Wikipedia = better grounding)
-- The underlying LLM (qwen2.5:14b is decent, larger models = better)
-- The prompt structure (V9/V10 has been tested to ~6.8/10 quality ceiling)
-
----
-
-## ⚠️ Honest Limitations
-
-- **Quality ceiling:** With qwen2.5:14b, expect ~6.5-7/10 quality. Larger models or API (Claude/GPT-4) will do better.
-- **Not magic:** The agents are as good as the SOUL.md content + the LLM interpreting it.
-- **Context matters:** Well-known characters (Batman, Tony Stark) work better than obscure ones.
-- **Still AI:** They have the personality *style*, not actual knowledge/memories of the character.
+**Use the output:**
+```bash
+# The SOUL.md becomes your system prompt
+cat test_batman/SOUL.md | ollama run qwen3-coder
+```
 
 ---
 
-## 📂 8 Pre-Generated Examples
+## 🐐 OpenGoat Integration
+
+Generated agents work with [OpenGoat](https://github.com/marian2js/opengoat) for multi-agent orchestration.
+
+<!-- TODO: Replace with actual OpenGoat UI screenshot -->
+![OpenGoat Hierarchy](docs/opengoat_hierarchy.png)
+
+### Demo Mode (Isolated)
+
+Run a complete OpenGoat instance with fictional characters **without touching your real setup**:
+
+```bash
+./demo-opengoat.sh
+# → Creates isolated instance at .opengoat-demo/
+# → Runs on port 19124
+# → Pre-configured hierarchy: Ripley (CEO) → Batman/Katniss/Wonder Woman → ICs
+```
+
+Access at: `http://127.0.0.1:19124`
+
+---
+
+## 🦸 Available Characters
 
 ```
 examples/
@@ -289,132 +186,30 @@ examples/
 └── wonder_woman/    # ENFJ 2w1 - DC Comics
 ```
 
+Or generate any of the 12,000+ characters in the database.
+
+---
+
+## ⚠️ Honest Limitations
+
+- **Quality ceiling:** With qwen3-coder, expect ~7/10 quality. Larger models do better.
+- **Well-known characters work better:** Batman > obscure anime characters.
+- **Not magic:** They have the personality *style*, not actual memories.
+
 ---
 
 ## 🔧 Requirements
 
-- **Python 3.9+**
-- **Ollama** with `qwen2.5:14b` — [Install Ollama](https://ollama.ai)
-- **Internet** for Wikipedia context (optional, works without)
+- Python 3.9+
+- [Ollama](https://ollama.ai) with any model (qwen3-coder recommended)
+- Internet for Wikipedia context (optional)
 
 ---
 
-## 🤝 Integration with OpenGoat
+## 📖 More Examples
 
-Works standalone or with multi-agent orchestration via [OpenGoat](https://github.com/openclaw/opengoat).
-
-### OpenGoat Organization Chart
-
-Generated characters can be imported into OpenGoat for team-based AI orchestration:
-
-![OpenGoat Demo](docs/opengoat_demo.png)
-
-### Navigation Demo
-
-![OpenGoat Navigation](docs/opengoat_navigation.gif)
-
-### Folder Structure
-
-![Folder Structure](docs/folder_structure.png)
-
-### Generation Process
-
-![Generation Demo](docs/generation_demo.gif)
+See [docs/REAL_TEST_RESULTS.md](docs/REAL_TEST_RESULTS.md) for more real outputs.
 
 ---
 
-**MIT License** | Tested, not just marketed 🎭
-
----
-
-## 🎭 OpenGoat Demo Mode (Isolated)
-
-Run a complete OpenGoat instance with fictional characters **without touching your real OpenGoat setup**:
-
-```bash
-# Launch demo instance (port 19124)
-./demo-opengoat.sh
-```
-
-**What it does:**
-- Creates isolated OpenGoat home at `.opengoat-demo/`
-- Auto-configures hierarchy: Ripley (CEO) → Batman/Katniss/Wonder Woman (C-Suite) → ICs
-- Runs on port `19124` (your real OpenGoat stays on default port)
-- Uses `ollama/qwen3-coder` for all agents
-
-**Pre-configured hierarchy:**
-```
-Ripley [CEO] (INTJ 8w9)
-├── Batman [CTO] (INTJ 1w9)
-│   ├── Tony Stark [IC - Innovation]
-│   └── John Wick [IC - Execution]
-├── Katniss [COO] (ISTP 6w5)
-└── Wonder Woman [CCO] (ENFJ 2w1)
-    ├── Daenerys [IC - Vision]
-    └── Joker [IC - Disruption]
-```
-
-**Demo structure:**
-```
-.opengoat-demo/
-├── agents/           # 8 fictional agents with SOUL.md
-├── workspaces/       # Isolated workspaces
-├── boards.sqlite     # Task boards
-└── config.json       # Demo-specific config
-```
-
-Access at: `http://127.0.0.1:19124`
-
----
-
-## 🔄 Organization Optimizer
-
-Automatically determines optimal hierarchical structure for N agents based on MBTI + Enneagram:
-
-### Optimized Team Structure
-
-![Optimized Org Chart](docs/optimized_orgchart.png)
-
-### Batch Generation with Auto-Optimization
-
-```bash
-# Generate team and optimize hierarchy automatically
-python agent_generator.py \
-  --batch "Batman" "Tony Stark" "Ripley" "Wonder Woman" \
-  --optimize-org \
-  --export-opengoat
-
-# From a file
-echo -e "Batman\nTony Stark\nJoker\nRipley" > team.txt
-python agent_generator.py --batch-file team.txt --export-opengoat
-```
-
-### How Scoring Works
-
-| Role | Best MBTI | Best Enneagram | Why |
-|------|-----------|----------------|-----|
-| **CEO** | ENTJ, INTJ | 8, 3 | Strategic + Decisive |
-| **CTO** | INTJ, INTP | 5, 1 | Analytical + Systematic |
-| **COO** | ISTJ, ISTP | 6, 1 | Practical + Security-focused |
-| **CCO** | ENFJ, ESFJ | 2, 9 | Empathetic + Team-oriented |
-
-### Example: Why Ripley is CEO
-
-```
-Ellen Ripley [CEO] (INTJ 8w9)
-├── Batman [CTO] (INTJ 1w9)
-│   ├── Daenerys [IC]
-│   └── John Wick [IC]
-├── Katniss [COO] (ISTP 6w5)
-│   └── Tony Stark [IC]
-└── Wonder Woman [CCO] (ENFJ 2w1)
-    └── The Joker [IC]
-```
-
-- **INTJ** → Strategic thinking, long-term planning
-- **Type 8** → Natural leadership, takes charge in crisis
-- **w9** → Balances aggression with diplomacy
-
-### Team Collaboration Example
-
-See [COLLABORATION_EXAMPLE.md](docs/COLLABORATION_EXAMPLE.md) for a full scenario showing how the agents interact based on their personalities and org structure
+**MIT License** | Real tests, not marketing 🎭
